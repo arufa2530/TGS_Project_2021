@@ -715,6 +715,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScreenCover
       objectReference: {fileID: 0}
+    - target: {fileID: 8546280611445031246, guid: ed985fb9fc503d8408b213fc22a48985,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8546280611445031250, guid: ed985fb9fc503d8408b213fc22a48985,
         type: 3}
       propertyPath: m_Pivot.x
