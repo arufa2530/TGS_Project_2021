@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1580381406793662388}
   - component: {fileID: 1580381406793662389}
   m_Layer: 0
-  m_Name: Heart
+  m_Name: Heart (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -130,10 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8405b3b701e5d5147b2d38f0e8a47360, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 4
-  maxHealth: 4
-  _player: {fileID: 1580381406534458605}
-  _gameOverScreen: {fileID: 0}
+  healthIcon: []
 --- !u!1 &1580381407708962428
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,7 +142,7 @@ GameObject:
   - component: {fileID: 1580381407708962419}
   - component: {fileID: 1580381407708962418}
   m_Layer: 0
-  m_Name: Heart (2)
+  m_Name: Heart (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -228,7 +225,7 @@ GameObject:
   - component: {fileID: 1580381407978556581}
   - component: {fileID: 1580381407978556580}
   m_Layer: 0
-  m_Name: Heart (1)
+  m_Name: Heart (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -343,7 +340,7 @@ GameObject:
   - component: {fileID: 1580381408063626756}
   - component: {fileID: 1580381408063627003}
   m_Layer: 0
-  m_Name: Heart (3)
+  m_Name: Heart (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -525,15 +522,3 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 9205965594722138519}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1580381406534458605 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7650644257211884922, guid: fd32d730029020a4695aa1c58d9f28d6,
-    type: 3}
-  m_PrefabInstance: {fileID: 9205965594722138519}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fca201d2d97c9bc448c5580d6b9d0a60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

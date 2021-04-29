@@ -4,30 +4,38 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ChangeScene : MonoBehaviour
+public class GameOverScreen : MonoBehaviour
 {
 
     public Animator transition;
     public float transitionTime = 2f;
 
+    private void Start()
+    {
+        PlayerReferences.theGameIsOver = this;
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.KeypadPlus))
+        if (Input.GetKeyDown(KeyCode.KeypadMultiply))
         {
-            LoadNextScene();
+            StartCoroutine(GameOver());
+            Debug.Log("GameOver");
         }
     }
 
-    public void LoadNextScene()
-    {
-        StartCoroutine(LoadScene(SceneManager.GetActiveScene().buildIndex + 1));
-    }
 
-    IEnumerator LoadScene(int sceneIndex)
+    IEnumerator GameOver()
     {
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(transitionTime);
-        SceneManager.LoadScene(sceneIndex);
     }
+
+    public void GameOverTrigger()
+    {
+        StartCoroutine(GameOver());
+    }
+
+
 }

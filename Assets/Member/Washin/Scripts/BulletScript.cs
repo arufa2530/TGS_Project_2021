@@ -18,18 +18,13 @@ public class BulletScript : MonoBehaviour
     {
         secondsLeft -= Time.deltaTime;
         if (secondsLeft <= 0) 
-        {
             Destroy(this.gameObject);
-        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log(collision.gameObject.tag);
         if (collision.gameObject.CompareTag("Player"))
-        {
-            DestroyPlayerScript _destroyPlayerScript = collision.gameObject.GetComponent<DestroyPlayerScript>();
-            _destroyPlayerScript.GotHit();
-        }
+            PlayerReferences.LostHealth(1);
         Destroy(this.gameObject);
     }
 

@@ -12,6 +12,8 @@ public class DoubleClickedChecker : MonoBehaviour
     private float elaspedTime = 0;
     [SerializeField]
     private float timeToDoubleClick = 0.5f;
+    [SerializeField]
+    private int sceneIdToChangeTo;
 
     private void Start()
     {
@@ -47,7 +49,7 @@ public class DoubleClickedChecker : MonoBehaviour
     {
         Debug.Log(this.name + " Double Clicked!");
         if (_changeScene != null)
-            _changeScene.LoadNextScene();
+            _changeScene.LoadNextScene(sceneIdToChangeTo);
         else Debug.Log("No Effect Linked!");
     }
 
