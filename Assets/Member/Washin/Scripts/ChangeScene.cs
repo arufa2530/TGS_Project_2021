@@ -16,7 +16,7 @@ public class ChangeScene : MonoBehaviour
         //DebugToScene1
         if (Input.GetKeyDown(KeyCode.KeypadPlus))
         {
-            LoadNextScene(1);
+            LoadNextScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 

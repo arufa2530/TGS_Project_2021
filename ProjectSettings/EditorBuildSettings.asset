@@ -9,6 +9,15 @@ EditorBuildSettings:
     path: Assets/Member/Washin/Scenes/MenuScene.unity
     guid: 794be40da9c73f4498b0488fe0e52e7d
   - enabled: 1
+    path: Assets/Member/Washin/Scenes/RestartingScreen.unity
+    guid: abff6cfc69c44664ab3c5ff584487166
+  - enabled: 1
+    path: Assets/Member/Washin/Scenes/FloatingEnvelope.unity
+    guid: 9cb6c27da2032354091b79e486d6f95b
+  - enabled: 1
+    path: Assets/Member/Washin/Scenes/TEMPWindowSpam.unity
+    guid: 05fab877fd96b7d4c8bdd5deb6df2569
+  - enabled: 1
     path: Assets/Member/Washin/Scenes/DesktopScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1

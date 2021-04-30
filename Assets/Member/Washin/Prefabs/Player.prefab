@@ -101,11 +101,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetPos: {x: 0, y: 0, z: 0}
   isFacingRight: 0
-  moveSpeed: 50
+  moveSpeed: 10
   idle: {fileID: -4556197565260342421, guid: 3279c1a0dba2e0541b8a7b289050abfe, type: 3}
   run: {fileID: -3086720242725003937, guid: 3279c1a0dba2e0541b8a7b289050abfe, type: 3}
   jump: {fileID: -2764029711273647405, guid: 3279c1a0dba2e0541b8a7b289050abfe, type: 3}
-  jumpAmount: 10
+  jumpAmount: 6
   _currentMode: 0
 --- !u!114 &7650644257211884922
 MonoBehaviour:
@@ -119,7 +119,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fca201d2d97c9bc448c5580d6b9d0a60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerHealthScript: {fileID: 0}
 --- !u!50 &7650644257211884920
 Rigidbody2D:
   serializedVersion: 4

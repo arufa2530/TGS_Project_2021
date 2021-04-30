@@ -9,6 +9,7 @@ public class PlayerReferences : MonoBehaviour
     static PlayerReferences thePlayer;
     public static PlayerHealthScript theHealthUI;
     public static GameOverScreen theGameIsOver;
+    public static bool finishSlowSpam = false;
 
     private void Start()
     {
