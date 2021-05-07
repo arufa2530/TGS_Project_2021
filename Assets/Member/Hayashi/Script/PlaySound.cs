@@ -23,9 +23,4 @@ public class PlaySound : MonoBehaviour
             }
         }
     }
-
-    public void Play()
-    {
-        this.GetComponent<AudioSource>().Play();
-    }
 }
