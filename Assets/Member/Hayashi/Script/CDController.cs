@@ -8,14 +8,17 @@ public class CDController : MonoBehaviour
     [SerializeField] GameObject Drive;
 
     bool IsDrop;
+    bool EndDrop;
     int ClickVal;
 
-    Collider2D HitCollsion;
+    Collider2D HitCollider;
+    Collision2D HitCollision;
 
     // Start is called before the first frame update
     void Start()
     {
         IsDrop = false;
+        EndDrop = false;
         ClickVal = 0;
     }
 
@@ -27,6 +30,14 @@ public class CDController : MonoBehaviour
 
         if (ClickVal > 2 && !IsDrop)
             IsDrop = true;
+
+        if (IsDrop)
+        {
+            if (Mathf.Abs(this.GetComponent<Rigidbody2D>().velocity.y) < 0.1f && HitCollision.gameObject.name == "MyComputer")
+            {
+                EndDrop = true;
+            }
+        }
     }
 
     private void Follow()
@@ -36,7 +47,11 @@ public class CDController : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        HitCollsion = collision;
+        HitCollider = collision;
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        HitCollision = collision;
     }
 
     private void OnMouseDown()
@@ -69,9 +84,11 @@ public class CDController : MonoBehaviour
 
     private void OnMouseUpAsButton()
     {
-        if (HitCollsion.gameObject.name == "Floppy")
+        if (HitCollider.gameObject.name == "D:" && EndDrop)
         {
-            this.GetComponent<AudioSource>().Play();
+            Drive.GetComponent<DriveController>().IsLoadCD = true;
+            Drive.GetComponent<AudioSource>().Play();
+            Destroy(this.gameObject);
         }
     }
 }
