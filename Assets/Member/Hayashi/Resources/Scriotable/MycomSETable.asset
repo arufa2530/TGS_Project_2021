@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93424cb57f6715142abc97f02f52a440, type: 3}
+  m_Name: MycomSETable
+  m_EditorClassIdentifier: 
+  SEDataList:
+  - Name: CD
+    SESource: {fileID: 8300000, guid: 555757adda834de46afb2f2189c160e0, type: 3}
+  - Name: Key1
+    SESource: {fileID: 8300000, guid: 555757adda834de46afb2f2189c160e0, type: 3}
+  - Name: Key2
+    SESource: {fileID: 8300000, guid: cb396667d74746549a8fec3fc0d2ab0c, type: 3}
+  - Name: Key3
+    SESource: {fileID: 8300000, guid: 05cdad75dfdc6374189086678f955e52, type: 3}
+  - Name: 
+    SESource: {fileID: 0}
+  - Name: 
+    SESource: {fileID: 0}
+  - Name: 
+    SESource: {fileID: 0}
+  - Name: 
+    SESource: {fileID: 0}
+  - Name: 
+    SESource: {fileID: 0}
+  - Name: 
+    SESource: {fileID: 0}
