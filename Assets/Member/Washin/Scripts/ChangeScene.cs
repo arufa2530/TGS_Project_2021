@@ -22,6 +22,11 @@ public class ChangeScene : MonoBehaviour
 
     public void LoadNextScene(int _sceneId)
     {
+        if (_sceneId == 100)
+        {
+            StartCoroutine(LoadSceneByNextID());
+            return;
+        }
         StartCoroutine(LoadScene(_sceneId));
     }
 
@@ -30,5 +35,12 @@ public class ChangeScene : MonoBehaviour
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(transitionTime);
         SceneManager.LoadScene(sceneIndex);
+    }
+
+    IEnumerator LoadSceneByNextID()
+    {
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(transitionTime);
+        LoadNextScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

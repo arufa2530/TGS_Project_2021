@@ -43,7 +43,7 @@ public class SpawnWindows : MonoBehaviour
         startingPosition = new Vector3(
                 UnityEngine.Random.Range(randomStartingPositionRangeX.x, randomStartingPositionRangeX.y),
                 UnityEngine.Random.Range(randomStartingPositionRangeY.x, randomStartingPositionRangeY.y));
-        Debug.Log(startingPosition);
+        //Debug.Log(startingPosition);
         yield return new WaitUntil(() => PlayerReferences.finishSlowSpam == true);
         for (int i = 0; i < numberOfWindows; i++)
         {
@@ -59,7 +59,7 @@ public class SpawnWindows : MonoBehaviour
             {
                 delayBetweenSpawn -= 0.01f;
             }
-            Debug.Log(tempWindow.transform.localPosition);
+            //Debug.Log(tempWindow.transform.localPosition);
             yield return new WaitForSeconds(delayBetweenSpawn);
         }
         doneSpamming++;

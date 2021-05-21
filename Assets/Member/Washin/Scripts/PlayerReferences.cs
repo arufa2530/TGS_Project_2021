@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerReferences : MonoBehaviour
 {
+
     public static int currentHealth;
     public static int maxHealth = 4;
     static PlayerReferences thePlayer;
@@ -25,6 +26,7 @@ public class PlayerReferences : MonoBehaviour
 
         thePlayer = this;
         GameObject.DontDestroyOnLoad(this.gameObject);
+
     }
 
     public static void LostHealth(int value)
@@ -33,6 +35,8 @@ public class PlayerReferences : MonoBehaviour
         theHealthUI.UpdateHealthUI();
         Debug.Log("Current Health = " + currentHealth);
     }
+
+
 
     public static void RecoveredHealth()
     {

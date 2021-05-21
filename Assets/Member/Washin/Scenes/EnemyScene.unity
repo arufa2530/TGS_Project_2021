@@ -196,6 +196,11 @@ PrefabInstance:
       propertyPath: _changeScene
       value: 
       objectReference: {fileID: 2082569398}
+    - target: {fileID: 1445199732936791946, guid: 39d3146cc6cf1604c89cdc8955aaa9e5,
+        type: 3}
+      propertyPath: sceneIdToChangeTo
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1445199733279462823, guid: 39d3146cc6cf1604c89cdc8955aaa9e5,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -904,6 +909,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8546280611445031244, guid: ed985fb9fc503d8408b213fc22a48985,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8546280611445031246, guid: ed985fb9fc503d8408b213fc22a48985,
         type: 3}
       propertyPath: m_Name
@@ -1185,6 +1195,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7060680513254658303, guid: 8c236380ce73dda468e1b803870df1df,
+        type: 3}
+      propertyPath: shotDelay
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7060680514505480276, guid: 8c236380ce73dda468e1b803870df1df,
         type: 3}
       propertyPath: m_Name
@@ -1250,5 +1265,15 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 7060680515143795054, guid: 8c236380ce73dda468e1b803870df1df,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7060680515143795054, guid: 8c236380ce73dda468e1b803870df1df,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 130
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c236380ce73dda468e1b803870df1df, type: 3}

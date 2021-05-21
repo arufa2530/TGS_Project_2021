@@ -26,12 +26,19 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer currentSprite = null;
     [SerializeField]
     private PlayerModes _currentMode;
+    [SerializeField]
+    Animator _animator;
+    Animation[] states;
+
+    float distance;
 
     private void Awake()
     {
         rb = this.GetComponent<Rigidbody2D>();
         currentSprite = this.gameObject.GetComponent<SpriteRenderer>();
         _currentMode = PlayerModes.InspectMode;
+        _animator = GetComponent<Animator>();
+        targetPos = this.transform.position;
     }
 
 
@@ -40,6 +47,8 @@ public class PlayerMovement : MonoBehaviour
         StartCoroutine(DEBUG_ToggleMode());
         if (_currentMode == PlayerModes.MovementMode)
             CanMove();
+
+        CheckTargetPosIsGreaterThanMinDistance();
     }
 
     private void FixedUpdate()
@@ -97,20 +106,32 @@ public class PlayerMovement : MonoBehaviour
     {
         if (rb.velocity.y != 0)
         {
-            currentSprite.sprite = jump;
+            rb.velocity = new Vector2(targetPosOnTheRight * moveSpeed * 1000 * Time.fixedDeltaTime, rb.velocity.y);
+            _animator.Play("TestJump");
+            //currentSprite.sprite = jump;
         }
-        if (Mathf.Abs(this.transform.position.x - targetPos.x) > 20)
+        else if (Mathf.Abs(this.transform.position.x - targetPos.x) > 20)
         {
             rb.velocity = new Vector2(targetPosOnTheRight * moveSpeed * 1000 * Time.fixedDeltaTime, rb.velocity.y);
-            currentSprite.sprite = run;
+            _animator.Play("TestRun");
+            //currentSprite.sprite = run;
         }
         else
         {
             this.transform.position = targetPos = new Vector2(targetPos.x, transform.position.y);
-            currentSprite.sprite = idle;
+            _animator.Play("TestIdle");
+            //currentSprite.sprite = idle;
         }
+        //if (rb.velocity.x > 0.01 || rb.velocity.x < -0.01)
+        //    _animator.Play
     }
 
     #endregion
+
+    private void CheckTargetPosIsGreaterThanMinDistance()
+    {
+        distance = Vector3.Distance(this.transform.position, targetPos);
+        Debug.Log(distance);
+    }
 
 }
