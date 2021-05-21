@@ -29,14 +29,14 @@ public class EnemyMovementScript : MonoBehaviour
 
     private void Update()
     {
-        MoveEnemy();
-        elaspedTime += Time.deltaTime;
-        if (elaspedTime >= timeToMove)
-        {
-            currentPos = this.transform.position;
-            elaspedTime = 0;
-            PickNewPos();
-        }
+        //MoveEnemy();
+        //elaspedTime += Time.deltaTime;
+        //if (elaspedTime >= timeToMove)
+        //{
+        //    currentPos = this.transform.position;
+        //    elaspedTime = 0;
+        //    PickNewPos();
+        //}
     }
 
     void MoveEnemy()

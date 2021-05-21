@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Member/Washin/Scenes/TEMPWindowSpam.unity
     guid: 05fab877fd96b7d4c8bdd5deb6df2569
   - enabled: 1
+    path: Assets/Member/Washin/Scenes/BlueScreen.unity
+    guid: 5f64644c61d5f91439a0ad3b685ed596
+  - enabled: 1
     path: Assets/Member/Washin/Scenes/DesktopScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1

@@ -22,7 +22,7 @@ public class EnemyFiringScript : MonoBehaviour
         if (elapsedTime > shotDelay)
         {
             elapsedTime = 0;
-            Instantiate(bullet, transform.position + offSet, Quaternion.identity, bulletHolder);
+            Instantiate(bullet, bulletHolder.transform.position, Quaternion.identity, bulletHolder);
         }
         elapsedTime += Time.deltaTime;
     }
