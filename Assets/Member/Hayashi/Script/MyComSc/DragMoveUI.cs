@@ -14,7 +14,7 @@ public class DragMoveUI : MonoBehaviour
         //Cubeの現在位置(マウス位置)を、pointScreenに格納
         Vector3 pointScreen
             = new Vector3(Input.mousePosition.x,
-                          Input.mousePosition.y,
+                          Input.mousePosition.y - this.GetComponent<BoxCollider2D>().offset.y,
                           objectPoint.z);
 
         //Cubeの現在位置を、スクリーン座標からワールド座標に変換して、pointWorldに格納

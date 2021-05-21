@@ -6,10 +6,15 @@ using UnityEngine.UI;
 public class CDController : MonoBehaviour
 {
     [SerializeField] GameObject Drive;
+    [SerializeField] GameObject CDPopup;
+    [SerializeField] GameObject Operator;
 
     bool IsDrop;
     bool EndDrop;
     int ClickVal;
+    float GravDef = 0.15f;
+
+    Rigidbody2D rig;
 
     Collider2D HitCollider;
     Collision2D HitCollision;
@@ -20,6 +25,7 @@ public class CDController : MonoBehaviour
         IsDrop = false;
         EndDrop = false;
         ClickVal = 0;
+        rig = this.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -27,10 +33,10 @@ public class CDController : MonoBehaviour
     {
         if (!IsDrop)
             Follow();
-
+ 
         if (ClickVal > 2 && !IsDrop)
             IsDrop = true;
-
+ 
         if (IsDrop)
         {
             if (Mathf.Abs(this.GetComponent<Rigidbody2D>().velocity.y) < 0.1f && HitCollision.gameObject.name == "MyComputer")
@@ -86,9 +92,24 @@ public class CDController : MonoBehaviour
     {
         if (HitCollider.gameObject.name == "D:" && EndDrop)
         {
-            Drive.GetComponent<DriveController>().IsLoadCD = true;
-            Drive.GetComponent<AudioSource>().Play();
-            Destroy(this.gameObject);
+            CDPopup.SetActive(true);
+            rig.constraints = RigidbodyConstraints2D.FreezeAll;
         }
+    }
+
+    public void CDDeload()
+    {
+        CDPopup.SetActive(false);
+        EndDrop = false;
+        rig.constraints = RigidbodyConstraints2D.None;
+    }
+
+    public void CDLoad()
+    {
+        CDPopup.SetActive(false);
+        Operator.SetActive(true);
+        Drive.GetComponent<DriveController>().IsLoadCD = true;
+        Drive.GetComponent<AudioSource>().Play();
+        Destroy(this.gameObject);
     }
 }
