@@ -47,7 +47,10 @@ public class IsClick : MonoBehaviour
     void DoubleClick()
     {
         Debug.Log("Double");
-        this.GetComponent<AudioSource>().Play();
+        if (GameObject.Find("D:").GetComponent<DriveController>().IsLoadCD)
+        {
+            this.GetComponent<AudioSource>().Play();
+        }
     }
 
 }

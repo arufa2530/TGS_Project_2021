@@ -6,11 +6,19 @@ public class RockFileController : MonoBehaviour
 {
     AudioSource MyAudio;
 
-    [SerializeField] AudioClip[] Clips = new AudioClip[2];
+    [SerializeField] AudioClip[] Clips = new AudioClip[3];
 
     private void Start()
     {
         MyAudio = this.GetComponent<AudioSource>();
+    }
+
+    void Update()
+    {
+        if (!MyAudio.clip == Clips[2])
+        {
+            MyAudio.clip = Clips[2];
+        }
     }
 
     public void PlaySound1()
