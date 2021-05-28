@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CDController : MonoBehaviour
 {
-    [SerializeField] GameObject Drive;
+    [SerializeField] GameObject Drive,RockFile;
     [SerializeField] GameObject CDPopup;
     [SerializeField] GameObject Operator;
 
@@ -109,7 +109,7 @@ public class CDController : MonoBehaviour
         CDPopup.SetActive(false);
         Operator.SetActive(true);
         Drive.GetComponent<DriveController>().IsLoadCD = true;
-        Drive.GetComponent<AudioSource>().Play();
+        RockFile.GetComponent<AudioSource>().Play();
         Destroy(this.gameObject);
     }
 }
