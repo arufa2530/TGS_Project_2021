@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class RestartTextScript : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class RestartTextScript : MonoBehaviour
     private string EndText = "KB OK";
     private string underline = "_";
     private string startingText = "Windows95を起動しています...";
+    [SerializeField]
+    public ChangeScene _changeScene;
 
 
 
@@ -44,5 +47,7 @@ public class RestartTextScript : MonoBehaviour
         restartingText.text = underline;
         yield return new WaitForSeconds(3);
         restartingText.text = startingText + Environment.NewLine + underline;
+        yield return new WaitForSeconds(3);
+        _changeScene.LoadNextScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

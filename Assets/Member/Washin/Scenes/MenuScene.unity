@@ -180,7 +180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 14eb04e6819a9984eaafe7fc5ed7a707, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 43c5fef4da3509043b66d3a54277a5ae, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -735,6 +735,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8546280611445031244, guid: ed985fb9fc503d8408b213fc22a48985,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8546280611445031245, guid: ed985fb9fc503d8408b213fc22a48985,
         type: 3}
       propertyPath: m_Camera
