@@ -17,6 +17,7 @@ public class PaintScript : MonoBehaviour
     [SerializeField]
     RenderTexture renderedTexture;
     int imageCount = 0;
+    [HideInInspector]
     public Vector3 brushScaleValue;
 
     [SerializeField]
@@ -34,8 +35,6 @@ public class PaintScript : MonoBehaviour
     Image brushColorRenderer;
     Color currentSelectedColor = Color.yellow;
     RaycastHit2D hitForBrush;
-
-    bool shouldBrushBeShowing;
 
     private void Start()
     {
@@ -83,16 +82,17 @@ public class PaintScript : MonoBehaviour
 
     public void Save()
     {
-        shouldBrushBeShowing = false;
-        //DisplayPreviewBrush();
+
         StartCoroutine(SaveRenderTextureToPng());
-        shouldBrushBeShowing = true;
-        //DisplayPreviewBrush();
+
+
     }
 
 
     private IEnumerator SaveRenderTextureToPng()
     {
+        DisplayPreviewBrush(false);
+
         yield return new WaitForEndOfFrame();
 
         RenderTexture.active = renderedTexture;
@@ -104,6 +104,8 @@ public class PaintScript : MonoBehaviour
         var drawningToSave = drawnImage.EncodeToPNG();
         //File.WriteAllBytes(Application.dataPath + "/Member/Washin/Images/PaintedImages/Image-" + System.Guid.NewGuid() + ".png", drawningToSave);
         File.WriteAllBytes(Application.dataPath + "/Member/Washin/Images/PaintedImages/Image-" + ++imageCount + ".png", drawningToSave);
+
+        DisplayPreviewBrush(true);
     }
 
     public void CompareTwoDrawings()
@@ -113,7 +115,7 @@ public class PaintScript : MonoBehaviour
         images[1] = new Texture2D(1, 1);
 
         images[0].LoadImage(File.ReadAllBytes(Application.dataPath + "/Member/Washin/Images/PaintedImages/Image-" + imageCount + ".png"));
-        images[1].LoadImage(File.ReadAllBytes(AssetDatabase.GetAssetPath(stockImage)));
+        //images[1].LoadImage(File.ReadAllBytes(AssetDatabase.GetAssetPath(stockImage)));
 
 
         for (x = images[0].width; x > 0; x--)
@@ -132,12 +134,12 @@ public class PaintScript : MonoBehaviour
         return brushScaleValue;
     }
 
-    public void DisplayPreviewBrush()
+    public void DisplayPreviewBrush(bool showBrush)
     {
-        if (shouldBrushBeShowing)
-            displayForCurrentBrush.SetActive(shouldBrushBeShowing);
+        if (showBrush)
+            displayForCurrentBrush.SetActive(true);
         else
-            displayForCurrentBrush.SetActive(!shouldBrushBeShowing);
+            displayForCurrentBrush.SetActive(false);
     }
 
 
