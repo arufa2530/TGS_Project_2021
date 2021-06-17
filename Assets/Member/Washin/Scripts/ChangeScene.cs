@@ -10,11 +10,15 @@ public class ChangeScene : MonoBehaviour
     public Animator transition;
     public float transitionTime = 2f;
 
+    [SerializeField]
+    bool isAbleToManuallyChangeScene;
+
     // Update is called once per frame
     void Update()
     {
         //DebugToScene1
-        if (Input.GetKeyDown(KeyCode.KeypadPlus))
+        //if (Input.GetKeyDown(KeyCode.KeypadPlus))
+        if (isAbleToManuallyChangeScene && Input.GetMouseButtonDown(0))
         {
             LoadNextScene(SceneManager.GetActiveScene().buildIndex + 1);
         }

@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
         if (_currentMode == PlayerModes.MovementMode)
             CanMove();
 
-        CheckTargetPosIsGreaterThanMinDistance();
+        //CheckTargetPosIsGreaterThanMinDistance();
     }
 
     private void FixedUpdate()

@@ -5,6 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - Bullet
+  - BulletClickable
+  - Enemy
+  - Walls
+  - GreenBullet
+  - EnemyBulletNonClickableYellow
+  - EnemyBulletClickableRed
+  - EnemyBulletNonClickableGreen
+  - OnHitDespawn
   layers:
   - Default
   - TransparentFX
@@ -12,7 +20,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Bullet
   - 
   - 
   - 
