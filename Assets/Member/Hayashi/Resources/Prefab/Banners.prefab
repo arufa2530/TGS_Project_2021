@@ -1,5 +1,17 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &216047714576329117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33704260530958259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77e2c03b021892246817e60ff71c4902, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &33704261118880913
 GameObject:
   m_ObjectHideFlags: 0
@@ -9,6 +21,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 33704261118880912}
+  - component: {fileID: 8103639460944817634}
   m_Layer: 5
   m_Name: Banners
   m_TagString: Untagged
@@ -37,6 +50,44 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &8103639460944817634
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33704261118880913}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 848f14e39eaf7a444910816f76f29fc7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!95 &2192718066537042022
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33704261585920814}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 848f14e39eaf7a444910816f76f29fc7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &2529595251012422993
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -72,22 +123,22 @@ PrefabInstance:
     - target: {fileID: 2552785224098456291, guid: d0e2699ac85d4ef4fa3e45a25ce31d9b,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2552785224098456291, guid: d0e2699ac85d4ef4fa3e45a25ce31d9b,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2552785224098456291, guid: d0e2699ac85d4ef4fa3e45a25ce31d9b,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2552785224098456291, guid: d0e2699ac85d4ef4fa3e45a25ce31d9b,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2552785224098456291, guid: d0e2699ac85d4ef4fa3e45a25ce31d9b,
         type: 3}
@@ -122,27 +173,27 @@ PrefabInstance:
     - target: {fileID: 2552785224098456291, guid: d0e2699ac85d4ef4fa3e45a25ce31d9b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2552785224098456291, guid: d0e2699ac85d4ef4fa3e45a25ce31d9b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2552785224098456291, guid: d0e2699ac85d4ef4fa3e45a25ce31d9b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2552785224098456291, guid: d0e2699ac85d4ef4fa3e45a25ce31d9b,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -127.7
+      value: -80.00001
       objectReference: {fileID: 0}
     - target: {fileID: 2552785224098456291, guid: d0e2699ac85d4ef4fa3e45a25ce31d9b,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -230
+      value: -280.00003
       objectReference: {fileID: 0}
     - target: {fileID: 2552785224098456291, guid: d0e2699ac85d4ef4fa3e45a25ce31d9b,
         type: 3}
@@ -161,6 +212,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0e2699ac85d4ef4fa3e45a25ce31d9b, type: 3}
+--- !u!1 &33704260530958259 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2552785224098456290, guid: d0e2699ac85d4ef4fa3e45a25ce31d9b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2529595251012422993}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &33704260530958258 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2552785224098456291, guid: d0e2699ac85d4ef4fa3e45a25ce31d9b,
@@ -179,6 +236,11 @@ PrefabInstance:
       propertyPath: MyParent
       value: 
       objectReference: {fileID: 33704261118880913}
+    - target: {fileID: 3225782178631013800, guid: 95eb6972b1f7fb84aa4f5938efbbf33c,
+        type: 3}
+      propertyPath: TaskBarApp
+      value: 
+      objectReference: {fileID: 33704260530958259}
     - target: {fileID: 3225782178631013803, guid: 95eb6972b1f7fb84aa4f5938efbbf33c,
         type: 3}
       propertyPath: m_Pivot.x
@@ -291,6 +353,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95eb6972b1f7fb84aa4f5938efbbf33c, type: 3}
+--- !u!1 &33704261585920814 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3225782178631013804, guid: 95eb6972b1f7fb84aa4f5938efbbf33c,
+    type: 3}
+  m_PrefabInstance: {fileID: 3221193122761979522}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &33704261585920809 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3225782178631013803, guid: 95eb6972b1f7fb84aa4f5938efbbf33c,
@@ -303,7 +371,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 3221193122761979522}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 33704261585920814}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e33a046508fbd6c4eb4536959f49cb54, type: 3}
