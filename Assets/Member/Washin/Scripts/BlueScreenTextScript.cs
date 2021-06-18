@@ -18,7 +18,7 @@ public class BlueScreenTextScript : MonoBehaviour
     string line5;
     string line6;
     [SerializeField]
-    float textScrollSpeed = 0.01f;
+    //float textScrollSpeed = 0.01f;
     //Dictionary<int, string> conversation;
     List<string> conversation = new List<string>();
 
