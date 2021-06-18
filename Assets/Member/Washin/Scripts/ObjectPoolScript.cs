@@ -21,8 +21,6 @@ public class ObjectPoolScript : MonoBehaviour
     public List<Pool> pools;
     public Dictionary<string, Queue<GameObject>> bulletDictonary;
 
-    public Transform bulletPoolTransform;
-
 
     void Start()
     {
@@ -36,17 +34,14 @@ public class ObjectPoolScript : MonoBehaviour
             {
                 GameObject obj = Instantiate(pool.bulletPrefab);
                 obj.SetActive(false);
-                obj.transform.SetParent(bulletPoolTransform);
                 enemyBulletPool.Enqueue(obj);
             }
 
             bulletDictonary.Add(pool.tag, enemyBulletPool);
         }
-
-        bulletPoolTransform = this.transform;
     }
 
-    public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation, Transform parentTransfrom)
+    public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation)
     {
         if (!bulletDictonary.ContainsKey(tag))
         {
@@ -54,40 +49,14 @@ public class ObjectPoolScript : MonoBehaviour
             return null;
         }
 
-        //GameObject objectToSpawn = bulletDictonary[tag].Dequeue();
-
-        bool isActive = true;
-        GameObject objectToSpawn = null;
-        while (isActive)
-        {
-            objectToSpawn = bulletDictonary[tag].Dequeue();
-            bulletDictonary[tag].Enqueue(objectToSpawn);
-            if (!objectToSpawn.activeInHierarchy) isActive = false;
-        }
+        GameObject objectToSpawn = bulletDictonary[tag].Dequeue();
 
         objectToSpawn.transform.position = position;
         objectToSpawn.transform.rotation = rotation;
-        objectToSpawn.transform.SetParent(parentTransfrom);
-        //bulletDictonary[tag].Enqueue(objectToSpawn);
+
+        bulletDictonary[tag].Enqueue(objectToSpawn);
         return objectToSpawn;
     }
 
-    public void ReturnToPool(string tag, GameObject objectToReturn)
-    {
-        if (!bulletDictonary.ContainsKey(tag))
-        {
-            Debug.LogError(tag + "Does not exist as a key for this dictonary");
-            return;
-        }
-        objectToReturn.SetActive(false);
-        objectToReturn.GetComponent<PoolBulletScriptTest>().ResetValues();
-        objectToReturn.GetComponent<DestroyBulletScript>().ResetValues();
-        bulletDictonary[tag].Enqueue(objectToReturn);
-        return;
-    }
 
-    public Transform GetbulletPoolTransForm()
-    {
-        return bulletPoolTransform;
-    }
 }
