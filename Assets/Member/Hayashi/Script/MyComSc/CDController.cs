@@ -39,7 +39,7 @@ public class CDController : MonoBehaviour
  
         if (IsDrop)
         {
-            if (Mathf.Abs(this.GetComponent<Rigidbody2D>().velocity.y) < 0.1f && HitCollision.gameObject.name == "MyComputer")
+            if (Mathf.Abs(this.GetComponent<Rigidbody2D>().velocity.y) == 0f && HitCollision.gameObject.name == "MyComputer")
             {
                 EndDrop = true;
             }
@@ -48,13 +48,19 @@ public class CDController : MonoBehaviour
 
     private void Follow()
     {
-        this.GetComponent<RectTransform>().anchoredPosition = new Vector2(Drive.GetComponent<RectTransform>().anchoredPosition.x + 11f, Drive.GetComponent<RectTransform>().anchoredPosition.y + 24f);
+        this.GetComponent<RectTransform>().anchoredPosition = new Vector2(Drive.GetComponent<RectTransform>().anchoredPosition.x + 4f, Drive.GetComponent<RectTransform>().anchoredPosition.y + 8f);
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
         HitCollider = collision;
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        HitCollider = null;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         HitCollision = collision;
@@ -99,9 +105,9 @@ public class CDController : MonoBehaviour
 
     public void CDDeload()
     {
-        CDPopup.SetActive(false);
-        EndDrop = false;
         rig.constraints = RigidbodyConstraints2D.None;
+        rig.velocity = new Vector2(0,-0.1f);
+        CDPopup.SetActive(false);
     }
 
     public void CDLoad()
