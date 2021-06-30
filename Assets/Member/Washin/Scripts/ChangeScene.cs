@@ -9,6 +9,7 @@ public class ChangeScene : MonoBehaviour
 
     public Animator transition;
     public float transitionTime = 2f;
+    public bool isTitleScreen;
 
     [SerializeField]
     bool isAbleToManuallyChangeScene;
@@ -18,10 +19,18 @@ public class ChangeScene : MonoBehaviour
     {
         //DebugToScene1
         //if (Input.GetKeyDown(KeyCode.KeypadPlus))
-        if (isAbleToManuallyChangeScene && Input.GetMouseButtonDown(0))
+        if (!isAbleToManuallyChangeScene) return;
+
+        if (Input.GetMouseButtonDown(0))
         {
-            LoadNextScene(SceneManager.GetActiveScene().buildIndex + 1);
+            if (!isTitleScreen)
+            {
+                LoadNextScene(SceneManager.GetActiveScene().buildIndex + 1);
+                return;
+            }
+            else LoadNextScene(SceneManager.GetActiveScene().buildIndex + 2);
         }
+        
     }
 
     public void LoadNextScene(int _sceneId)

@@ -431,7 +431,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: SFXManager
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2972793825618321885, guid: 13f758ebbb480a242916f90c57559ea6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 13f758ebbb480a242916f90c57559ea6, type: 3}
 --- !u!1 &1748857277
 GameObject:

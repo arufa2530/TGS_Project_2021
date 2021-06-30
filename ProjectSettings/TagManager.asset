@@ -13,6 +13,7 @@ TagManager:
   - EnemyBulletClickableRed
   - EnemyBulletNonClickableGreen
   - OnHitDespawn
+  - PlayerBullet
   layers:
   - Default
   - TransparentFX

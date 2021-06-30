@@ -52,13 +52,14 @@ public class RandomSpawnWindow : MonoBehaviour
         PlayerReferences.finishSlowSpam = true;
         Debug.Log("SlowSpamFinished");
 
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(4.1f);
+        //yield return new WaitForSeconds(3.5f);
 
         AudioSource audioData = GetComponent<AudioSource>();
         audioData.Play();
         yield return new WaitWhile(() => audioData.isPlaying);
 
-        _changeScene.LoadNextScene(4);
+        _changeScene.LoadNextScene(100);
 
         yield return null;
     }

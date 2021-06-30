@@ -7,7 +7,7 @@ public class EnemyMovementScript : MonoBehaviour
     [SerializeField]
     public float moveSpeed;
     [SerializeField]
-    private float elaspedTime;
+    public float elaspedTime;
     public float timeToMove;
     public float timeToMoveToCenter;
 

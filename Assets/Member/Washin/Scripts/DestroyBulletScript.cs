@@ -37,7 +37,7 @@ public class DestroyBulletScript : MonoBehaviour
         if (timeToDespawn == -1)
         {
             currentWaitTime += Time.fixedDeltaTime;
-            if (currentWaitTime > timeToMove/2)
+            if (currentWaitTime > timeToMove / 2)
             {
                 currentTime += Time.fixedDeltaTime;
                 MoveToRandomNearByPosition();
@@ -56,6 +56,17 @@ public class DestroyBulletScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //Debug.Log(collision.gameObject.name);
+        if (this.CompareTag("PlayerBullet") && collision.gameObject.CompareTag("Enemy")) { PlayerHitEnemy(); return; }
+        if (this.CompareTag("PlayerBullet") && collision.gameObject.CompareTag("Player")) { return; }
+        if (this.CompareTag("PlayerBullet") && collision.gameObject.CompareTag("Bullet"))
+        { 
+            Debug.Log("PlayerBulletHitENemyBullet");
+            collision.gameObject.GetComponent<DestroyBulletScript>().ReturnClickableToPool();
+            ReturnClickableToPool();
+            return;
+        }
+
         if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Bullet")) return;
         if (collision.gameObject.CompareTag("Walls")) return;
         if (collision.gameObject.CompareTag("OnHitDespawn")) { ReturnClickableToPool(); return; }
@@ -101,8 +112,8 @@ public class DestroyBulletScript : MonoBehaviour
     {
         targetPos = currentPos;
         while (
-            (targetPos.x < currentPos.x + Xoffset && targetPos.x > currentPos.x - Xoffset)&&
-            (targetPos.y < currentPos.y + Yoffset && targetPos.y > currentPos.y - Yoffset)) 
+            (targetPos.x < currentPos.x + Xoffset && targetPos.x > currentPos.x - Xoffset) &&
+            (targetPos.y < currentPos.y + Yoffset && targetPos.y > currentPos.y - Yoffset))
         {
             targetPos = new Vector3(
                 Random.Range(currentPos.x - Xoffset * 2, currentPos.x + Xoffset * 2),
@@ -114,6 +125,13 @@ public class DestroyBulletScript : MonoBehaviour
     {
         currentWaitTime = 0f;
         targetPos = Vector3.zero;
+    }
+
+    public void PlayerHitEnemy()
+    {
+        //Debug.Log("EnemyHit!");
+        ReturnClickableToPool();
+        return;
     }
 
 }
