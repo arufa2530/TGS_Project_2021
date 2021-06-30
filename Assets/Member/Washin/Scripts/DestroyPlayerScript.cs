@@ -8,6 +8,10 @@ public class DestroyPlayerScript : MonoBehaviour
     private void Update()
     {
         CheckIfIsDead();
+
+        //Debug
+        if (Input.GetKeyDown(KeyCode.Keypad1)) PlayerReferences.LostHealth(1);
+
     }
 
     private void CheckIfIsDead()

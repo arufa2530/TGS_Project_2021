@@ -12,12 +12,20 @@ public class SpawnBulletFromPool : MonoBehaviour
 
     [SerializeField]
     Transform currentBulletHolderTransform;
+    [SerializeField]Transform clickableHolder;
 
     [SerializeField]
     float positionOffsetFactor;
 
     [SerializeField]
     public bool shootBulletsArcPattern;
+
+    [SerializeField] float startingArc;
+    [SerializeField] float endingArc;
+    [SerializeField] int bulletsPerArc;
+    [SerializeField] float fireRateArc;
+
+
     [SerializeField]
     public bool shootBulletsSpiralPattern;
     [SerializeField]
@@ -35,10 +43,10 @@ public class SpawnBulletFromPool : MonoBehaviour
 
         if (shootBulletsArcPattern)
         {
-            if (currentTime > spawnDelay)
+            if (currentTime > fireRateArc)
             {
                 //SpawnRandomBullet();
-                SpawnBulletPattern(nonClickableBulletYellow, 2, 90, 270, 10);
+                SpawnBulletPattern(nonClickableBulletYellow, 2, startingArc, endingArc, bulletsPerArc);
                 currentTime = 0;
             }
         }
@@ -145,7 +153,7 @@ public class SpawnBulletFromPool : MonoBehaviour
             {
                 tempDestroyBulletScript.GetRandomPosition(GetEnemyCenterPositon());
             }
-            tempBullet.gameObject.transform.SetParent(currentBulletHolderTransform);
+            tempBullet.gameObject.transform.SetParent(clickableHolder);
             tempBullet.SetActive(true);
 
             currentAngle += angleOffset;
@@ -170,7 +178,9 @@ public class SpawnBulletFromPool : MonoBehaviour
         if (typeOfBulletToSpawn == nonClickableBulletYellow)
             tempbullet.GetComponent<DestroyBulletScript>().canBeClicked = false;
         else if (typeOfBulletToSpawn == clickableBulletRed)
+        {
             tempbullet.GetComponent<DestroyBulletScript>().canBeClicked = true;
+        }
     }
 
     public void SpawnRandomBullet()

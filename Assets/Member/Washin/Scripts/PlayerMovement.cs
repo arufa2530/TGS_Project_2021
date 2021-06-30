@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 targetPos;
     public bool isFacingRight = false;
     private int targetPosOnTheRight;
+    private float offsetMouseDetect = 20f;
     [SerializeField]
     private float moveSpeed = 0;
     Rigidbody2D rb;
@@ -30,6 +31,8 @@ public class PlayerMovement : MonoBehaviour
     Animator _animator;
     Animation[] states;
 
+    [SerializeField] DisplayCurrentMode currentModeUI;
+
     float distance;
 
     private void Awake()
@@ -44,7 +47,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        StartCoroutine(DEBUG_ToggleMode());
+        //StartCoroutine(DEBUG_ToggleMode());
+
+        TogglePlayerMode();
+
         if (_currentMode == PlayerModes.MovementMode)
             CanMove();
 
@@ -67,16 +73,39 @@ public class PlayerMovement : MonoBehaviour
         yield return null;
     }
 
+
+
+    private void CheckTargetPosIsGreaterThanMinDistance()
+    {
+        distance = Vector3.Distance(this.transform.position, targetPos);
+        Debug.Log(distance);
+    }
+
+    public void TogglePlayerMode()
+    {
+        if (Input.GetMouseButtonDown(2))
+            if (_currentMode == PlayerModes.InspectMode)
+            {
+                _currentMode = PlayerModes.MovementMode;
+                currentModeUI.ChangeMode(1);
+            }
+            else if (_currentMode == PlayerModes.MovementMode)
+            {
+                _currentMode = PlayerModes.InspectMode;
+                currentModeUI.ChangeMode(2);
+            }
+    }
+
     #region MovementFunctions
 
     private void CanMove()
     {
         SetTargetPosition();
 
-        if (targetPosOnTheRight == 1 && !isFacingRight)
-            FlipSprite();
-        else if (targetPosOnTheRight == -1 && isFacingRight)
-            FlipSprite();
+        //if (targetPosOnTheRight == 1 && !isFacingRight)
+        //    FlipSprite();
+        //else if (targetPosOnTheRight == -1 && isFacingRight)
+        //    FlipSprite();
 
         if (Input.GetKeyDown(KeyCode.Space))
             rb.velocity = Vector2.up * 100 * jumpAmount;
@@ -88,10 +117,19 @@ public class PlayerMovement : MonoBehaviour
         Vector3 _mousePos = Input.mousePosition;
         targetPos = Camera.main.ScreenToWorldPoint(new Vector3(_mousePos.x, _mousePos.y, 1));
 
-        if (targetPos.x < this.transform.position.x)
+        if (targetPos.x - offsetMouseDetect < this.transform.position.x)
+        {
             targetPosOnTheRight = -1;
-        else if (targetPos.x > this.transform.position.x)
+            if (targetPosOnTheRight == -1 && isFacingRight)
+                FlipSprite();
+
+        }
+        else if (targetPos.x + offsetMouseDetect > this.transform.position.x)
+        {
             targetPosOnTheRight = 1;
+            if (targetPosOnTheRight == 1 && !isFacingRight)
+                FlipSprite();
+        }
     }
 
     private void FlipSprite()
@@ -107,31 +145,21 @@ public class PlayerMovement : MonoBehaviour
         if (rb.velocity.y != 0)
         {
             rb.velocity = new Vector2(targetPosOnTheRight * moveSpeed * 1000 * Time.fixedDeltaTime, rb.velocity.y);
-            _animator.Play("TestJump");
-            //currentSprite.sprite = jump;
+            _animator.Play("JumpB");
         }
         else if (Mathf.Abs(this.transform.position.x - targetPos.x) > 20)
         {
             rb.velocity = new Vector2(targetPosOnTheRight * moveSpeed * 1000 * Time.fixedDeltaTime, rb.velocity.y);
-            _animator.Play("TestRun");
-            //currentSprite.sprite = run;
+            _animator.Play("DashB");
         }
         else
         {
             this.transform.position = targetPos = new Vector2(targetPos.x, transform.position.y);
-            _animator.Play("TestIdle");
-            //currentSprite.sprite = idle;
+            _animator.Play("WaitB");
         }
-        //if (rb.velocity.x > 0.01 || rb.velocity.x < -0.01)
-        //    _animator.Play
     }
 
     #endregion
 
-    private void CheckTargetPosIsGreaterThanMinDistance()
-    {
-        distance = Vector3.Distance(this.transform.position, targetPos);
-        Debug.Log(distance);
-    }
 
 }

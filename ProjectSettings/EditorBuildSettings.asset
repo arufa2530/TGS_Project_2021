@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Member/Washin/Scenes/MenuScene.unity
     guid: 794be40da9c73f4498b0488fe0e52e7d
   - enabled: 1
+    path: Assets/Member/Washin/Scenes/GameOverScreen.unity
+    guid: 4aebbfc3444787046b64610f7a6df53a
+  - enabled: 1
     path: Assets/Member/Washin/Scenes/RestartingScreen.unity
     guid: abff6cfc69c44664ab3c5ff584487166
   - enabled: 1
@@ -18,9 +21,18 @@ EditorBuildSettings:
     path: Assets/Member/Washin/Scenes/TEMPWindowSpam.unity
     guid: 05fab877fd96b7d4c8bdd5deb6df2569
   - enabled: 1
+    path: Assets/Member/Washin/Scenes/BlueScreen.unity
+    guid: 5f64644c61d5f91439a0ad3b685ed596
+  - enabled: 1
     path: Assets/Member/Washin/Scenes/DesktopScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Member/Washin/Scenes/BulletTesting(debug).unity
+    guid: 2c4275b57aa4e804c84cdd6d27d7cc9c
+  - enabled: 1
     path: Assets/Member/Washin/Scenes/EnemyScene.unity
     guid: a8fb3a02c6915bb4bb869df008551cc2
+  - enabled: 1
+    path: Assets/Member/Washin/Scenes/PaintTestScene.unity
+    guid: 542aacf96f2540a4eb7b799031f426d0
   m_configObjects: {}

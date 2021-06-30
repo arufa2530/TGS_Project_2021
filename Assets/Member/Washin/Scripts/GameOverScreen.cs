@@ -18,11 +18,12 @@ public class GameOverScreen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.KeypadMultiply))
-        {
-            StartCoroutine(GameOver());
-            Debug.Log("GameOver");
-        }
+        //Debug
+        //if (Input.GetKeyDown(KeyCode.KeypadMultiply))
+        //{
+        //    StartCoroutine(GameOver());
+        //    Debug.Log("GameOver");
+        //}
     }
 
 
@@ -34,6 +35,9 @@ public class GameOverScreen : MonoBehaviour
 
     public void GameOverTrigger()
     {
+        SceneManager.LoadScene(1);
+        Destroy(PlayerReferences.theHealthUI.transform.parent.gameObject);
+        Destroy(PlayerReferences.thePlayer.gameObject);
         StartCoroutine(GameOver());
     }
 

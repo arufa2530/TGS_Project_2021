@@ -10,7 +10,7 @@ public class DebugEnemyNumPadScript : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Keypad7)) ToggleEnemyCanMove();
+        //if (Input.GetKeyDown(KeyCode.Keypad7)) ToggleEnemyCanMove();
         if (Input.GetKeyDown(KeyCode.Keypad8)) ToggleEnemyMoveLeftAndRight();
         if (Input.GetKeyDown(KeyCode.Keypad9)) ToggleEnemyMoveToCenter();
         if (Input.GetKeyDown(KeyCode.Keypad4)) ToggleShootInArcPattern();
@@ -21,6 +21,7 @@ public class DebugEnemyNumPadScript : MonoBehaviour
 
     private void ToggleEnemyCanMove()
     {
+        if (enemyMoveScript.elaspedTime != 0) return;
         if (!enemyMoveScript.shouldMoveToCenter && !enemyMoveScript.shouldMoveLeftAndRight) return;
         enemyMoveScript.canMove = !enemyMoveScript.canMove;
     }
@@ -28,15 +29,19 @@ public class DebugEnemyNumPadScript : MonoBehaviour
     private void ToggleEnemyMoveLeftAndRight()
     {
         if (enemyMoveScript.canMove) return;
+        //if (enemyMoveScript.shouldMoveLeftAndRight) return;
         if (enemyMoveScript.shouldMoveToCenter == true) enemyMoveScript.shouldMoveToCenter = false;
-        enemyMoveScript.shouldMoveLeftAndRight = !enemyMoveScript.shouldMoveLeftAndRight;
+        enemyMoveScript.shouldMoveLeftAndRight = true;
+        enemyMoveScript.canMove = true;
     }
 
     private void ToggleEnemyMoveToCenter()
     {
         if (enemyMoveScript.canMove) return;
+        if (enemyMoveScript.shouldMoveToCenter) { ToggleEnemyMoveLeftAndRight(); return; }
         if (enemyMoveScript.shouldMoveLeftAndRight == true) enemyMoveScript.shouldMoveLeftAndRight = false;
-        enemyMoveScript.shouldMoveToCenter = !enemyMoveScript.shouldMoveToCenter;
+        enemyMoveScript.shouldMoveToCenter = true;
+        enemyMoveScript.canMove = true;
     }
 
     private void ToggleShootInArcPattern()
