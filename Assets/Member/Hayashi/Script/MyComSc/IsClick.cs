@@ -49,7 +49,16 @@ public class IsClick : MonoBehaviour
         Debug.Log("Double");
         if (GameObject.Find("D:").GetComponent<DriveController>().IsLoadCD)
         {
-            this.GetComponent<AudioSource>().Play();
+            MycomSETable SEList;
+            SEList = Resources.Load<MycomSETable>("Scriotable/MycomSETable");
+            for (int i = 0; i < SEList.SEDataList.Count; i++)
+            {
+                SEData SEData = SEList.SEDataList[i];
+                if (SEData.Name == this.name)
+                {
+                    GameObject.Find("SoundManager").GetComponent<SoundManagerSc>().PlaySeByName(SEData.SESource.name);
+                }
+            }
         }
     }
 

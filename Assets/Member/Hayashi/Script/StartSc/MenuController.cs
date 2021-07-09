@@ -60,6 +60,23 @@ public class MenuController : MonoBehaviour
         yield break;
     }
 
+    IEnumerator BreakInOptionTime()
+    {
+        IsWindow[(int)WindowNum.OptionWindow] = false;
+        var times = 0f;
+        while (times < 0.5f)
+        {
+            times += Time.deltaTime;
+            if (IsButton[(int)ButtonNum.OptionButton] || IsWindow[(int)WindowNum.OptionWindow])
+            {
+                yield break;
+            }
+            yield return null;
+        }
+        Window[(int)WindowNum.OptionWindow].gameObject.SetActive(false);
+        yield break;
+    }
+
     IEnumerator ItemMenuTime()
     {
         var times = 0f;
@@ -76,6 +93,22 @@ public class MenuController : MonoBehaviour
         yield break;
     }
 
+    IEnumerator OptionMenuTime()
+    {
+        var times = 0f;
+        while (times < 0.5f)
+        {
+            times += Time.deltaTime;
+            if (IsWindow[(int)WindowNum.OptionWindow])
+            {
+                yield break;
+            }
+            yield return null;
+        }
+        Window[(int)WindowNum.OptionWindow].gameObject.SetActive(false);
+        yield break;
+    }
+
     public void Coroutine()
     {
         StartCoroutine(ItemMenuTime());
@@ -86,18 +119,38 @@ public class MenuController : MonoBehaviour
         StartCoroutine(BreakInItemTime());
     }
 
+    public void OptionCoroutine()
+    {
+        StartCoroutine(OptionMenuTime());
+    }
+
+    public void BreakOptionCoroutine()
+    {
+        StartCoroutine(BreakInOptionTime());
+    }
+
     public void CheckSwitch()
     {
         for (int i = 0; i < IsButton.Length; i++)
         {
             if (i == (int)ButtonNum.ItemButton)
                 IsButton[i] = MenuButton[i].GetComponent<SwitchItemButton>().IsSwitch;
+            else if (i == (int)ButtonNum.OptionButton)
+                IsButton[i] = MenuButton[i].GetComponent<SwitchOptionMenu>().IsSwitch;
             else
                 IsButton[i] = MenuButton[i].GetComponent<SwitchButton>().IsSwitch;
         }
         for (int i = 0; i < IsItemButton.Length; i++)
         {
             IsItemButton[i] = ItemMenuButton[i].GetComponent<SwitchInItemButton>().IsSwitch;
+        }
+
+        for (int i = 0; i < IsWindow.Length; i++)
+        {
+            if (i == (int)WindowNum.OptionWindow)
+                IsWindow[i] = Window[i].GetComponent<SwitchInOptionMenu>().IsSwitch;
+            else
+                IsWindow[i] = Window[i].GetComponent<SwitchMenu>().IsSwitch;
         }
     }
 
@@ -119,6 +172,18 @@ public class MenuController : MonoBehaviour
                 else
                 {
                     MenuButton[i].GetComponent<SwitchItemButton>().OffButton();
+                }
+            }
+            else if (i == (int)ButtonNum.OptionButton)
+            {
+                if (IsButton[i])
+                {
+                    MenuButton[i].GetComponent<SwitchOptionMenu>().OnButton();
+                    Window[(int)WindowNum.OptionWindow].gameObject.SetActive(true);
+                }
+                else
+                {
+                    MenuButton[i].GetComponent<SwitchOptionMenu>().OffButton();
                 }
             }
             else
@@ -148,6 +213,11 @@ public class MenuController : MonoBehaviour
                 ItemMenuButton[i].GetComponent<SwitchInItemButton>().OffButton();
             }
         }
+    }
+
+    void SwitchWindow()
+    {
+
     }
 
     public void OnOffMenu()

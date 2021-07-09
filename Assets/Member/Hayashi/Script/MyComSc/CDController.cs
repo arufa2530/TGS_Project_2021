@@ -115,7 +115,16 @@ public class CDController : MonoBehaviour
         CDPopup.SetActive(false);
         Operator.SetActive(true);
         Drive.GetComponent<DriveController>().IsLoadCD = true;
-        RockFile.GetComponent<AudioSource>().Play();
+        MycomSETable SEList;
+        SEList = Resources.Load<MycomSETable>("Scriotable/MycomSETable");
+        for (int i = 0; i < SEList.SEDataList.Count; i++)
+        {
+            SEData SEData = SEList.SEDataList[i];
+            if (SEData.Name == Drive.name)
+            {
+                GameObject.Find("SoundManager").GetComponent<SoundManagerSc>().PlaySeByName(SEData.SESource.name);
+            }
+        }
         Destroy(this.gameObject);
     }
 }
