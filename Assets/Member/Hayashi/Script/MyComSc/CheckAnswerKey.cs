@@ -30,7 +30,18 @@ public class CheckAnswerKey : MonoBehaviour
         Debug.Log(HitCollsion?.gameObject.name);
         if (HitCollsion?.gameObject.name == "RockFile")
         {
-            if (MyAudio.clip.name == GetAnswerSEName() && DCon.IsLoadCD)
+            MycomSETable SEList;
+            SEList = Resources.Load<MycomSETable>("Scriotable/MycomSETable");
+            string sename = "";
+            for (int i = 0; i < SEList.SEDataList.Count; i++)
+            {
+                SEData SEData = SEList.SEDataList[i];
+                if (SEData.Name == this.name)
+                {
+                    sename = SEData.SESource.name;
+                }
+            }
+            if (sename == GetAnswerSEName() && DCon.IsLoadCD)
             {
                 GameObject.Find("RockFile").GetComponent<RockFileController>().PlaySound1();
                 Debug.Log("ファイルが開いたよ");
