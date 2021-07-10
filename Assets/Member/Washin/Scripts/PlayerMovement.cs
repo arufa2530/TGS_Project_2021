@@ -9,8 +9,11 @@ public class PlayerMovement : MonoBehaviour
     public enum PlayerModes
     {
         MovementMode,
-        InspectMode
+        InspectMode,
+        IdleMode
     }
+
+    public static PlayerMovement instance;
 
     public Vector3 targetPos;
     public bool isFacingRight = false;
@@ -37,6 +40,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+
+        if (instance == null) instance = this;
         rb = this.GetComponent<Rigidbody2D>();
         currentSprite = this.gameObject.GetComponent<SpriteRenderer>();
         _currentMode = PlayerModes.InspectMode;
@@ -47,7 +52,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        //StartCoroutine(DEBUG_ToggleMode());
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            SetModeToIdle(true);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            SetModeToIdle(false);
+        }
+
+        if (_currentMode == PlayerModes.IdleMode) return;
 
         TogglePlayerMode();
 
@@ -62,19 +76,6 @@ public class PlayerMovement : MonoBehaviour
         MoveToTargetPosition();
     }
 
-    private IEnumerator DEBUG_ToggleMode()
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-            if (_currentMode != PlayerModes.MovementMode) _currentMode = PlayerModes.MovementMode;
-
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-            if (_currentMode != PlayerModes.InspectMode) _currentMode = PlayerModes.InspectMode;
-
-        yield return null;
-    }
-
-
-
     private void CheckTargetPosIsGreaterThanMinDistance()
     {
         distance = Vector3.Distance(this.transform.position, targetPos);
@@ -86,6 +87,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetMouseButtonDown(2))
             if (_currentMode == PlayerModes.InspectMode)
             {
+                Debug.Log("ModeChanged");
                 _currentMode = PlayerModes.MovementMode;
                 currentModeUI.ChangeMode(1);
             }
@@ -94,6 +96,20 @@ public class PlayerMovement : MonoBehaviour
                 _currentMode = PlayerModes.InspectMode;
                 currentModeUI.ChangeMode(2);
             }
+    }
+
+    public void SetModeToIdle( bool shouldIdle )
+    {
+        if(shouldIdle)
+        {
+            _currentMode = PlayerModes.IdleMode;
+            currentModeUI.ChangeMode(3);
+        }
+        else
+        {
+            _currentMode = PlayerModes.InspectMode;
+            currentModeUI.ChangeMode(2);
+        }
     }
 
     #region MovementFunctions
