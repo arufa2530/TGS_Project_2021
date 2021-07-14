@@ -36,13 +36,4 @@ public class PlayerReferences : MonoBehaviour
         theHealthUI.UpdateHealthUI();
         Debug.Log("Current Health = " + currentHealth);
     }
-
-
-
-    public static void RecoveredHealth()
-    {
-
-    }
-
-
 }
