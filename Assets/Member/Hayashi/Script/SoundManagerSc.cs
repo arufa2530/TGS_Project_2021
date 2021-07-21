@@ -71,6 +71,7 @@ public class SoundManagerSc : SingletonMonoBehaviour<SoundManagerSc>
         }
     }
 
+    // î‘çÜéÊìæ
     public int GetBgmIndex(string name)
     {
         if (bgmIndex.ContainsKey(name))
@@ -136,5 +137,23 @@ public class SoundManagerSc : SingletonMonoBehaviour<SoundManagerSc>
     {
         seAudioSource.Stop();
         seAudioSource.clip = null;
+    }
+
+    //Å@å≈óLVolume
+    public void UniquePlayBgm(int index, int volume)
+    {
+        index = Mathf.Clamp(index, 0, bgm.Length);
+
+        bgmAudioSource.clip = bgm[index];
+        bgmAudioSource.loop = true;
+        bgmAudioSource.volume = volume;
+        bgmAudioSource.Play();
+    }
+
+    public void UniquePlaySe(int index, int volume)
+    {
+        index = Mathf.Clamp(index, 0, se.Length);
+
+        seAudioSource.PlayOneShot(se[index], volume);
     }
 }
