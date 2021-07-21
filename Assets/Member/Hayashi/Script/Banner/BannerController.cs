@@ -5,6 +5,7 @@ using UnityEngine;
 public class BannerController : MonoBehaviour
 {
     [SerializeField] GameObject MyParent, TaskBarApp;
+    [SerializeField] GameObject[] ScaleCollider = new GameObject[8];
     BoxCollider2D MyCol;
     RectTransform MyRT;
     Animator Anim;
@@ -13,6 +14,19 @@ public class BannerController : MonoBehaviour
     Vector2 MaxScalePos = new Vector2(0f, 0f);
     Vector2 MyScale, MyPos;
     Vector3 MousePos;
+    public Vector2 startDragPos = Vector2.zero, npos, dpos;
+
+    enum ScaleColliderNum
+    {
+        Up,
+        Down,
+        Right,
+        Left,
+        Corner1,
+        Corner2,
+        Corner3,
+        Corner4
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -25,8 +39,83 @@ public class BannerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MyCol.size = new Vector2(MyRT.sizeDelta.x, MyRT.sizeDelta.x * 0.043f);
+        MyCol.size = new Vector2(MyRT.sizeDelta.x -5, MyRT.sizeDelta.x * 0.043f - 5);
         MyCol.offset = new Vector2(0f, MyRT.sizeDelta.y / 2.0f - MyRT.sizeDelta.x * 0.043f / 2.0f);
+
+        IsScaleCollider();
+    }
+
+    private void IsScaleCollider()
+    {
+        bool[] direction = new bool[8];
+        for (int i = 0; i < 8; i++)
+        {
+            ScaleCollidersCs SCSc = ScaleCollider[i].GetComponent<ScaleCollidersCs>();
+            if (SCSc.isDrag)
+            {
+                if (i == (int)ScaleColliderNum.Up)
+                    direction[(int)ScaleColliderNum.Up] = true;
+                else if (i == (int)ScaleColliderNum.Down)
+                    direction[(int)ScaleColliderNum.Down] = true;
+                else if (i == (int)ScaleColliderNum.Right)
+                    direction[(int)ScaleColliderNum.Right] = true;
+                else if (i == (int)ScaleColliderNum.Left)
+                    direction[(int)ScaleColliderNum.Left] = true;
+                else if (i == (int)ScaleColliderNum.Corner1)
+                    direction[(int)ScaleColliderNum.Corner1] = true;
+                else if (i == (int)ScaleColliderNum.Corner2)
+                    direction[(int)ScaleColliderNum.Corner2] = true;
+                else if (i == (int)ScaleColliderNum.Corner3)
+                    direction[(int)ScaleColliderNum.Corner3] = true;
+                else if (i == (int)ScaleColliderNum.Corner4)
+                    direction[(int)ScaleColliderNum.Corner4] = true;
+            }
+        }
+
+        npos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        dpos = npos - startDragPos;
+
+        for (int i = 0; i < 8; i++)
+        {
+            if (direction[i]) startDragPos = npos;
+        }
+
+        if (direction[(int)ScaleColliderNum.Up])
+        {
+            MyRT.sizeDelta += new Vector2(0f, dpos.y);
+        }
+        else if (direction[(int)ScaleColliderNum.Down])
+        {
+            MyRT.sizeDelta -= new Vector2(0f, dpos.y);
+        }
+        else if (direction[(int)ScaleColliderNum.Right])
+        {
+            MyRT.sizeDelta += new Vector2(dpos.x, 0f);
+        }
+        else if (direction[(int)ScaleColliderNum.Left])
+        {
+            MyRT.sizeDelta -= new Vector2(dpos.x, 0f);
+        }
+        else if (direction[(int)ScaleColliderNum.Corner1])
+        {
+            MyRT.sizeDelta -= new Vector2(dpos.x, 0f);
+            MyRT.sizeDelta += new Vector2(0f, dpos.y);
+        }
+        else if (direction[(int)ScaleColliderNum.Corner2])
+        {
+            MyRT.sizeDelta += new Vector2(dpos.x, 0f);
+            MyRT.sizeDelta += new Vector2(0f, dpos.y);
+        }
+        else if (direction[(int)ScaleColliderNum.Corner3])
+        {
+            MyRT.sizeDelta += new Vector2(dpos.x, 0f);
+            MyRT.sizeDelta -= new Vector2(0f, dpos.y);
+        }
+        else if (direction[(int)ScaleColliderNum.Corner4])
+        {
+            MyRT.sizeDelta -= new Vector2(dpos.x, 0f);
+            MyRT.sizeDelta -= new Vector2(0f, dpos.y);
+        }
     }
 
     private void OnMouseDown()

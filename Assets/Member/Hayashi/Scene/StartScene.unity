@@ -369,6 +369,7 @@ GameObject:
   - component: {fileID: 102109576}
   - component: {fileID: 102109578}
   - component: {fileID: 102109579}
+  - component: {fileID: 102109580}
   m_Layer: 5
   m_Name: ItemMenu
   m_TagString: Untagged
@@ -476,6 +477,26 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &102109580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102109574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d01110be2b9848a4bba2613a07ef74d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FirewallInvader: 0
+  Vaccine: 0
+  Brush: 0
+  ItemButton:
+  - {fileID: 79695149}
+  - {fileID: 1069331255}
+  - {fileID: 294766872}
+  - {fileID: 699967831}
 --- !u!1 &161606613
 GameObject:
   m_ObjectHideFlags: 0
@@ -911,7 +932,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: ' FIrewall Invader'
+  m_Text: 
 --- !u!222 &294766873
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2115,7 +2136,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: ' FIrewall Invader'
+  m_Text: 
 --- !u!222 &699967832
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2434,7 +2455,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: ' FIrewall Invader'
+  m_Text: 
 --- !u!222 &1069331256
 CanvasRenderer:
   m_ObjectHideFlags: 0
