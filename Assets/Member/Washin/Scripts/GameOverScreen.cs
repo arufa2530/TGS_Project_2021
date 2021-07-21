@@ -41,5 +41,8 @@ public class GameOverScreen : MonoBehaviour
         StartCoroutine(GameOver());
     }
 
-
+    public void ReturnToDesktop()
+    {
+        SceneManager.LoadScene("DesktopScene");
+    }
 }

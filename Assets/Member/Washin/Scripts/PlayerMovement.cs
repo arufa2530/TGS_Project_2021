@@ -123,7 +123,10 @@ public class PlayerMovement : MonoBehaviour
         //else if (targetPosOnTheRight == -1 && isFacingRight)
         //    FlipSprite();
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //    rb.velocity = Vector2.up * 100 * jumpAmount;
+
+        if (Input.GetMouseButtonDown(1))
             rb.velocity = Vector2.up * 100 * jumpAmount;
 
     }

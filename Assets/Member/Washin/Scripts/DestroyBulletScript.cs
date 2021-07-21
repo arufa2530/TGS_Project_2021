@@ -8,7 +8,7 @@ public class DestroyBulletScript : MonoBehaviour
     //public Vector3 tempStartingPoint;
     [SerializeField]
     private float currentTime;
-    private float waitDelay = 1f;
+    //private float waitDelay = 1f;
     private float currentWaitTime = 0f;
     [SerializeField]
     private float timeToDespawn;

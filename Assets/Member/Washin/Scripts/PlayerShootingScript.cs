@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class PlayerShootingScript : MonoBehaviour
 {
+    public static PlayerShootingScript instance;
     [SerializeField] Transform shootFromHere;
     [SerializeField] Transform playerBulletHolder;
-    public bool ShouldBeShooting;
+    public static bool ShouldBeShooting;
     public float currentTime;
     public float fireRate;
     public float bulletSpeed;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Update()
     {
@@ -48,6 +54,16 @@ public class PlayerShootingScript : MonoBehaviour
         tempPoolBulletScript.MoveBulletInThisDirection(tempDirection);
         tempPoolBulletScript.SetBulletSpeed(bulletSpeed);
         tempPlayerBullet.SetActive(true);
+    }
+
+    public void StartingShooting()
+    {
+        ShouldBeShooting = true;
+    }
+
+    public void StopShooting()
+    {
+        ShouldBeShooting = false;
     }
 
 }

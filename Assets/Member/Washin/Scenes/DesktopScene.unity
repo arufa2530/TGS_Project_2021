@@ -2813,6 +2813,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerHolderNew
       objectReference: {fileID: 0}
+    - target: {fileID: 4391101174285681438, guid: b39fcde320ddddd4ebf73b922a4d2092,
+        type: 3}
+      propertyPath: bulletSpeed
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b39fcde320ddddd4ebf73b922a4d2092, type: 3}
 --- !u!1001 &9136859087003219106
