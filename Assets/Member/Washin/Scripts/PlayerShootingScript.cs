@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerShootingScript : MonoBehaviour
 {
     public static PlayerShootingScript instance;
-    [SerializeField] Transform shootFromHere;
+    [SerializeField] public Transform shootFromHere;
     [SerializeField] Transform playerBulletHolder;
     public static bool ShouldBeShooting;
     public float currentTime;
@@ -14,6 +14,8 @@ public class PlayerShootingScript : MonoBehaviour
 
     private void Awake()
     {
+        if (instance != null) { Destroy(this.gameObject);return; }
+
         instance = this;
     }
 
@@ -64,6 +66,11 @@ public class PlayerShootingScript : MonoBehaviour
     public void StopShooting()
     {
         ShouldBeShooting = false;
+    }
+
+    public Vector3 GetPlayerCurrentPosition()
+    {
+        return shootFromHere.position;
     }
 
 }

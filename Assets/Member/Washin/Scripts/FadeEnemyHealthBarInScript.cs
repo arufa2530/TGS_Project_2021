@@ -7,8 +7,9 @@ public class FadeEnemyHealthBarInScript : MonoBehaviour
 {
     [SerializeField] CanvasGroup canvasGroup;
     private float timeToFadeInHealthBar = 1;
+    private float timeToFadeOutHealthBar = 1;
     private float timeToFadeInRedBar = 2;
-    private float currentTime = 0;
+    [SerializeField] private float currentTime = 0;
 
     [SerializeField] RectTransform healthBarUI;
     Vector3 higherPos;
@@ -54,6 +55,7 @@ public class FadeEnemyHealthBarInScript : MonoBehaviour
         }
         redBar.value = redBar.maxValue;
         barIsFilled = true;
+        currentTime = 0;
     }
 
     private IEnumerator HealthBarSlideIn()
@@ -78,13 +80,12 @@ public class FadeEnemyHealthBarInScript : MonoBehaviour
     {
         if (!step2Done)
         {
-            currentTime += Time.deltaTime / timeToFadeInHealthBar;
+            currentTime += Time.deltaTime / timeToFadeOutHealthBar;
             lerpingPos = Vector3.Lerp(lowerPos, higherPos, currentTime);
             healthBarUI.localPosition = lerpingPos;
             if (healthBarUI.localPosition == higherPos)
             {
                 step2Done = true;
-                shouldSlideOut = true;
                 currentTime = 0;
                 yield return null;
             }

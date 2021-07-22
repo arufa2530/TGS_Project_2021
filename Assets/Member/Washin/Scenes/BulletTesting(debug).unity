@@ -1181,6 +1181,7 @@ MonoBehaviour:
   currentMoveState: 2
   currentTime: 0
   currentAttack: 0
+  singleShot: 1
 --- !u!114 &561135351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2078,8 +2079,10 @@ MonoBehaviour:
   endingArc: 270
   bulletsPerArc: 10
   fireRateArc: 1
+  timeBetweenSingleShots: 1
   shootBulletsSpiralPattern: 0
   spawnBulletsAroundEnemy: 0
+  shootSingleBullet: 0
   isFirstPass: 0
 --- !u!114 &2080126554
 MonoBehaviour:

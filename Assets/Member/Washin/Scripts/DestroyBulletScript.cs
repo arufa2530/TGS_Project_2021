@@ -60,7 +60,7 @@ public class DestroyBulletScript : MonoBehaviour
         if (this.CompareTag("PlayerBullet") && collision.gameObject.CompareTag("Enemy")) { PlayerHitEnemy(); return; }
         if (this.CompareTag("PlayerBullet") && collision.gameObject.CompareTag("Player")) { return; }
         if (this.CompareTag("PlayerBullet") && collision.gameObject.CompareTag("Bullet"))
-        { 
+        {
             Debug.Log("PlayerBulletHitENemyBullet");
             collision.gameObject.GetComponent<DestroyBulletScript>().ReturnClickableToPool();
             ReturnClickableToPool();
@@ -70,6 +70,8 @@ public class DestroyBulletScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Bullet")) return;
         if (collision.gameObject.CompareTag("Walls")) return;
         if (collision.gameObject.CompareTag("OnHitDespawn")) { ReturnClickableToPool(); return; }
+        if (collision.gameObject.CompareTag("Player")) { PlayerReferences.LostHealth(1); ReturnClickableToPool(); return; }
+
 
 
         if (!canBeClicked)

@@ -15,6 +15,7 @@ public enum CurrentAttackPattern
 {
     Arc,
     Spiral,
+    Single,
     None
 
 }
@@ -32,10 +33,13 @@ public class EnemyActions : MonoBehaviour
     [SerializeField] SpawnBulletFromPool shootFromEnemy;
 
     [SerializeField] CurrentEnemyAction lastState = CurrentEnemyAction.Shooting;
+    [SerializeField] CurrentMovementPattern lastMove = CurrentMovementPattern.None;
     [SerializeField] public CurrentEnemyAction currentActionState;
     [SerializeField] CurrentMovementPattern currentMoveState;
     [SerializeField] float currentTime;
     [SerializeField] CurrentAttackPattern currentAttack;
+
+    [SerializeField] bool singleShot;
     float idleTime = 3f;
     float movingTime = 3f;
     float shootingTime = 3f;
@@ -54,6 +58,7 @@ public class EnemyActions : MonoBehaviour
         if (currentActionState == CurrentEnemyAction.Dying)
         {
             moveEnemy.canMove = false;
+            shootFromEnemy.shootSingleBullet = false;
             shootFromEnemy.shootBulletsArcPattern = false;
             shootFromEnemy.shootBulletsSpiralPattern = false;
             shootFromEnemy.spawnBulletsAroundEnemy = false;
@@ -93,6 +98,7 @@ public class EnemyActions : MonoBehaviour
             currentTime = 0;
             shootFromEnemy.shootBulletsArcPattern = false;
             shootFromEnemy.shootBulletsSpiralPattern = false;
+            shootFromEnemy.shootSingleBullet = false;
             currentAttack = CurrentAttackPattern.None;
             NextState();
         }
@@ -100,16 +106,22 @@ public class EnemyActions : MonoBehaviour
 
     private void ChooseRandomMovement()
     {
-        int i = UnityEngine.Random.Range(0, 2);
+        //int i;
+        //if (lastMove == CurrentMovementPattern.ToCenter) i = 0;
+        //else i = UnityEngine.Random.Range(0, 2);
+
+        int i = 0;
 
         if (i == 0) //move left and right
         {
             currentMoveState = CurrentMovementPattern.LeftAndRight;
+            lastMove = CurrentMovementPattern.LeftAndRight;
             moveEnemy.shouldMoveLeftAndRight = true;
         }
         else //move to center
         {
             currentMoveState = CurrentMovementPattern.ToCenter;
+            lastMove = CurrentMovementPattern.ToCenter;
             moveEnemy.shouldMoveToCenter = true;
         }
 
@@ -118,6 +130,13 @@ public class EnemyActions : MonoBehaviour
 
     void ChooseRandomAttack()
     {
+
+        if (singleShot)
+        {
+            shootFromEnemy.shootSingleBullet = true;
+            currentAttack = CurrentAttackPattern.Single;
+            return;
+        }
 
         int i = UnityEngine.Random.Range(0, 2);
 
