@@ -494,6 +494,8 @@ MonoBehaviour:
   _currentMode: 0
   _animator: {fileID: 0}
   currentModeUI: {fileID: 7549336432406252409}
+  jumpCooldown: 0.8
+  jumpCurrentTime: 0
 --- !u!114 &4391101174285681438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -508,7 +510,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootFromHere: {fileID: 8601153006345267532}
   playerBulletHolder: {fileID: 1295370015322634938}
-  ShouldBeShooting: 0
   currentTime: 0
   fireRate: 0.1
   bulletSpeed: 1

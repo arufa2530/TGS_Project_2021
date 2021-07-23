@@ -38,6 +38,11 @@ public class PlayerMovement : MonoBehaviour
 
     float distance;
 
+    /////////////////////////////////////////////////////////
+    [SerializeField] float jumpCooldown;
+    [SerializeField] float jumpCurrentTime;
+
+
     private void Awake()
     {
 
@@ -47,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
         _currentMode = PlayerModes.InspectMode;
         _animator = GetComponent<Animator>();
         targetPos = this.transform.position;
+        jumpCurrentTime = jumpCooldown;
     }
 
 
@@ -126,9 +132,16 @@ public class PlayerMovement : MonoBehaviour
         //if (Input.GetKeyDown(KeyCode.Space))
         //    rb.velocity = Vector2.up * 100 * jumpAmount;
 
-        if (Input.GetMouseButtonDown(1))
-            rb.velocity = Vector2.up * 100 * jumpAmount;
+        if (jumpCurrentTime < jumpCooldown) jumpCurrentTime += Time.deltaTime / jumpCooldown;
 
+        if (Input.GetMouseButtonDown(1))
+        {
+            if (jumpCurrentTime >= jumpCooldown)
+            {
+                rb.velocity = Vector2.up * 100 * jumpAmount;
+                jumpCurrentTime = 0;
+            }
+        }
     }
 
     private void SetTargetPosition()
