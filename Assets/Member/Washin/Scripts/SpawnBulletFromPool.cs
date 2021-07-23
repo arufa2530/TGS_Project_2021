@@ -24,6 +24,7 @@ public class SpawnBulletFromPool : MonoBehaviour
     [SerializeField] float endingArc;
     [SerializeField] int bulletsPerArc;
     [SerializeField] float fireRateArc;
+    [SerializeField] float timeBetweenSingleShots;
 
 
     [SerializeField]
@@ -31,11 +32,14 @@ public class SpawnBulletFromPool : MonoBehaviour
     [SerializeField]
     public bool spawnBulletsAroundEnemy;
     [SerializeField]
+    public bool shootSingleBullet;
+    [SerializeField]
     public bool isFirstPass;
 
     private string nonClickableBulletYellow = "EnemyBulletNonClickableYellow";
     private string clickableBulletRed = "EnemyBulletClickableRed";
     private string nonclickableBulletGreen = "EnemyBulletNonClickableGreen";
+
 
     private void FixedUpdate()
     {
@@ -47,6 +51,16 @@ public class SpawnBulletFromPool : MonoBehaviour
             {
                 //SpawnRandomBullet();
                 SpawnBulletPattern(nonClickableBulletYellow, 2, startingArc, endingArc, bulletsPerArc);
+                currentTime = 0;
+            }
+        }
+
+        if (shootSingleBullet)
+        {
+            if (currentTime > timeBetweenSingleShots)
+            {
+                //SpawnOneBullet
+                ShootAtPlayer(nonClickableBulletYellow, 1f);
                 currentTime = 0;
             }
         }
@@ -74,6 +88,25 @@ public class SpawnBulletFromPool : MonoBehaviour
                 currentTime = 0;
             }
         }
+    }
+
+    public void ShootAtPlayer(string typeOfBulletToSpawn, float bulletSpeed)
+    {
+        Vector3 tempPlayerPos = PlayerShootingScript.instance.shootFromHere.position;
+
+        GameObject tempEnemyBullet = ObjectPoolScript.Instance.SpawnFromPool(
+            typeOfBulletToSpawn, EnemyBulletSpawnPositionScript.instance.GetCenterOfSpawnPosition(), Quaternion.identity, ObjectPoolScript.Instance.GetbulletPoolTransForm());
+
+        Vector3 tempDirection = tempPlayerPos - EnemyCenterPositionScript.instance.GetCenterOfSpawnPosition();
+
+        PoolBulletScriptTest tempPoolBulletScript = tempEnemyBullet.GetComponent<PoolBulletScriptTest>();
+        DestroyBulletScript tempDestroyBulletScript = tempEnemyBullet.GetComponent<DestroyBulletScript>();
+
+        tempPoolBulletScript.SetBulletStartingPosition(EnemyBulletSpawnPositionScript.instance.GetCenterOfSpawnPosition());
+        tempDestroyBulletScript.SetDespawnTimer(-2);
+        tempPoolBulletScript.MoveBulletInThisDirection(tempDirection);
+        tempPoolBulletScript.SetBulletSpeed(bulletSpeed);
+        tempEnemyBullet.SetActive(true);
     }
 
     public void SpawnBulletsInASpiralAroundEnemy(

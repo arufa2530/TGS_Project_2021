@@ -824,6 +824,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 347797159}
+  healthBarUI: {fileID: 6743570893468834282}
+  step1Done: 0
+  shouldSlideOut: 0
+  barIsFilled: 0
+  redBar: {fileID: 6743570893468834279}
 --- !u!1001 &356774829
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -890,31 +895,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlayerHolderNew
-      objectReference: {fileID: 0}
-    - target: {fileID: 3012455189299779059, guid: b39fcde320ddddd4ebf73b922a4d2092,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3012455189985253831, guid: b39fcde320ddddd4ebf73b922a4d2092,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3012455189985253831, guid: b39fcde320ddddd4ebf73b922a4d2092,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3012455189985253831, guid: b39fcde320ddddd4ebf73b922a4d2092,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -160
-      objectReference: {fileID: 0}
-    - target: {fileID: 7549336433368927910, guid: b39fcde320ddddd4ebf73b922a4d2092,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b39fcde320ddddd4ebf73b922a4d2092, type: 3}
@@ -1129,6 +1109,8 @@ GameObject:
   - component: {fileID: 561135347}
   - component: {fileID: 561135348}
   - component: {fileID: 561135349}
+  - component: {fileID: 561135350}
+  - component: {fileID: 561135351}
   m_Layer: 0
   m_Name: EnemyHolder
   m_TagString: Untagged
@@ -1180,6 +1162,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpBar: {fileID: 6743570893468834279}
+--- !u!114 &561135350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561135346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22f45c03f7db4f34e989f500a3739e14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveEnemy: {fileID: 2080126550}
+  shootFromEnemy: {fileID: 2080126553}
+  lastState: 2
+  currentActionState: 0
+  currentMoveState: 2
+  currentTime: 0
+  currentAttack: 0
+  singleShot: 1
+--- !u!114 &561135351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561135346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2428307b66807d4b91955657b45d5ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeEnemy: {fileID: 2080126555}
+  enemyActions: {fileID: 561135350}
+  enemyHealth: {fileID: 347797160}
+  changeScene: {fileID: 1333356390}
+  currentTime: 0
+  fadeStarted: 0
 --- !u!1 &939503483
 GameObject:
   m_ObjectHideFlags: 0
@@ -1595,6 +1615,150 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1606730047}
   m_CullTransparentMesh: 0
+--- !u!1 &1627142735
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1627142736}
+  - component: {fileID: 1627142738}
+  - component: {fileID: 1627142737}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1627142736
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1627142735}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1627142737
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1627142735}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: f0de76b56753d0b4ca0f9948bc006234, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1627142738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1627142735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1578c1dd299a342429adf1b6024b29f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 1627142737}
+  maxVolume: 0.25
+  fadeInTime: 10
+  fadeOutTime: 2
 --- !u!1 &1702372778
 GameObject:
   m_ObjectHideFlags: 0
@@ -1747,6 +1911,7 @@ GameObject:
   - component: {fileID: 2080126550}
   - component: {fileID: 2080126553}
   - component: {fileID: 2080126554}
+  - component: {fileID: 2080126555}
   - component: {fileID: 2080126552}
   - component: {fileID: 2080126551}
   m_Layer: 0
@@ -1840,9 +2005,9 @@ MonoBehaviour:
   elaspedTime: 0
   timeToMove: 3
   timeToMoveToCenter: 3
-  canMove: 1
+  canMove: 0
   shouldMoveLeftAndRight: 0
-  shouldMoveToCenter: 1
+  shouldMoveToCenter: 0
   tempLerpPos: {x: 0, y: 0, z: 0}
   targetPos: {x: 0, y: 0}
   rangeOfMotionHorizontal: {x: -270, y: 270}
@@ -1914,8 +2079,10 @@ MonoBehaviour:
   endingArc: 270
   bulletsPerArc: 10
   fireRateArc: 1
+  timeBetweenSingleShots: 1
   shootBulletsSpiralPattern: 0
   spawnBulletsAroundEnemy: 0
+  shootSingleBullet: 0
   isFirstPass: 0
 --- !u!114 &2080126554
 MonoBehaviour:
@@ -1929,6 +2096,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1ac5ac9a9499f44a88848d8f2aed7c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2080126555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2080126547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdb195a6f6b4cde498f57f72324dc0cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldFadeOutEnemy: 0
+  shouldFadeInEnemy: 1
+  enemySprite: {fileID: 2080126548}
+  fadeOutTime: 1
+  fadeInTime: 1
+  currentTime: 0
+  waitTime: 1
+  firstWaitDone: 0
 --- !u!1001 &2082569397
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2194,9 +2381,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1000
+  m_MaxValue: 200
   m_WholeNumbers: 1
-  m_Value: 1000
+  m_Value: 200
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

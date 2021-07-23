@@ -33,6 +33,7 @@ public class EnemyMovementScript : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         currentPos = new Vector2(0, topOfScreen);
         targetPos = currentPos;
+        PickNewPos();
     }
 
     private void FixedUpdate()
