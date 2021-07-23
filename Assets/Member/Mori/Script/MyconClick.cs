@@ -15,7 +15,7 @@ public class MyconClick : MonoBehaviour
     }
     public void OnClick()
     {
-        if (!isClick) { myCon.SetActive(true); }
-        else{ myCon.SetActive(false); }
+        if (!isClick) { myCon.SetActive(true); isClick = true; }
+        else if(isClick){ myCon.SetActive(false); isClick = false; }
     }
 }
