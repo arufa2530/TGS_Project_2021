@@ -44,7 +44,7 @@ public class GameOverScreen : MonoBehaviour
 
     public void GameOverTrigger()
     {
-        SceneManager.LoadScene("Test_Alpha");
+        SceneManager.LoadScene("S_Test");
         Destroy(PlayerReferences.theHealthUI.transform.parent.gameObject);
         Destroy(PlayerReferences.thePlayer.gameObject);
         StartCoroutine(GameOver());
@@ -57,6 +57,6 @@ public class GameOverScreen : MonoBehaviour
 
     public void ReturnToDesktop()
     {
-        SceneManager.LoadScene("Test_Alpha");
+        SceneManager.LoadScene("S_Test");
     }
 }

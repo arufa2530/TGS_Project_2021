@@ -269,18 +269,21 @@ public class Conversatio_UI : MonoBehaviour
 
     public void TalkVo(int i)
     {
-        GameObject obj = (GameObject)Instantiate(pRefab);
-        obj.transform.Find("Text").gameObject.GetComponent<Text>().text = charName[0];
-        obj.transform.SetParent(existence.transform, false);
-        obj.transform.localScale = new Vector3(1, 1, 1);
-        //
-        GameObject obj2 = (GameObject)Instantiate(pRefab);
-        obj2.transform.Find("Text").gameObject.GetComponent<Text>().text = opeTalk[i];
-        obj2.transform.SetParent(existence.transform, false);
-        obj2.transform.localScale = new Vector3(1, 1, 1);
         if(i == 10)
         {
             _id = i + 1;
+        }
+        else
+        {
+            GameObject obj = (GameObject)Instantiate(pRefab);
+            obj.transform.Find("Text").gameObject.GetComponent<Text>().text = charName[0];
+            obj.transform.SetParent(existence.transform, false);
+            obj.transform.localScale = new Vector3(1, 1, 1);
+            //
+            GameObject obj2 = (GameObject)Instantiate(pRefab);
+            obj2.transform.Find("Text").gameObject.GetComponent<Text>().text = opeTalk[i];
+            obj2.transform.SetParent(existence.transform, false);
+            obj2.transform.localScale = new Vector3(1, 1, 1);
         }
     }
 }

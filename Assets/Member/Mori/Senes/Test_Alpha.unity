@@ -4588,7 +4588,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -84.194405}
+  m_AnchoredPosition: {x: 0, y: -64.72839}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1397590070
@@ -5088,9 +5088,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Clips:
-  - {fileID: 8300000, guid: 8cd091cd59fdd314daa124f4b7f05b74, type: 3}
-  - {fileID: 8300000, guid: 3c5d21b3b7313844e8e18a4c4d307b11, type: 3}
-  - {fileID: 8300000, guid: 555757adda834de46afb2f2189c160e0, type: 3}
+  - {fileID: 8300000, guid: 0d167a6c5dde82d41a654c6cd7eab7be, type: 3}
+  - {fileID: 8300000, guid: 3915b82d19fffbc4f88760dbc41cac59, type: 3}
+  - {fileID: 0}
 --- !u!50 &1521862516
 Rigidbody2D:
   serializedVersion: 4
@@ -6646,7 +6646,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -84.19442}
+  m_AnchoredPosition: {x: 0, y: -64.72841}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1686889894
@@ -7862,7 +7862,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1436575643}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0
+  m_Size: 0.00000011863281
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
