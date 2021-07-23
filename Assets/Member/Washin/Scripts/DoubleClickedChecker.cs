@@ -77,7 +77,7 @@ public class DoubleClickedChecker : MonoBehaviour
         else Debug.Log("No Effect Linked!");
     }
 
-    private void OldChangeScene()
+    public void OldChangeScene()
     {
         if (_changeScene != null)
         {
