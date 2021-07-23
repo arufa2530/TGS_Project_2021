@@ -5,11 +5,13 @@ using UnityEngine;
 public class TestChangeScene : MonoBehaviour
 {
     [SerializeField] GameObject internet;
-    DoubleClickedChecker doubleC;
+    ChangeScene doubleC;
 
-    private void Awake()
+
+    private void Start()
     {
-        doubleC = internet.GetComponent<DoubleClickedChecker>();
-        doubleC.OldChangeScene();
+        doubleC = internet.GetComponent<ChangeScene>();
+        doubleC.LoadNextScene(100);
     }
 }
+

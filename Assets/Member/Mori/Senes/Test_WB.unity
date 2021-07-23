@@ -1489,6 +1489,7 @@ MonoBehaviour:
   existence: {fileID: 2020039594}
   button: {fileID: 5694064286082175258, guid: 4c9873c0215a5dc48ae2d7d7dab3b09b, type: 3}
   thankYou: {fileID: 0}
+  sund: {fileID: 0}
   image: {fileID: 0}
   m_Facia:
   - {fileID: 21300000, guid: 1e7836402792045429043ae0076a81c0, type: 3}
@@ -1501,6 +1502,7 @@ MonoBehaviour:
   _karmaValue: 4
   is_time2: 6
   c: 0
+  d: 0
   _CHARNAME: 0
 --- !u!114 &2020039598
 MonoBehaviour:
@@ -1644,6 +1646,7 @@ MonoBehaviour:
   existence: {fileID: 2036436280}
   button: {fileID: 5694064286082175258, guid: 4c9873c0215a5dc48ae2d7d7dab3b09b, type: 3}
   thankYou: {fileID: 0}
+  sund: {fileID: 0}
   image: {fileID: 0}
   m_Facia:
   - {fileID: 21300000, guid: 1e7836402792045429043ae0076a81c0, type: 3}
@@ -1656,6 +1659,7 @@ MonoBehaviour:
   _karmaValue: 4
   is_time2: 6
   c: 0
+  d: 0
   _CHARNAME: 3
 --- !u!114 &2036436284
 MonoBehaviour:
@@ -2335,7 +2339,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7f3fdcb37c7a7294f9b75a663e1542de, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e84a644801d3a4042b506fbe80d1da65, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

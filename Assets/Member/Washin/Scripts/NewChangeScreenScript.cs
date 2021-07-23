@@ -29,9 +29,10 @@ public class NewChangeScreenScript : MonoBehaviour
             LoadNextScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
-        if (Input.GetKeyDown(KeyCode.KeypadPlus))
+        if (Input.GetKeyDown(KeyCode.KeypadDivide))
         {
-            tempTimeToFade = true;
+            //tempTimeToFade = true;
+            LoadNextScene(9);
         }
 
         if (tempTimeToFade) 

@@ -28,7 +28,7 @@ public class Conversatio_UI : MonoBehaviour
     [SerializeField] int _id = 0;
     [SerializeField] int _karmaValue = 0;
     //[SerializeField]AudioSource _sund;
-    float is_time = 10;
+    float is_time = 4;
     [SerializeField]float is_time2 = 6;
     float is_time3;
     bool a = false;
@@ -37,6 +37,8 @@ public class Conversatio_UI : MonoBehaviour
     public bool d = false;
 
     [SerializeField]CHARNAME _CHARNAME;
+
+    [SerializeField] NewChangeScreenScript changeTemp;
 
     private void Awake()
     {
@@ -174,7 +176,9 @@ public class Conversatio_UI : MonoBehaviour
             switch(_CHARNAME)
             {
                 case CHARNAME.Operation:
-                    thankYou.gameObject.SetActive(true);
+                    //thankYou.gameObject.SetActive(true);
+
+                    changeTemp.LoadNextScene(9);
                     break;
             }
             return;
