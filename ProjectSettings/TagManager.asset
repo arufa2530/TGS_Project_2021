@@ -14,6 +14,7 @@ TagManager:
   - EnemyBulletNonClickableGreen
   - OnHitDespawn
   - PlayerBullet
+  - PopUp
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - Water
   - UI
   - Bullet
-  - 
+  - PopUp
   - 
   - 
   - 

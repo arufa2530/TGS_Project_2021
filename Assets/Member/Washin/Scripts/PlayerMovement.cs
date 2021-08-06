@@ -17,8 +17,9 @@ public class PlayerMovement : MonoBehaviour
 
     public Vector3 targetPos;
     public bool isFacingRight = false;
+    [SerializeField] bool isJumping = false;
     private int targetPosOnTheRight;
-    private float offsetMouseDetect = 20f;
+    private float offsetMouseDetect = 30f;
     [SerializeField]
     private float moveSpeed = 0;
     Rigidbody2D rb;
@@ -38,14 +39,17 @@ public class PlayerMovement : MonoBehaviour
 
     float distance;
 
-    /////////////////////////////////////////////////////////
     [SerializeField] float jumpCooldown;
     [SerializeField] float jumpCurrentTime;
 
 
     private void Awake()
     {
-
+        if (PlayerReferences.playerMovement != null)
+        {
+            Destroy(transform.parent.gameObject);
+            return;
+        }
         if (instance == null) instance = this;
         rb = this.GetComponent<Rigidbody2D>();
         currentSprite = this.gameObject.GetComponent<SpriteRenderer>();
@@ -53,8 +57,8 @@ public class PlayerMovement : MonoBehaviour
         _animator = GetComponent<Animator>();
         targetPos = this.transform.position;
         jumpCurrentTime = jumpCooldown;
+        PlayerReferences.playerMovement = this;
     }
-
 
     private void Update()
     {
@@ -93,28 +97,45 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetMouseButtonDown(2))
             if (_currentMode == PlayerModes.InspectMode)
             {
-                Debug.Log("ModeChanged");
-                _currentMode = PlayerModes.MovementMode;
-                currentModeUI.ChangeMode(1);
+                //Debug.Log("ModeChanged");
+                ChangePlayerMode(PlayerModes.MovementMode);
             }
             else if (_currentMode == PlayerModes.MovementMode)
             {
-                _currentMode = PlayerModes.InspectMode;
-                currentModeUI.ChangeMode(2);
+                ChangePlayerMode(PlayerModes.InspectMode);
             }
     }
 
-    public void SetModeToIdle( bool shouldIdle )
+    public void SetModeToIdle(bool shouldIdle)
     {
-        if(shouldIdle)
+        if (shouldIdle)
         {
-            _currentMode = PlayerModes.IdleMode;
-            currentModeUI.ChangeMode(3);
+            ChangePlayerMode(PlayerModes.IdleMode);
         }
         else
         {
-            _currentMode = PlayerModes.InspectMode;
-            currentModeUI.ChangeMode(2);
+            ChangePlayerMode(PlayerModes.InspectMode);
+        }
+    }
+
+    public void ChangePlayerMode(PlayerModes targetPlayerMode)
+    {
+        _currentMode = targetPlayerMode;
+        switch (targetPlayerMode)
+        {
+            case PlayerModes.MovementMode:
+                currentModeUI.ChangeMode(1);
+                break;
+            case PlayerModes.InspectMode:
+                currentModeUI.ChangeMode(2);
+                targetPos = this.transform.position;
+                break;
+            case PlayerModes.IdleMode:
+                currentModeUI.ChangeMode(3);
+                break;
+            default:
+                Debug.LogError("PlayerModeErrorCatchSwitch");
+                break;
         }
     }
 
@@ -124,22 +145,19 @@ public class PlayerMovement : MonoBehaviour
     {
         SetTargetPosition();
 
-        //if (targetPosOnTheRight == 1 && !isFacingRight)
-        //    FlipSprite();
-        //else if (targetPosOnTheRight == -1 && isFacingRight)
-        //    FlipSprite();
-
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //    rb.velocity = Vector2.up * 100 * jumpAmount;
-
-        if (jumpCurrentTime < jumpCooldown) jumpCurrentTime += Time.deltaTime / jumpCooldown;
+        if (jumpCurrentTime < jumpCooldown)
+        {
+            jumpCurrentTime += Time.deltaTime / jumpCooldown;
+        }
 
         if (Input.GetMouseButtonDown(1))
         {
-            if (jumpCurrentTime >= jumpCooldown)
+            //if (jumpCurrentTime >= jumpCooldown)
+            if (!isJumping)
             {
                 rb.velocity = Vector2.up * 100 * jumpAmount;
                 jumpCurrentTime = 0;
+                isJumping = true;
             }
         }
     }
@@ -152,14 +170,14 @@ public class PlayerMovement : MonoBehaviour
         if (targetPos.x - offsetMouseDetect < this.transform.position.x)
         {
             targetPosOnTheRight = -1;
-            if (targetPosOnTheRight == -1 && isFacingRight)
+            if (isFacingRight)
                 FlipSprite();
 
         }
         else if (targetPos.x + offsetMouseDetect > this.transform.position.x)
         {
             targetPosOnTheRight = 1;
-            if (targetPosOnTheRight == 1 && !isFacingRight)
+            if (!isFacingRight)
                 FlipSprite();
         }
     }
@@ -174,24 +192,40 @@ public class PlayerMovement : MonoBehaviour
 
     private void MoveToTargetPosition()
     {
-        if (rb.velocity.y != 0)
+        if (rb.velocity.y != 0 && isJumping == false)
         {
             rb.velocity = new Vector2(targetPosOnTheRight * moveSpeed * 1000 * Time.fixedDeltaTime, rb.velocity.y);
             _animator.Play("JumpB");
+            isJumping = true;
         }
-        else if (Mathf.Abs(this.transform.position.x - targetPos.x) > 20)
+        else if (Mathf.Abs(this.transform.position.x - targetPos.x) > offsetMouseDetect)
         {
             rb.velocity = new Vector2(targetPosOnTheRight * moveSpeed * 1000 * Time.fixedDeltaTime, rb.velocity.y);
             _animator.Play("DashB");
         }
         else
         {
-            this.transform.position = targetPos = new Vector2(targetPos.x, transform.position.y);
+            Vector3 tempVec = rb.velocity;
+            rb.velocity = new Vector2(0, rb.velocity.y);
             _animator.Play("WaitB");
         }
     }
 
     #endregion
 
+    public void SetPlayerPosition(Vector3 playerNewPosition)
+    {
+        this.transform.position = playerNewPosition;
+        targetPos = this.transform.position;
+    }
 
+    public void SetIsPlayerJumping(bool isPlayerJumping)
+    {
+        isJumping = isPlayerJumping;
+    }
+
+    public PlayerModes GetCurrentPlayerMode()
+    {
+        return _currentMode;
+    }
 }
