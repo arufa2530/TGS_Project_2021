@@ -11,29 +11,29 @@ public class PlayerReferences : MonoBehaviour
     public static PlayerHealthScript theHealthUI;
     public static GameOverScreen theGameIsOver;
     public static bool finishSlowSpam = false;
+    public static PlayerMovement playerMovement;
 
-    private void Start()
+    private void Awake()
     {
         if (thePlayer != null)
         {
             Destroy(this.gameObject);
             return;
         }
-        Debug.Log("Start");
+        //Debug.Log("Start");
         thePlayer = this;
 
         currentHealth = maxHealth;
-        Debug.Log("Player Health = " + currentHealth);
+        //Debug.Log("Player Health = " + currentHealth);
 
         thePlayer = this;
         GameObject.DontDestroyOnLoad(this.gameObject);
-
     }
 
     public static void LostHealth(int value)
     {
         currentHealth -= value;
         theHealthUI.UpdateHealthUI();
-        Debug.Log("Current Health = " + currentHealth);
+        //Debug.Log("Current Health = " + currentHealth);
     }
 }

@@ -57,16 +57,21 @@ public class DestroyBulletScript : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //Debug.Log(collision.gameObject.name);
-        if (this.CompareTag("PlayerBullet") && collision.gameObject.CompareTag("Enemy")) { PlayerHitEnemy(); return; }
-        if (this.CompareTag("PlayerBullet") && collision.gameObject.CompareTag("Player")) { return; }
-        if (this.CompareTag("PlayerBullet") && collision.gameObject.CompareTag("Bullet"))
+        if (this.CompareTag("PlayerBullet"))
         {
-            Debug.Log("PlayerBulletHitENemyBullet");
-            collision.gameObject.GetComponent<DestroyBulletScript>().ReturnClickableToPool();
-            ReturnClickableToPool();
-            return;
-        }
 
+            if (collision.gameObject.CompareTag("Enemy")) { PlayerHitEnemy(); return; }
+            if (collision.gameObject.CompareTag("Player")) { return; }
+            if (collision.gameObject.CompareTag("PopUp")) { ReturnClickableToPool(); return; }
+            if (collision.gameObject.CompareTag("Bullet"))
+            {
+                Debug.Log("PlayerBulletHitENemyBullet");
+                collision.gameObject.GetComponent<DestroyBulletScript>().ReturnClickableToPool();
+                ReturnClickableToPool();
+                return;
+            }
+        }
+        if (collision.gameObject.CompareTag("PopUp")) { collision.gameObject.GetComponent<PopUpHPBar>().DamagePopUpWindow(); ReturnClickableToPool(); return; }
         if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Bullet")) return;
         if (collision.gameObject.CompareTag("Walls")) return;
         if (collision.gameObject.CompareTag("OnHitDespawn")) { ReturnClickableToPool(); return; }
