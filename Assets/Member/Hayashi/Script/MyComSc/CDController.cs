@@ -11,6 +11,8 @@ public class CDController : MonoBehaviour
     [SerializeField] GameObject talk;
     Conversatio_UI Conversatio;
 
+    public CameraShake Shake;
+
     bool IsDrop;
     bool EndDrop;
     int ClickVal;
@@ -84,6 +86,14 @@ public class CDController : MonoBehaviour
     private void OnMouseDown()
     {
         ClickVal++;
+        if (ClickVal == 1)
+        {
+            Shake.ShakeY(0.5f, 1f);
+        }
+        else if (ClickVal == 2)
+        {
+            Shake.Shake(0.5f, 1.5f);
+        }
     }
 
     private void OnMouseDrag()
@@ -142,7 +152,7 @@ public class CDController : MonoBehaviour
         for (int i = 0; i < SEList.SEDataList.Count; i++)
         {
             SEData SEData = SEList.SEDataList[i];
-            if (SEData.Name == Drive.name)
+            if (SEData.Name == this.name)
             {
                 GameObject.Find("SoundManager").GetComponent<SoundManagerSc>().PlaySeByName(SEData.SESource.name);
             }

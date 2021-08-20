@@ -47,7 +47,7 @@ public class CheckAnswerKey : MonoBehaviour
             if (sename == GetAnswerSEName() && DCon.IsLoadCD)
             {
                 GameObject.Find("RockFile").GetComponent<RockFileController>().PlaySound1();
-                Conversatio.TalkVo(10);
+                if (talk != null) Conversatio.TalkVo(10);
                 Debug.Log("ファイルが開いたよ");
             }
             else
@@ -58,6 +58,6 @@ public class CheckAnswerKey : MonoBehaviour
     private string GetAnswerSEName()
     {
         MycomSETable SEList = Resources.Load<MycomSETable>("Scriotable/MycomSETable");
-        return SEList.GetSEDatas().Find(data => data.GetSEName() == "CD").SESource.name;
+        return SEList.GetSEDatas().Find(data => data.GetSEName() == "D:").SESource.name;
     }
 }
