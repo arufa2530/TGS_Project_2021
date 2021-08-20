@@ -8,11 +8,14 @@ public class CheckAnswerKey : MonoBehaviour
 
     Collider2D HitCollsion;
     AudioSource MyAudio;
+    [SerializeField] GameObject talk;
+    Conversatio_UI Conversatio;
 
     private void Start()
     {
         DCon = GameObject.Find("D:").GetComponent<DriveController>();
         MyAudio = this.GetComponent<AudioSource>();
+        Conversatio = talk.GetComponent<Conversatio_UI>();
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -44,6 +47,7 @@ public class CheckAnswerKey : MonoBehaviour
             if (sename == GetAnswerSEName() && DCon.IsLoadCD)
             {
                 GameObject.Find("RockFile").GetComponent<RockFileController>().PlaySound1();
+                Conversatio.TalkVo(10);
                 Debug.Log("ファイルが開いたよ");
             }
             else

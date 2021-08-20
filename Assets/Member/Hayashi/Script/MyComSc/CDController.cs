@@ -8,6 +8,8 @@ public class CDController : MonoBehaviour
     [SerializeField] GameObject Drive,RockFile;
     [SerializeField] GameObject CDPopup;
     [SerializeField] GameObject Operator;
+    [SerializeField] GameObject talk;
+    Conversatio_UI Conversatio;
 
     bool IsDrop;
     bool EndDrop;
@@ -26,6 +28,7 @@ public class CDController : MonoBehaviour
         EndDrop = false;
         ClickVal = 0;
         rig = this.GetComponent<Rigidbody2D>();
+        Conversatio = talk.GetComponent<Conversatio_UI>();
     }
 
     // Update is called once per frame
@@ -64,6 +67,10 @@ public class CDController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         HitCollision = collision;
+        if (HitCollision.gameObject.name == "MyComputer")
+        {
+            Conversatio.TalkVo(7);
+        }
     }
 
     private void OnMouseDown()
@@ -113,10 +120,14 @@ public class CDController : MonoBehaviour
     public void CDLoad()
     {
         CDPopup.SetActive(false);
-        Operator.SetActive(true);
+        //Operator.SetActive(true);
+        Conversatio.TalkVo(8);
+        Conversatio.TalkVo(9);
+        Conversatio.d = true;
         Drive.GetComponent<DriveController>().IsLoadCD = true;
         MycomSETable SEList;
         SEList = Resources.Load<MycomSETable>("Scriotable/MycomSETable");
+        this.gameObject.SetActive(false);
         for (int i = 0; i < SEList.SEDataList.Count; i++)
         {
             SEData SEData = SEList.SEDataList[i];

@@ -9,19 +9,37 @@ public class ChangeScene : MonoBehaviour
 
     public Animator transition;
     public float transitionTime = 2f;
+    public bool isTitleScreen;
+
+    [SerializeField]
+    bool isAbleToManuallyChangeScene;
 
     // Update is called once per frame
     void Update()
     {
         //DebugToScene1
-        if (Input.GetKeyDown(KeyCode.KeypadPlus))
+        //if (Input.GetKeyDown(KeyCode.KeypadPlus))
+        if (!isAbleToManuallyChangeScene) return;
+
+        if (Input.GetMouseButtonDown(0))
         {
-            LoadNextScene(SceneManager.GetActiveScene().buildIndex + 1);
+            if (!isTitleScreen)
+            {
+                LoadNextScene(SceneManager.GetActiveScene().buildIndex + 1);
+                return;
+            }
+            else LoadNextScene(SceneManager.GetActiveScene().buildIndex + 2);
         }
+        
     }
 
     public void LoadNextScene(int _sceneId)
     {
+        if (_sceneId == 100)
+        {
+            StartCoroutine(LoadSceneByNextID());
+            return;
+        }
         StartCoroutine(LoadScene(_sceneId));
     }
 
@@ -30,5 +48,12 @@ public class ChangeScene : MonoBehaviour
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(transitionTime);
         SceneManager.LoadScene(sceneIndex);
+    }
+
+    IEnumerator LoadSceneByNextID()
+    {
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(transitionTime);
+        LoadNextScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

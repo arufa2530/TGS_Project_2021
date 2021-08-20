@@ -9,31 +9,55 @@ public class DragWindow : MonoBehaviour
     [SerializeField]
     private bool isDragging;
     Vector3 mousePos;
+    Rigidbody2D rb;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     void Update()
     {
-
+        //rb.velocity = Vector2.zero;
         if (isDragging)
         {
             mousePos = CalcMousePositionWithOffset();
             mousePos = Input.mousePosition;
             mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-            this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, 0);
+            //this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, 0);
+
+            rb.MovePosition(new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, 0));
         }
     }
 
 
     public void OnMouseDown()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (PlayerReferences.playerMovement.GetCurrentPlayerMode() == PlayerMovement.PlayerModes.InspectMode)
         {
-            Debug.Log("MouseDown");
-            mousePos = CalcMousePositionWithOffset();
+            if (Input.GetMouseButtonDown(0))
+            {
+                Debug.Log("MouseDown");
+                rb.mass = 0.0001f;
+                rb.bodyType = RigidbodyType2D.Dynamic;
+                mousePos = CalcMousePositionWithOffset();
 
-            startPosX = mousePos.x - this.transform.localPosition.x;
-            startPosY = mousePos.y - this.transform.localPosition.y;
+                startPosX = mousePos.x - this.transform.localPosition.x;
+                startPosY = mousePos.y - this.transform.localPosition.y;
 
-            isDragging = true;
+                isDragging = true;
+            }
+        }
+    }
+
+    public void OnMouseUp()
+    {
+        if (PlayerReferences.playerMovement.GetCurrentPlayerMode() == PlayerMovement.PlayerModes.InspectMode)
+        {
+            isDragging = false;
+            Debug.Log("MouseUp");
+            rb.mass = 5000f;
+            rb.bodyType = RigidbodyType2D.Static;
         }
     }
 
@@ -44,11 +68,6 @@ public class DragWindow : MonoBehaviour
         return _mousePos;
     }
 
-    public void OnMouseUp()
-    {
-        isDragging = false;
-        Debug.Log("MouseUp");
-    }
 
 
 }

@@ -19,6 +19,8 @@ public class RandomSpawnWindow : MonoBehaviour
     [SerializeField]
     private int numberOfWindows;
     private bool done = false;
+    [SerializeField]
+    ChangeScene _changeScene;
 
     private void Start()
     {
@@ -49,6 +51,16 @@ public class RandomSpawnWindow : MonoBehaviour
         done = true;
         PlayerReferences.finishSlowSpam = true;
         Debug.Log("SlowSpamFinished");
+
+        yield return new WaitForSeconds(4.1f);
+        //yield return new WaitForSeconds(3.5f);
+
+        AudioSource audioData = GetComponent<AudioSource>();
+        audioData.Play();
+        yield return new WaitWhile(() => audioData.isPlaying);
+
+        _changeScene.LoadNextScene(100);
+
         yield return null;
     }
 }

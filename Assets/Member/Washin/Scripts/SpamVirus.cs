@@ -23,14 +23,6 @@ public class SpamVirus : MonoBehaviour
         StartCoroutine(SpamVirusGradually());
     }
 
-
-    void Update()
-    {
-
-
-
-
-    }
     IEnumerator SpamVirusGradually()
     {
         while (transform.childCount < maxCount)

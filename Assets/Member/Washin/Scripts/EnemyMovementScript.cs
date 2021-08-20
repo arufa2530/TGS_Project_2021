@@ -7,9 +7,17 @@ public class EnemyMovementScript : MonoBehaviour
     [SerializeField]
     public float moveSpeed;
     [SerializeField]
-    private float elaspedTime;
+    public float elaspedTime;
     public float timeToMove;
-    
+    public float timeToMoveToCenter;
+
+    public bool canMove;
+    public bool shouldMoveLeftAndRight;
+    public bool shouldMoveToCenter;
+
+    [SerializeField]
+    Vector3 tempLerpPos;
+
     Vector2 currentPos;
     [SerializeField]
     Vector2 targetPos;
@@ -25,17 +33,36 @@ public class EnemyMovementScript : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         currentPos = new Vector2(0, topOfScreen);
         targetPos = currentPos;
+        PickNewPos();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        MoveEnemy();
-        elaspedTime += Time.deltaTime;
-        if (elaspedTime >= timeToMove)
+        if (canMove)
         {
-            currentPos = this.transform.position;
-            elaspedTime = 0;
-            PickNewPos();
+            elaspedTime += Time.fixedDeltaTime;
+
+            if (shouldMoveLeftAndRight)
+            {
+                MoveEnemy();
+                if(IsTimeToMove())
+                {
+                    currentPos = this.transform.position;
+                    DisableEnemyMovement();
+                    PickNewPos();
+                }
+            }
+
+            if(shouldMoveToCenter)
+            {
+                //MoveEnemyToCenter();
+                MoveEnemyToCenter();
+                if (IsTimeToMove())
+                {
+                    currentPos = this.transform.position;
+                    DisableEnemyMovement();
+                }
+            }
         }
     }
 
@@ -48,7 +75,34 @@ public class EnemyMovementScript : MonoBehaviour
     {
         while ((transform.position.x - 200 <= targetPos.x && targetPos.x <= transform.position.x + 200))
         {
-            targetPos.x = Random.Range(rangeOfMotionHorizontal.x,rangeOfMotionHorizontal.y);
+            targetPos.x = Random.Range(rangeOfMotionHorizontal.x, rangeOfMotionHorizontal.y);
         }
     }
+
+    public void MoveEnemyToCenter()
+    {
+        transform.position = Vector2.Lerp(currentPos, Vector3.zero, elaspedTime / timeToMove);
+    }
+
+    public void SetEnemyPosition()
+    {
+        currentPos = targetPos;
+    }
+
+    public void DisableEnemyMovement()
+    {
+        canMove = false;
+        elaspedTime = 0;
+    }
+
+    public void EnableEnemyMovement()
+    {
+        canMove = true;
+    }
+
+    public bool IsTimeToMove()
+    {
+        return elaspedTime >= timeToMove;
+    }
+
 }
