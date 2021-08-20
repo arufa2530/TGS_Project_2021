@@ -39,8 +39,8 @@ public class BannerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MyCol.size = new Vector2(MyRT.sizeDelta.x -5, MyRT.sizeDelta.x * 0.043f - 5);
-        MyCol.offset = new Vector2(0f, MyRT.sizeDelta.y / 2.0f - MyRT.sizeDelta.x * 0.043f / 2.0f);
+        MyCol.size = new Vector2(MyRT.sizeDelta.x - 2.5f, MyRT.sizeDelta.x * 0.075f - 2.5f);
+        MyCol.offset = new Vector2(0f, MyRT.sizeDelta.y / 2.0f - MyRT.sizeDelta.x * 0.075f / 2.0f);
 
         IsScaleCollider();
     }

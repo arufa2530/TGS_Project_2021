@@ -11,11 +11,11 @@ public class ScaleCollidersCs : MonoBehaviour
     {
         if (this.name == "Up" || this.name == "Down")
         {
-            this.GetComponent<BoxCollider2D>().size = new Vector2(bc.GetComponent<RectTransform>().sizeDelta.x - 5f, 5f);
+            this.GetComponent<BoxCollider2D>().size = new Vector2(bc.GetComponent<RectTransform>().sizeDelta.x - 2.5f, 2.5f);
         }
         else if(this.name == "Right" || this.name == "Left")
         {
-            this.GetComponent<BoxCollider2D>().size = new Vector2(5f, bc.GetComponent<RectTransform>().sizeDelta.y - 5f);
+            this.GetComponent<BoxCollider2D>().size = new Vector2(2.5f, bc.GetComponent<RectTransform>().sizeDelta.y - 2.5f);
         }
     }
 
