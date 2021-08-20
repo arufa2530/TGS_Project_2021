@@ -42,7 +42,7 @@ public class CDController : MonoBehaviour
  
         if (IsDrop)
         {
-            if (Mathf.Abs(this.GetComponent<Rigidbody2D>().velocity.y) == 0f && HitCollision.gameObject.name == "MyComputer")
+            if (Mathf.Abs(this.GetComponent<Rigidbody2D>().velocity.y) == 0f && HitCollision != null)
             {
                 EndDrop = true;
             }
@@ -71,6 +71,11 @@ public class CDController : MonoBehaviour
         {
             Conversatio.TalkVo(7);
         }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        HitCollision = null;
     }
 
     private void OnMouseDown()
