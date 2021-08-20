@@ -69,7 +69,10 @@ public class CDController : MonoBehaviour
         HitCollision = collision;
         if (HitCollision.gameObject.name == "MyComputer")
         {
-            Conversatio.TalkVo(7);
+            if (talk != null)
+            {
+                Conversatio.TalkVo(7);
+            }
         }
     }
 
@@ -126,9 +129,12 @@ public class CDController : MonoBehaviour
     {
         CDPopup.SetActive(false);
         //Operator.SetActive(true);
-        Conversatio.TalkVo(8);
-        Conversatio.TalkVo(9);
-        Conversatio.d = true;
+        if (talk != null)
+        {
+            Conversatio.TalkVo(8);
+            Conversatio.TalkVo(9);
+            Conversatio.d = true;
+        }
         Drive.GetComponent<DriveController>().IsLoadCD = true;
         MycomSETable SEList;
         SEList = Resources.Load<MycomSETable>("Scriotable/MycomSETable");

@@ -1804,6 +1804,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69fc74c442c8c8247a28640588737234, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talk: {fileID: 0}
 --- !u!114 &929977540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2148,6 +2149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69fc74c442c8c8247a28640588737234, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talk: {fileID: 0}
 --- !u!114 &966963842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2783,6 +2785,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69fc74c442c8c8247a28640588737234, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talk: {fileID: 0}
 --- !u!114 &1323530221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3278,6 +3281,7 @@ MonoBehaviour:
   RockFile: {fileID: 390704419}
   CDPopup: {fileID: 1391240576}
   Operator: {fileID: 927917482}
+  talk: {fileID: 0}
 --- !u!114 &1898019754
 MonoBehaviour:
   m_ObjectHideFlags: 0
