@@ -9,7 +9,7 @@ public class TransitionToCombatScreen : MonoBehaviour
     private Vector3 positionToSpawnWindow;
     private Vector3 tempZ = Vector3.zero;
     private Vector3[] windowPoistions;
-    private int numberOfWindows = 20;
+    private int numberOfWindows = 50;
 
     private void Start()
     {

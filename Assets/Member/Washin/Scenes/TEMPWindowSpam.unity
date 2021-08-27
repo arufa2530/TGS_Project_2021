@@ -157,10 +157,10 @@ MonoBehaviour:
   tempWindow: {fileID: 2924813463850047459, guid: 46cc189ca29806e4cbb405b288dbc685,
     type: 3}
   startingPosition: {x: 0, y: 0, z: 0}
-  randomStartingPositionRangeX: {x: -125, y: 125}
-  randomStartingPositionRangeY: {x: 180, y: -150}
-  delayBetweenSpawn: 0.5
-  numberOfWindows: 20
+  randomStartingPositionRangeX: {x: -320, y: 320}
+  randomStartingPositionRangeY: {x: 240, y: -200}
+  delayBetweenSpawn: 0.3
+  numberOfWindows: 50
   _changeScene: {fileID: 2087767765}
 --- !u!4 &286935875
 Transform:
