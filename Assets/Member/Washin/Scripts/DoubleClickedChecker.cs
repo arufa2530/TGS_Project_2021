@@ -57,8 +57,13 @@ public class DoubleClickedChecker : MonoBehaviour
     private void DoubleClicked()
     {
         Debug.Log(this.name + " Double Clicked!");
+        SetColorBlue();
         if (!useNew) { OldChangeScene(); return; }
         NewChangeScene();
+    }
+
+    private void SetColorBlue()
+    {
     }
 
     private void NewChangeScene()

@@ -8,7 +8,8 @@ public enum CurrentEnemyAction
     Idle,
     Moving,
     Shooting,
-    Dying
+    Dying,
+    WaitForOrder // そのまま立って待つ
 }
 
 public enum CurrentAttackPattern
@@ -48,13 +49,18 @@ public class EnemyActions : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentActionState = CurrentEnemyAction.Idle;
+        //currentActionState = CurrentEnemyAction.Idle;
         lastState = CurrentEnemyAction.Moving;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (currentActionState == CurrentEnemyAction.WaitForOrder)
+        {
+            return;
+        }
+
         if (currentActionState == CurrentEnemyAction.Dying)
         {
             moveEnemy.canMove = false;
@@ -69,6 +75,7 @@ public class EnemyActions : MonoBehaviour
         {
             if (currentAttack != CurrentAttackPattern.None) currentAttack = CurrentAttackPattern.None;
             PreformIdle();
+            return;
         }
 
         if (currentActionState == CurrentEnemyAction.Moving)
@@ -85,6 +92,7 @@ public class EnemyActions : MonoBehaviour
             moveEnemy.shouldMoveToCenter = false;
             currentMoveState = CurrentMovementPattern.None;
             NextState();
+            return;
         }
 
         if (currentActionState == CurrentEnemyAction.Shooting)
@@ -101,6 +109,7 @@ public class EnemyActions : MonoBehaviour
             shootFromEnemy.shootSingleBullet = false;
             currentAttack = CurrentAttackPattern.None;
             NextState();
+            return;
         }
     }
 
@@ -182,4 +191,20 @@ public class EnemyActions : MonoBehaviour
         currentTime = 0;
         NextState();
     }
+
+    public void SetActionToIdle()
+    {
+        currentActionState = CurrentEnemyAction.Idle;
+    }
+
+    public void SetActionWaitForOrder()
+    {
+        currentActionState = CurrentEnemyAction.WaitForOrder;
+    }
+
+    public void ShootOnce()
+    {
+        shootFromEnemy.ShootAtPlayer("EnemyBulletNonClickableYellow", 1f);
+    }
+
 }

@@ -84,8 +84,6 @@ public class PaintScript : MonoBehaviour
     {
 
         StartCoroutine(SaveRenderTextureToPng());
-
-
     }
 
 
