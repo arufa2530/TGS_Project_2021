@@ -15,6 +15,7 @@ TagManager:
   - OnHitDespawn
   - PlayerBullet
   - PopUp
+  - DesktopIcon
   layers:
   - Default
   - TransparentFX

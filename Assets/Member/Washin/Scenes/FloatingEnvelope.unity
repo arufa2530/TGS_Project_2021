@@ -158,8 +158,8 @@ MonoBehaviour:
   startingPosition: {x: 0, y: 0, z: 0}
   randomStartingPositionRangeX: {x: -125, y: 125}
   randomStartingPositionRangeY: {x: 180, y: -150}
-  delayBetweenSpawn: 0.5
-  numberOfWindows: 20
+  delayBetweenSpawn: 0.05
+  numberOfWindows: 50
   _changeScene: {fileID: 0}
 --- !u!4 &286935875
 Transform:
@@ -282,7 +282,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 838992227}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 626cfd8a16a61894792f20dffe47a3da, type: 3}
   m_Name: 
