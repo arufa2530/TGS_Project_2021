@@ -58,8 +58,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d69ad39363a0b3439daebdb4a2a28d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _changeScene: {fileID: 0}
   waitTime: 3
+  sceneToChangeTo: 0
+  isMenuScene: 0
+  startTransition: 0
 --- !u!114 &6049011926759999605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,7 +171,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8546280611334766823
 RectTransform:
   m_ObjectHideFlags: 0
@@ -377,6 +379,9 @@ MonoBehaviour:
   transitionTime: 1
   isTitleScreen: 0
   isAbleToManuallyChangeScene: 0
+  hasLoadScreen: 0
+  screenCover: {fileID: 4078149860825760602}
+  useOtherWait: 0
 --- !u!114 &3086669011544512626
 MonoBehaviour:
   m_ObjectHideFlags: 0

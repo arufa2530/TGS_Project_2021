@@ -18,7 +18,7 @@ public class LoadFromScreenCover : MonoBehaviour
     bool firstPass = true;
     [SerializeField] int sceneToChangeTo;
     [SerializeField] bool isMenuScene;
-
+    [SerializeField] bool startTransition;
 
     private void Start()
     {
@@ -28,6 +28,12 @@ public class LoadFromScreenCover : MonoBehaviour
     }
 
     private void FixedUpdate()
+    {
+        if (startTransition)
+            StartLoadTransition();
+    }
+
+    private void StartLoadTransition()
     {
         if (firstPass)
         {
@@ -61,6 +67,11 @@ public class LoadFromScreenCover : MonoBehaviour
     IEnumerator WaitForTime(float wTime)
     {
         yield return new WaitForSeconds(wTime);
+    }
+
+    public void StartNow()
+    {
+        startTransition = true;
     }
 }
 

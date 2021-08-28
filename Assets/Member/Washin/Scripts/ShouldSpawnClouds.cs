@@ -20,6 +20,7 @@ public class ShouldSpawnClouds : MonoBehaviour
             float tempStartX = Random.Range(-300, 300);
             GameObject tempCloud = SpawnClouds(tempStartX);
             CloudMovement tempMove = tempCloud.GetComponent<CloudMovement>();
+            tempMove.shouldFadeIn = true;
             tempMove.SetTimeToMove(0.5f);
             tempMove.SetStartingValues(startTop.transform.position.x);
         }

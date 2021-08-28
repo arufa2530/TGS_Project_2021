@@ -1255,6 +1255,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: DesktopIcons
       objectReference: {fileID: 0}
+    - target: {fileID: 5972889427038600859, guid: 1389de0400803624a92e38a746de590f,
+        type: 3}
+      propertyPath: m_Colors.m_PressedColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972889427038600859, guid: 1389de0400803624a92e38a746de590f,
+        type: 3}
+      propertyPath: m_Colors.m_PressedColor.g
+      value: 0.67058825
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972889427038600859, guid: 1389de0400803624a92e38a746de590f,
+        type: 3}
+      propertyPath: m_Colors.m_PressedColor.r
+      value: 0.5137255
+      objectReference: {fileID: 0}
     - target: {fileID: 5972889427038600861, guid: 1389de0400803624a92e38a746de590f,
         type: 3}
       propertyPath: m_Sprite
@@ -1300,6 +1315,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: DesktopIcon
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972889427079907052, guid: 1389de0400803624a92e38a746de590f,
+        type: 3}
+      propertyPath: m_Colors.m_PressedColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972889427079907052, guid: 1389de0400803624a92e38a746de590f,
+        type: 3}
+      propertyPath: m_Colors.m_PressedColor.g
+      value: 0.67058825
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972889427079907052, guid: 1389de0400803624a92e38a746de590f,
+        type: 3}
+      propertyPath: m_Colors.m_PressedColor.r
+      value: 0.5137255
       objectReference: {fileID: 0}
     - target: {fileID: 5972889427079907054, guid: 1389de0400803624a92e38a746de590f,
         type: 3}
@@ -1372,12 +1402,42 @@ PrefabInstance:
       propertyPath: m_TagString
       value: DesktopIcon
       objectReference: {fileID: 0}
+    - target: {fileID: 5972889427410388189, guid: 1389de0400803624a92e38a746de590f,
+        type: 3}
+      propertyPath: m_Colors.m_PressedColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972889427410388189, guid: 1389de0400803624a92e38a746de590f,
+        type: 3}
+      propertyPath: m_Colors.m_PressedColor.g
+      value: 0.67058825
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972889427410388189, guid: 1389de0400803624a92e38a746de590f,
+        type: 3}
+      propertyPath: m_Colors.m_PressedColor.r
+      value: 0.5137255
+      objectReference: {fileID: 0}
     - target: {fileID: 5972889427410388191, guid: 1389de0400803624a92e38a746de590f,
         type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: b92f62e4c21a7e24a947683c37d3ebed,
         type: 3}
+    - target: {fileID: 5972889427656733880, guid: 1389de0400803624a92e38a746de590f,
+        type: 3}
+      propertyPath: m_Colors.m_PressedColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972889427656733880, guid: 1389de0400803624a92e38a746de590f,
+        type: 3}
+      propertyPath: m_Colors.m_PressedColor.g
+      value: 0.67058825
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972889427656733880, guid: 1389de0400803624a92e38a746de590f,
+        type: 3}
+      propertyPath: m_Colors.m_PressedColor.r
+      value: 0.5137255
+      objectReference: {fileID: 0}
     - target: {fileID: 5972889427656733881, guid: 1389de0400803624a92e38a746de590f,
         type: 3}
       propertyPath: m_Sprite

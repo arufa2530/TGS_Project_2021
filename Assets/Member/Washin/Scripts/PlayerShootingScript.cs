@@ -28,6 +28,7 @@ public class PlayerShootingScript : MonoBehaviour
     {
         if (ShouldBeShooting)
         {
+            if (EnemyCenterPositionScript.instance == null) return;
             currentTime += Time.fixedDeltaTime;
             if (currentTime >= fireRate)
             {
