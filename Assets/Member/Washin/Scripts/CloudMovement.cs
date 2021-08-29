@@ -6,18 +6,40 @@ using UnityEngine.UI;
 
 public class CloudMovement : MonoBehaviour
 {
-
+    [SerializeField] public bool shouldFadeIn;
     [SerializeField] float timeToMoveInSeconds;
     float currentTime;
     public Vector3 startPos;
     float endX;
     Vector3 target;
+    Image cloudImage;
     [SerializeField] Sprite[] lightClouds;
     [SerializeField] Sprite[] darkClouds;
 
     private void Awake()
     {
         SetStartingValues(transform.position.x);
+    }
+
+    private void Start()
+    {
+        if (shouldFadeIn)
+        {
+            cloudImage = GetComponentInChildren<Image>();
+            cloudImage.color = new Color(1, 1, 1, 0);
+            StartCoroutine(FadeCloudIn());
+        }
+    }
+
+    private IEnumerator FadeCloudIn()
+    {
+        Color tempColor = cloudImage.color;
+        while (cloudImage.color.a !=1)
+        {
+            tempColor.a += Time.deltaTime;
+            cloudImage.color = tempColor;
+            yield return null;
+        }
     }
 
     public void SetTimeToMove(float multiply)

@@ -37,14 +37,21 @@ public class EnemyFadeSpriteOut : MonoBehaviour
         {
             fadingOutColor.a -= Time.deltaTime / fadeOutTime;
             enemySprite.color = fadingOutColor;
-            if (fadingOutColor.a == 0) this.enabled = false;
+            if (fadingOutColor.a == 0)
+            {
+                shouldFadeOutEnemy = false;
+                this.enabled = false;
+            }
             return;
         }
         if (shouldFadeInEnemy)
         {
             fadingInColor.a += Time.deltaTime / fadeInTime;
             enemySprite.color = fadingInColor;
-            if (fadingInColor.a == 1) shouldFadeInEnemy = false;
+            if (fadingInColor.a == 1)
+            {
+                shouldFadeInEnemy = false;
+            }
             return;
         }
     }

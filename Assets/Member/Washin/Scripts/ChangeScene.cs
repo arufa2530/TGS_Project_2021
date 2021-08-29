@@ -13,7 +13,14 @@ public class ChangeScene : MonoBehaviour
 
     [SerializeField]
     bool isAbleToManuallyChangeScene;
+    [SerializeField] bool hasLoadScreen;
+    [SerializeField] LoadFromScreenCover screenCover;
 
+    [SerializeField] bool useOtherWait = false;
+    private void Start()
+    {
+        if (useOtherWait) transitionTime = 100f;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -23,6 +30,13 @@ public class ChangeScene : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            if (hasLoadScreen)
+            {
+                transition.SetTrigger("Start");
+                screenCover.StartNow();
+                return;
+            }
+
             if (!isTitleScreen)
             {
                 LoadNextScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -55,5 +69,9 @@ public class ChangeScene : MonoBehaviour
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(transitionTime);
         LoadNextScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+    public void OtherWaitTime()
+    {
+        //useOtherWait = true;
     }
 }

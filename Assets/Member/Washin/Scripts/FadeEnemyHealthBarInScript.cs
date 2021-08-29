@@ -24,7 +24,7 @@ public class FadeEnemyHealthBarInScript : MonoBehaviour
 
     [SerializeField]public Slider redBar;
 
-    private void Start()
+    private void Awake()
     {
         //canvasGroup.alpha = 0;
         healthBarUI.localPosition = new Vector3(0, 275, -91);

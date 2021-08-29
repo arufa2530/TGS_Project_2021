@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyOnDeath : MonoBehaviour
 {
     [SerializeField] EnemyFadeSpriteOut fadeEnemy;
     [SerializeField] EnemyActions enemyActions;
     [SerializeField] FadeEnemyHealthBarInScript enemyHealth;
-    [SerializeField] GameOverScreen changeScene;
+    //[SerializeField] GameOverScreen changeScene;
     [SerializeField] private float currentTime = 0;
     private float waitTime = 2f;
+    [SerializeField] private bool isDead = false;
     [SerializeField] private bool fadeStarted = false;
 
     // Update is called once per frame
@@ -17,6 +19,7 @@ public class EnemyOnDeath : MonoBehaviour
     {
         if(enemyHealth.redBar.value == 0)
         {
+            isDead = true;
             if(fadeStarted)
             {
                 if (currentTime < waitTime)
@@ -24,7 +27,10 @@ public class EnemyOnDeath : MonoBehaviour
                     currentTime += Time.deltaTime / waitTime;
                     return;
                 }
-                changeScene.ReturnToDesktop();
+                currentTime = 0;
+                fadeStarted = false;
+                SceneManager.LoadScene("DesktopScene");
+                //changeScene.ReturnToDesktop();
             }
             enemyHealth.shouldSlideOut = true;
             PlayerShootingScript.instance.StopShooting();
@@ -32,7 +38,6 @@ public class EnemyOnDeath : MonoBehaviour
             fadeEnemy.shouldFadeOutEnemy = true;
             AudioManager.instance.StartFadeOut();
             fadeStarted = true;
-            
         }
     }
 
