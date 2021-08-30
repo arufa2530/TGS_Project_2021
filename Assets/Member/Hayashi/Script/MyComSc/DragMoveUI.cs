@@ -5,6 +5,21 @@ using UnityEngine.UI;
 
 public class DragMoveUI : MonoBehaviour
 {
+    Vector3 MousePos;
+
+    private void OnMouseDown()
+    {
+        Debug.Log(this.transform.position);
+        Vector2 mouse = RectTransformUtility.WorldToScreenPoint(Camera.main, this.GetComponent<RectTransform>().position);
+        MousePos = new Vector3(mouse.x - Input.mousePosition.x, mouse.y - Input.mousePosition.y, 0f);
+        Debug.Log(MousePos);
+    }
+
+    private void OnMouseUp()
+    {
+        MousePos = Vector3.zero;
+    }
+
     private void OnMouseDrag()
     {
         //Cubeの位置をワールド座標からスクリーン座標に変換して、objectPointに格納
@@ -14,8 +29,8 @@ public class DragMoveUI : MonoBehaviour
         //Cubeの現在位置(マウス位置)を、pointScreenに格納
         Vector3 pointScreen
             = new Vector3(Input.mousePosition.x,
-                          Input.mousePosition.y - this.GetComponent<BoxCollider2D>().offset.y,
-                          objectPoint.z);
+                          Input.mousePosition.y,
+                          objectPoint.z) + MousePos;
 
         //Cubeの現在位置を、スクリーン座標からワールド座標に変換して、pointWorldに格納
         Vector3 pointWorld = Camera.main.ScreenToWorldPoint(pointScreen);

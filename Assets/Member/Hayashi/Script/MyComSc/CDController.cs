@@ -16,7 +16,7 @@ public class CDController : MonoBehaviour
     bool IsDrop;
     bool EndDrop;
     int ClickVal;
-    float GravDef = 0.15f;
+    //float GravDef = 0.15f;
 
     Rigidbody2D rig;
 
