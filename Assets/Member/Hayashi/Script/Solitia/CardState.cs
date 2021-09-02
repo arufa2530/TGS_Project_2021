@@ -15,6 +15,8 @@ public class CardState : MonoBehaviour
     GameObject HitObject;
     int[] HitCardState = new int[2];
 
+    public void setcard(int x, int y) { kinds = x; number = y; }
+
     private void Start()
     {
         MyRT = this.GetComponent<RectTransform>();

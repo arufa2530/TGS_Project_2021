@@ -10,6 +10,8 @@ public class MenuController : MonoBehaviour
     [SerializeField] GameObject[] Window;
     [SerializeField] Button[] MenuButton;
     [SerializeField] Button[] ItemMenuButton;
+    [SerializeField] Text[] ItemWindowText;
+    [SerializeField] Image itemWindowImage;
 
     bool[] IsMenu = new bool[2];
     bool[] IsWindow = new bool[3];
@@ -41,6 +43,7 @@ public class MenuController : MonoBehaviour
         CheckSwitch();
         SwitchButton();
         SwitchItemButton();
+        SwitchWindow();
     }
 
     IEnumerator BreakInItemTime()
@@ -217,7 +220,33 @@ public class MenuController : MonoBehaviour
 
     void SwitchWindow()
     {
-
+        if (IsItemButton.Any(Is => Is == true))
+        {
+            Window[(int)WindowNum.ItemWindow].SetActive(true);
+            for (int i = 0; i < IsItemButton.Length; i++)
+            {
+                if (IsItemButton[i])
+                {
+                    ItemTable ItemList = Resources.Load<ItemTable>("Scriotable/Item Table");
+                    for (int j = 0; j < ItemList.ItemDataList.Count; j++)
+                    {
+                        ItemData ItemData = ItemList.ItemDataList[j];
+                        Debug.Log(ItemData.Name);
+                        Debug.Log(ItemMenuButton[i].transform.GetChild(0).GetComponent<Text>().text);
+                        if (ItemData.Name == ItemMenuButton[i].transform.GetChild(0).GetComponent<Text>().text)
+                        {
+                            itemWindowImage.sprite = ItemData.Image;
+                            ItemWindowText[0].text = ItemData.Name;
+                            ItemWindowText[1].text = ItemData.explanation;
+                        }
+                    }
+                }
+            }
+        }
+        else
+        {
+            Window[(int)WindowNum.ItemWindow].SetActive(false);
+        }
     }
 
     public void OnOffMenu()

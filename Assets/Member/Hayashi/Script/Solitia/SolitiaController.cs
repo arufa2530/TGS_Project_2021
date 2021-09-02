@@ -26,6 +26,7 @@ public class SolitiaController : MonoBehaviour
         Createobj.transform.parent = DrawZone.transform;
         Createobj.GetComponent<RectTransform>().anchoredPosition = objVec;
         Createobj.transform.localScale = new Vector3(1f, 1f, 1f);
+        Createobj.GetComponent<CardState>().setcard(1, 13);
         objVec += new Vector3(1.5f, 0f, 0f);
     }
 

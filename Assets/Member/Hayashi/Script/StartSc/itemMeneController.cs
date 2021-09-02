@@ -27,26 +27,26 @@ public class itemMeneController : MonoBehaviour
         {
             if (i < 4)
             {
-                ItemButton[i].text = " Firewall Invader";
+                ItemButton[i].text = "Firewall Invader";
             }
         }
         for (int i = FirewallInvader; i < FirewallInvader + Vaccine; i++)
         {
             if (i < 4)
             {
-                ItemButton[i].text = " 特効ワクチン弾";
+                ItemButton[i].text = "特効ワクチン弾";
             }
         }
         for (int i = FirewallInvader + Vaccine; i < ItemTotal; i++)
         {
             if (i < 4)
             {
-                ItemButton[i].text = " ブラシ";
+                ItemButton[i].text = "ブラシ";
             }
         }
         for (int i = ItemTotal; i < 4; i++)
         {
-            ItemButton[i].text = " No Data";
+            ItemButton[i].text = "No Data";
         }
     }
 }
