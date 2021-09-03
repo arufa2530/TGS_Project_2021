@@ -196,6 +196,7 @@ public class BannerController : MonoBehaviour
 
     public void CloseButton()
     {
+        GameObject.Find("BannersController").GetComponent<BannersController>().DestroyBanner();
         Destroy(TaskBarApp.gameObject);
         Destroy(MyParent.gameObject);
     }
