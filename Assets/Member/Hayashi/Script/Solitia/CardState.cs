@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CardState : MonoBehaviour
 {
-    [SerializeField] SolitiaController Controller;
     [SerializeField] int kinds;
     [SerializeField] int number;
 
@@ -93,6 +92,21 @@ public class CardState : MonoBehaviour
             MySR.sortingOrder = mylayer;
             this.transform.parent = HitObject.transform;
             MyRT.anchoredPosition = new Vector3(0f, 0f, 0f);
+        }
+        else if (HitObject.tag == "Complete")
+        {
+            if (this.kinds == HitObject.GetComponent<CompleteZoneState>().kinds && this.number == HitObject.transform.childCount + 1)
+            {
+                MySR.sortingOrder = HitObject.transform.childCount + 1;
+                this.transform.parent = HitObject.transform;
+                MyRT.anchoredPosition = new Vector3(0f, 0f, 0f);
+                this.GetComponent<BoxCollider2D>().enabled = false;
+            }
+            else
+            {
+                MySR.sortingOrder = mylayer;
+                MyRT.anchoredPosition = new Vector3(0f, -1.5f, 0f);
+            }
         }
         else
         {
