@@ -4,20 +4,22 @@ using UnityEngine;
 
 public class CardState : MonoBehaviour
 {
-    [SerializeField] SolitiaController Controller;
-    [SerializeField] int kinds;
-    [SerializeField] int number;
+    int kinds;
+    int number;
 
     RectTransform MyRT;
     SpriteRenderer MySR;
     int mylayer;
+    Vector3 myPos;
 
     GameObject HitObject;
     int[] HitCardState = new int[2];
 
     public void setcard(int x, int y) { kinds = x; number = y; }
+    public int getkind() { return kinds; }
+    public int getnumber() { return number; }
 
-    private void Start()
+    public void Init()
     {
         MyRT = this.GetComponent<RectTransform>();
         MySR = this.GetComponent<SpriteRenderer>();
@@ -59,33 +61,43 @@ public class CardState : MonoBehaviour
         }
     }
 
+    public void childlayer(int layer)
+    {
+        MySR.sortingOrder = layer + 1;
+        if (this.transform.childCount > 0)
+        {
+            GameObject child = this.transform.GetChild(0).gameObject;
+            child.GetComponent<CardState>().childlayer(MySR.sortingOrder);
+        }
+    }
+
     private void OnMouseDown()
     {
         mylayer = MySR.sortingOrder;
+        myPos = MyRT.anchoredPosition;
         mychildlayerup();
     }
 
     private void OnMouseUp()
     {
-        Debug.Log(HitObject.tag);
         mychildlayerdown();
-        if (HitObject.tag == "Card")
+        if (HitObject == null)
+        {
+            MySR.sortingOrder = mylayer;
+            MyRT.anchoredPosition = myPos;
+        }
+        else if (HitObject.tag == "Card")
         {
             if (this.kinds == HitCardState[0] && this.number + 1 == HitCardState[1])
             {
                 this.transform.parent = HitObject.transform;
                 MyRT.anchoredPosition = new Vector3(0f, -1.5f, 0f);
-                MySR.sortingOrder = HitObject.GetComponent<SpriteRenderer>().sortingOrder + 1;
-                for (int i = 0; i < this.transform.childCount; i++)
-                {
-                    GameObject child = this.transform.GetChild(i).gameObject;
-                    child.GetComponent<SpriteRenderer>().sortingOrder = MySR.sortingOrder + i + 1;
-                }
+                childlayer(HitObject.GetComponent<SpriteRenderer>().sortingOrder);
             }
             else
             {
                 MySR.sortingOrder = mylayer;
-                MyRT.anchoredPosition = new Vector3(0f, -1.5f, 0f);
+                MyRT.anchoredPosition = myPos;
             }
         }
         else if (HitObject.tag == "Area")
@@ -94,24 +106,39 @@ public class CardState : MonoBehaviour
             this.transform.parent = HitObject.transform;
             MyRT.anchoredPosition = new Vector3(0f, 0f, 0f);
         }
+        else if (HitObject.tag == "Complete")
+        {
+            if (this.kinds == HitObject.GetComponent<CompleteZoneState>().kinds && this.number == HitObject.transform.childCount + 1)
+            {
+                MySR.sortingOrder = HitObject.transform.childCount + 1;
+                this.transform.parent = HitObject.transform;
+                MyRT.anchoredPosition = new Vector3(0f, 0f, 0f);
+                this.GetComponent<BoxCollider2D>().enabled = false;
+            }
+            else
+            {
+                MySR.sortingOrder = mylayer;
+                MyRT.anchoredPosition = myPos;
+            }
+        }
         else
         {
             MySR.sortingOrder = mylayer;
-            MyRT.anchoredPosition = new Vector3(0f, -1.5f, 0f);
+            MyRT.anchoredPosition = myPos;
         }
     }
 
-    /*public void SetCardImage()
+    private void Update()
     {
-        CardTable cardTable = Resources.Load<CardTable>("Scriotable/Card Table");
-        CardKinds cardKinds = cardTable.CardKindsList[kinds];
-        for (int i = 0; i < cardKinds.CardDataList.Count; i++)
+        if (this.transform.childCount > 0)
         {
-            card SEData = SEList.SEDataList[i];
-            if (SEData.Name == this.name)
-            {
-                GameObject.Find("SoundManager").GetComponent<SoundManagerSc>().PlaySeByName(SEData.SESource.name);
-            }
+            this.GetComponent<BoxCollider2D>().offset = new Vector2(0f, 5.15f);
+            this.GetComponent<BoxCollider2D>().size = new Vector2(9f, 2f);
         }
-    }*/
+        else
+        {
+            this.GetComponent<BoxCollider2D>().offset = new Vector2(0f, 0f);
+            this.GetComponent<BoxCollider2D>().size = new Vector2(9f, 12.3f);
+        }
+    }
 }

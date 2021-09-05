@@ -17,6 +17,7 @@ TagManager:
   - PopUp
   - Card
   - Area
+  - Complete
   layers:
   - Default
   - TransparentFX
