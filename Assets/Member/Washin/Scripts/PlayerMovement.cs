@@ -42,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float jumpCooldown;
     [SerializeField] float jumpCurrentTime;
 
+    PlayerSFXs playerSFXs;
 
     private void Awake()
     {
@@ -58,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
         targetPos = this.transform.position;
         jumpCurrentTime = jumpCooldown;
         PlayerReferences.playerMovement = this;
+        playerSFXs = GetComponent<PlayerSFXs>();
     }
 
     private void Update()
@@ -155,6 +157,8 @@ public class PlayerMovement : MonoBehaviour
             //if (jumpCurrentTime >= jumpCooldown)
             if (!isJumping)
             {
+                //playerSFXs.StopPlayingSound();
+                playerSFXs.PickSoundToPlay(PlayerSounds.jump);
                 rb.velocity = Vector2.up * 100 * jumpAmount;
                 jumpCurrentTime = 0;
                 isJumping = true;
@@ -196,18 +200,26 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = new Vector2(targetPosOnTheRight * moveSpeed * 1000 * Time.fixedDeltaTime, rb.velocity.y);
             _animator.Play("JumpB");
+            //playerSFXs.StopPlayingSound();
+            //playerSFXs.PickSoundToPlay(PlayerSounds.jump);
             isJumping = true;
         }
         else if (Mathf.Abs(this.transform.position.x - targetPos.x) > offsetMouseDetect)
         {
             rb.velocity = new Vector2(targetPosOnTheRight * moveSpeed * 1000 * Time.fixedDeltaTime, rb.velocity.y);
             _animator.Play("DashB");
+
+            if (!playerSFXs.IsPlayingSound() && !isJumping)
+            {
+                playerSFXs.PickSoundToPlay(PlayerSounds.walk);
+            }
         }
         else
         {
             Vector3 tempVec = rb.velocity;
             rb.velocity = new Vector2(0, rb.velocity.y);
             _animator.Play("WaitB");
+            playerSFXs.StopPlayingSound();
         }
     }
 
