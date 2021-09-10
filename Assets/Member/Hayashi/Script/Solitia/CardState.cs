@@ -88,7 +88,7 @@ public class CardState : MonoBehaviour
         }
         else if (HitObject.tag == "Card")
         {
-            if (this.kinds == HitCardState[0] && this.number + 1 == HitCardState[1])
+            if (this.kinds != HitCardState[0] && this.number + 1 == HitCardState[1])
             {
                 this.transform.parent = HitObject.transform;
                 MyRT.anchoredPosition = new Vector3(0f, -1.5f, 0f);
@@ -100,7 +100,7 @@ public class CardState : MonoBehaviour
                 MyRT.anchoredPosition = myPos;
             }
         }
-        else if (HitObject.tag == "Area")
+        else if (HitObject.tag == "Area" && this.number == 13)
         {
             MySR.sortingOrder = mylayer;
             this.transform.parent = HitObject.transform;
