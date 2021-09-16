@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private float offsetMouseDetect = 30f;
     [SerializeField]
     private float moveSpeed = 0;
+    private float moveSpeedDefault;
     Rigidbody2D rb;
     public Sprite idle;
     public Sprite run;
@@ -60,6 +61,7 @@ public class PlayerMovement : MonoBehaviour
         jumpCurrentTime = jumpCooldown;
         PlayerReferences.playerMovement = this;
         playerSFXs = GetComponent<PlayerSFXs>();
+        moveSpeedDefault = moveSpeed;
     }
 
     private void Update()
@@ -198,14 +200,14 @@ public class PlayerMovement : MonoBehaviour
     {
         if (rb.velocity.y != 0 && isJumping == false)
         {
+            PlayerShootingScript.instance.StopShooting();
             rb.velocity = new Vector2(targetPosOnTheRight * moveSpeed * 1000 * Time.fixedDeltaTime, rb.velocity.y);
             _animator.Play("JumpB");
-            //playerSFXs.StopPlayingSound();
-            //playerSFXs.PickSoundToPlay(PlayerSounds.jump);
             isJumping = true;
         }
         else if (Mathf.Abs(this.transform.position.x - targetPos.x) > offsetMouseDetect)
         {
+            PlayerShootingScript.instance.StopShooting();
             rb.velocity = new Vector2(targetPosOnTheRight * moveSpeed * 1000 * Time.fixedDeltaTime, rb.velocity.y);
             _animator.Play("DashB");
 
@@ -216,11 +218,33 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            Vector3 tempVec = rb.velocity;
-            rb.velocity = new Vector2(0, rb.velocity.y);
-            _animator.Play("WaitB");
-            playerSFXs.StopPlayingSound();
+            if (EnemyCenterPositionScript.instance == null)
+            {
+                PlayerShootingScript.instance.StopShooting();
+                PlayIdle();
+            }
+            else
+            {
+                PlayerShootingScript.instance.AllowShooting();
+                PlayAttack();
+            }
         }
+    }
+
+    private void PlayIdle()
+    {
+        Vector3 tempVec = rb.velocity;
+        rb.velocity = new Vector2(0, rb.velocity.y);
+        _animator.Play("WaitB");
+        playerSFXs.StopPlayingSound();
+    }
+
+    private void PlayAttack()
+    {
+        Vector3 tempVec = rb.velocity;
+        rb.velocity = new Vector2(0, rb.velocity.y);
+        _animator.Play("FireB");
+        playerSFXs.StopPlayingSound();
     }
 
     #endregion
@@ -240,4 +264,20 @@ public class PlayerMovement : MonoBehaviour
     {
         return _currentMode;
     }
+
+    public float GetCurrentMoveSpeed()
+    {
+        return moveSpeed;
+    }
+
+    public void SetMoveSpeedToDefault()
+    {
+        moveSpeed = moveSpeedDefault;
+    }
+
+    public void SetMoveSpeed(float desiredMoveSpeedInPercentage)
+    {
+        moveSpeed *= desiredMoveSpeedInPercentage;
+    }
+
 }

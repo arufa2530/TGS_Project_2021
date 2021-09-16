@@ -16,7 +16,7 @@ public class EnemyHPScript : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(StartPlayerShoot());
+        //StartCoroutine(StartPlayerShoot());
     }
 
     public void TakeDamage(int damageToTake)
@@ -28,7 +28,7 @@ public class EnemyHPScript : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         //PlayerShootingScript.instance.ShouldBeShooting = true;
-        PlayerShootingScript.instance.StartingShooting();
+        PlayerShootingScript.instance.AllowShooting();
     }
 
 }
