@@ -7,7 +7,7 @@ public class PlayerShootingScript : MonoBehaviour
     public static PlayerShootingScript instance;
     [SerializeField] public Transform shootFromHere;
     [SerializeField] Transform playerBulletHolder;
-    public static bool ShouldBeShooting;
+    public static bool CanShoot;
     public float currentTime;
     public float fireRate;
     public float bulletSpeed;
@@ -21,14 +21,13 @@ public class PlayerShootingScript : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.KeypadEnter)) ShouldBeShooting = !ShouldBeShooting;
+        if (Input.GetKeyDown(KeyCode.KeypadEnter)) CanShoot = !CanShoot;
     }
 
     private void FixedUpdate()
     {
-        if (ShouldBeShooting)
+        if (CanShoot)
         {
-            if (EnemyCenterPositionScript.instance == null) return;
             currentTime += Time.fixedDeltaTime;
             if (currentTime >= fireRate)
             {
@@ -45,10 +44,6 @@ public class PlayerShootingScript : MonoBehaviour
 
         Vector3 tempDirection = EnemyCenterPositionScript.instance.GetCenterOfSpawnPosition() - shootFromHere.position;
 
-        //Debug.Log(EnemyCenterPositionScript.instance.GetCenterOfSpawnPosition());
-        //Debug.Log(shootFromHere.position);
-        //Debug.Log("tempDirection: " + tempDirection);
-
         PoolBulletScriptTest tempPoolBulletScript = tempPlayerBullet.GetComponent<PoolBulletScriptTest>();
         DestroyBulletScript tempDestroyBulletScript = tempPlayerBullet.GetComponent<DestroyBulletScript>();
 
@@ -59,14 +54,14 @@ public class PlayerShootingScript : MonoBehaviour
         tempPlayerBullet.SetActive(true);
     }
 
-    public void StartingShooting()
+    public void AllowShooting()
     {
-        ShouldBeShooting = true;
+        CanShoot = true;
     }
 
     public void StopShooting()
     {
-        ShouldBeShooting = false;
+        CanShoot = false;
     }
 
     public Vector3 GetPlayerCurrentPosition()

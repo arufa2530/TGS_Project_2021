@@ -17,6 +17,8 @@ public class Erase : MonoBehaviour
 
     RaycastHit2D hit;
 
+    bool canErase = false;
+
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -36,7 +38,9 @@ public class Erase : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButton(0))
+        DebugToggleErase();
+
+        if (canErase && Input.GetMouseButton(0))
         {
             hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
             if (hit.collider != null)
@@ -93,4 +97,20 @@ public class Erase : MonoBehaviour
         else
             isDrawing = false;
     }
+
+    public void CanErase(bool _canErase)
+    {
+        canErase = _canErase;
+    }
+
+    void DebugToggleErase()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            CanErase(!canErase);
+            Debug.Log("canErase is set to" + canErase);
+        }
+    }
+
 }
+

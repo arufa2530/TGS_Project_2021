@@ -87,7 +87,7 @@ public class DestroyBulletScript : MonoBehaviour
             //tempRotation.x = 0;
             //tempRotation.y = 0;
             BulletOnCollisionExplosionScript.instance.SpawnExplosionAtLocation(
-            this.transform.position + new Vector3(0, 20, 0.03f));
+            this.transform.position + new Vector3(0, 0, 0.03f));
         }
         ReturnClickableToPool();
     }

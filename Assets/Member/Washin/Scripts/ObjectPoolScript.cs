@@ -46,29 +46,40 @@ public class ObjectPoolScript : MonoBehaviour
         bulletPoolTransform = this.transform;
     }
 
+    //タグを使ってそれぞれのゲームオブジェクトをゲットする
     public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation, Transform parentTransfrom)
     {
+        //タグが存在しているかどうかチェックする
         if (!bulletDictonary.ContainsKey(tag))
         {
+            //存在していない場合リターンする
             Debug.LogError(tag + "Does not exist as a key for this dictonary");
             return null;
         }
 
-        //GameObject objectToSpawn = bulletDictonary[tag].Dequeue();
-
         bool isActive = true;
         GameObject objectToSpawn = null;
+
+        //使ってないゲームオブジェクトを探す
+        //ロケット鉛筆考えると想像できる
         while (isActive)
         {
+            //一番最初のオブジェクト最後になる
+            //そのオブジェクトを使っているなら
+            //もう一回リロードする
             objectToSpawn = bulletDictonary[tag].Dequeue();
             bulletDictonary[tag].Enqueue(objectToSpawn);
+
+            //そのオブジェクト使ってない場合、Whileループから出る
             if (!objectToSpawn.activeInHierarchy) isActive = false;
         }
 
+        //オブジェクト設定する
         objectToSpawn.transform.position = position;
         objectToSpawn.transform.rotation = rotation;
         objectToSpawn.transform.SetParent(parentTransfrom);
-        //bulletDictonary[tag].Enqueue(objectToSpawn);
+
+        //オブジェクトを出す
         return objectToSpawn;
     }
 
@@ -85,7 +96,7 @@ public class ObjectPoolScript : MonoBehaviour
         bulletDictonary[tag].Enqueue(objectToReturn);
         return;
     }
-
+    
     public Transform GetbulletPoolTransForm()
     {
         return bulletPoolTransform;
