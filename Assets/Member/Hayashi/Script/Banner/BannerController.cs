@@ -6,6 +6,8 @@ public class BannerController : MonoBehaviour
 {
     [SerializeField] GameObject MyParent, TaskBarApp;
     [SerializeField] GameObject[] ScaleCollider = new GameObject[8];
+    [SerializeField] GameObject[] Images;
+    RectTransform[] ImageRT = new RectTransform[5];
     BoxCollider2D MyCol;
     RectTransform MyRT;
     Animator Anim;
@@ -34,6 +36,10 @@ public class BannerController : MonoBehaviour
         MyCol = this.GetComponent<BoxCollider2D>();
         MyRT = this.GetComponent<RectTransform>();
         Anim = this.GetComponent<Animator>();
+        for (int i = 0; i < 5; i++)
+        {
+            ImageRT[i] = Images[i].GetComponent<RectTransform>();
+        }
     }
 
     // Update is called once per frame
@@ -43,6 +49,16 @@ public class BannerController : MonoBehaviour
         MyCol.offset = new Vector2(0f, MyRT.sizeDelta.y / 2.0f - MyRT.sizeDelta.x * 0.075f / 2.0f);
 
         IsScaleCollider();
+        ImageScaller();
+    }
+
+    private void ImageScaller()
+    {
+        ImageRT[0].sizeDelta = new Vector2(MyRT.sizeDelta.x, 14f);
+        ImageRT[1].sizeDelta = new Vector2(4.25f, MyRT.sizeDelta.y - 18.25f);
+        ImageRT[2].sizeDelta = new Vector2(4.25f, MyRT.sizeDelta.y - 18.25f);
+        ImageRT[3].sizeDelta = new Vector2(MyRT.sizeDelta.x, 4.25f);
+        ImageRT[4].sizeDelta = new Vector2(MyRT.sizeDelta.x - 8.5f, MyRT.sizeDelta.y - 18.25f);
     }
 
     private void IsScaleCollider()
