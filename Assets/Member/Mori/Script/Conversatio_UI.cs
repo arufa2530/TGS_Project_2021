@@ -28,13 +28,15 @@ public class Conversatio_UI : MonoBehaviour
     [SerializeField] int _id = 0;
     [SerializeField] int _karmaValue = 0;
     //[SerializeField]AudioSource _sund;
-    float is_time = 4;
-    [SerializeField]float is_time2 = 6;
+    float is_time = 3;
+    [SerializeField]float is_time2 = 4;
     float is_time3;
+    [SerializeField]float is_time4 = 3;
     bool a = false;
     bool b = false;
     public bool c = false;
     public bool d = false;
+    bool e = false;
 
     [SerializeField]CHARNAME _CHARNAME;
 
@@ -44,9 +46,11 @@ public class Conversatio_UI : MonoBehaviour
     {
         switch(_CHARNAME)
         {
-            case CHARNAME.Operation:
+            case CHARNAME.Search:
                 //_sund.Stop();
-                thankYou.gameObject.SetActive(false);
+                //thankYou.gameObject.SetActive(false);
+                sund.gameObject.SetActive(false);
+                //e = true;
                 break;
             case CHARNAME.None:
             case CHARNAME.Start:
@@ -62,7 +66,8 @@ public class Conversatio_UI : MonoBehaviour
             case CHARNAME.Search:
                 image = oPerator.GetComponent<Image>();
                 TalkConversatio();
-                image.sprite = m_Facia[4]; 
+                image.sprite = m_Facia[4];
+                //sund.gameObject.SetActive(true);
                 break;
             case CHARNAME.Operation:
                 image = oPerator.GetComponent<Image>();
@@ -92,31 +97,19 @@ public class Conversatio_UI : MonoBehaviour
         {
             case CHARNAME.Search:
                 StageOne();
+                if (e) { sund.gameObject.SetActive(true); e = false; is_time4 = 3; }
                 switch (_id)
                 {
                     case 2:
-                    case 14:
-                        image.sprite = m_Facia[0];
-                        break;
                     case 5:
-                    case 6:
-                    case 9:
-                    case 12:
-                        image.sprite = m_Facia[1];
-                        break;
-                    case 11:
-                        image.sprite = m_Facia[2];
+                        image.sprite = m_Facia[0];
                         break;
                     case 1:
                     case 3:
-                    case 10:
                         image.sprite = m_Facia[3];
                         break;
                     //case 0:
                     case 4:
-                    case 7:
-                    case 8:
-                    case 13:
                         image.sprite = m_Facia[4];
                         break;
                 }
@@ -191,6 +184,13 @@ public class Conversatio_UI : MonoBehaviour
                     is_time2 -= Time.deltaTime;
                     if ((int)is_time2 == 0) { TalkConversatio(); is_time2 = 6; }
                 }
+                is_time4 -= Time.deltaTime;
+                if ((int)is_time4 == 0)
+                {
+                    sund.gameObject.SetActive(false);
+
+                }
+                //else if((int)is_time4 <= -1) { e = true; }
                 break;
             case CHARNAME.Operation:
                 if (!d)

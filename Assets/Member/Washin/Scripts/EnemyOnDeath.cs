@@ -29,6 +29,7 @@ public class EnemyOnDeath : MonoBehaviour
                 }
                 currentTime = 0;
                 fadeStarted = false;
+                //SceneManager.LoadScene("PaintTestScene");
                 SceneManager.LoadScene("DesktopScene");
                 //changeScene.ReturnToDesktop();
             }

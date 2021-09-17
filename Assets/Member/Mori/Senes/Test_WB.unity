@@ -1504,6 +1504,7 @@ MonoBehaviour:
   c: 0
   d: 0
   _CHARNAME: 0
+  changeTemp: {fileID: 0}
 --- !u!114 &2020039598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1661,6 +1662,7 @@ MonoBehaviour:
   c: 0
   d: 0
   _CHARNAME: 3
+  changeTemp: {fileID: 0}
 --- !u!114 &2036436284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1823,6 +1825,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6049011926759999605, guid: ed985fb9fc503d8408b213fc22a48985,
+        type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8546280611010211377, guid: ed985fb9fc503d8408b213fc22a48985,
         type: 3}
       propertyPath: m_IsActive

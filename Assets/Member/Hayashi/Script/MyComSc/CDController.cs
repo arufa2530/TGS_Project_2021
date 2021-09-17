@@ -69,7 +69,7 @@ public class CDController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         HitCollision = collision;
-        if (HitCollision.gameObject.name == "MyComputer")
+        if (HitCollision.gameObject.name == "MyComputer_2")
         {
             if (talk != null)
             {
