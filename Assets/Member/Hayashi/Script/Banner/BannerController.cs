@@ -98,48 +98,102 @@ public class BannerController : MonoBehaviour
 
         if (direction[(int)ScaleColliderNum.Up])
         {
-            MyRT.sizeDelta += new Vector2(0f, dpos.y);
+            if (MyRT.sizeDelta.y + dpos.y > 49)
+            {
+                MyRT.sizeDelta += new Vector2(0f, dpos.y);
+            }
+            else
+            {
+                GameObject.Find("SoundManager").GetComponent<SoundManagerSc>().PlaySeByName("Error_03");
+            }
         }
         else if (direction[(int)ScaleColliderNum.Down])
         {
-            MyRT.sizeDelta -= new Vector2(0f, dpos.y);
+            if (MyRT.sizeDelta.y - dpos.y > 49)
+            {
+                MyRT.sizeDelta -= new Vector2(0f, dpos.y);
+            }
+            else
+            {
+                GameObject.Find("SoundManager").GetComponent<SoundManagerSc>().PlaySeByName("Error_03");
+            }
         }
         else if (direction[(int)ScaleColliderNum.Right])
         {
-            MyRT.sizeDelta += new Vector2(dpos.x, 0f);
+            if (MyRT.sizeDelta.x + dpos.x > 180)
+            {
+                MyRT.sizeDelta += new Vector2(dpos.x, 0f);
+            }
+            else
+            {
+                GameObject.Find("SoundManager").GetComponent<SoundManagerSc>().PlaySeByName("Error_03");
+            }
         }
         else if (direction[(int)ScaleColliderNum.Left])
         {
-            MyRT.sizeDelta -= new Vector2(dpos.x, 0f);
+            if (MyRT.sizeDelta.x - dpos.x > 180)
+            {
+                MyRT.sizeDelta -= new Vector2(dpos.x, 0f);
+            }
+            else
+            {
+                GameObject.Find("SoundManager").GetComponent<SoundManagerSc>().PlaySeByName("Error_03");
+            }
         }
         else if (direction[(int)ScaleColliderNum.Corner1])
         {
-            MyRT.sizeDelta -= new Vector2(dpos.x, 0f);
-            MyRT.sizeDelta += new Vector2(0f, dpos.y);
+            if (MyRT.sizeDelta.y + dpos.y > 49 && MyRT.sizeDelta.x - dpos.x > 180)
+            {
+                MyRT.sizeDelta -= new Vector2(dpos.x, 0f);
+                MyRT.sizeDelta += new Vector2(0f, dpos.y);
+            }
+            else
+            {
+                GameObject.Find("SoundManager").GetComponent<SoundManagerSc>().PlaySeByName("Error_03");
+            }
         }
         else if (direction[(int)ScaleColliderNum.Corner2])
         {
-            MyRT.sizeDelta += new Vector2(dpos.x, 0f);
-            MyRT.sizeDelta += new Vector2(0f, dpos.y);
+            if (MyRT.sizeDelta.y + dpos.y > 49 && MyRT.sizeDelta.x + dpos.x > 180)
+            {
+                MyRT.sizeDelta += new Vector2(dpos.x, 0f);
+                MyRT.sizeDelta += new Vector2(0f, dpos.y);
+            }
+            else
+            {
+                GameObject.Find("SoundManager").GetComponent<SoundManagerSc>().PlaySeByName("Error_03");
+            }
         }
         else if (direction[(int)ScaleColliderNum.Corner3])
         {
-            MyRT.sizeDelta += new Vector2(dpos.x, 0f);
-            MyRT.sizeDelta -= new Vector2(0f, dpos.y);
+            if (MyRT.sizeDelta.y - dpos.y > 49 && MyRT.sizeDelta.x + dpos.x > 180)
+            {
+                MyRT.sizeDelta += new Vector2(dpos.x, 0f);
+                MyRT.sizeDelta -= new Vector2(0f, dpos.y);
+            }
+            else
+            {
+                GameObject.Find("SoundManager").GetComponent<SoundManagerSc>().PlaySeByName("Error_03");
+            }
         }
         else if (direction[(int)ScaleColliderNum.Corner4])
         {
-            MyRT.sizeDelta -= new Vector2(dpos.x, 0f);
-            MyRT.sizeDelta -= new Vector2(0f, dpos.y);
+            if (MyRT.sizeDelta.y - dpos.y > 49 && MyRT.sizeDelta.x - dpos.x > 180)
+            {
+                MyRT.sizeDelta -= new Vector2(dpos.x, 0f);
+                MyRT.sizeDelta -= new Vector2(0f, dpos.y);
+            }
+            else
+            {
+                GameObject.Find("SoundManager").GetComponent<SoundManagerSc>().PlaySeByName("Error_03");
+            }
         }
     }
 
     private void OnMouseDown()
     {
-        Debug.Log(this.transform.position);
         Vector2 mouse = RectTransformUtility.WorldToScreenPoint(Camera.main, MyRT.position);
         MousePos = new Vector3(mouse.x - Input.mousePosition.x, mouse.y - Input.mousePosition.y, 0f);
-        Debug.Log(MousePos);
     }
 
     private void OnMouseUp()
