@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58530317ad8d987489a6f021763c7de5, type: 3}
+  m_Name: Card Table
+  m_EditorClassIdentifier: 
+  CardKindsList:
+  - name: heart
+    kindsnumber: 1
+    CardDataList:
+    - number: 0
+      Image: {fileID: 0}
+    - number: 1
+      Image: {fileID: 21300000, guid: 86c4b595d7a2c8d40af1497442291dc5, type: 3}
+    - number: 2
+      Image: {fileID: 21300000, guid: d14126e18732bf1418b2cec026f6b4c0, type: 3}
+    - number: 3
+      Image: {fileID: 21300000, guid: 22525d2917cf8444387a9729779c2daf, type: 3}
+    - number: 4
+      Image: {fileID: 21300000, guid: ee7a8c00c5a10e549b2f3a2235ce62d9, type: 3}
+    - number: 5
+      Image: {fileID: 21300000, guid: 2246ec3b2b15a9f42a871bba1c9c9d07, type: 3}
+    - number: 6
+      Image: {fileID: 21300000, guid: a9baf8e29e117ec4a8dc49600bb6f849, type: 3}
+    - number: 7
+      Image: {fileID: 21300000, guid: fb1362d141550224098d0dcc18c06e54, type: 3}
+    - number: 8
+      Image: {fileID: 21300000, guid: 5735583d1ffa6c74c8e3c18cc604e812, type: 3}
+    - number: 9
+      Image: {fileID: 21300000, guid: 95a8cf3c6510c814abd57f657e92cac0, type: 3}
+    - number: 10
+      Image: {fileID: 21300000, guid: d9d576acc5ff89e4a85888478f2b1368, type: 3}
+    - number: 11
+      Image: {fileID: 21300000, guid: 8476f289f5b31414f8825297ff0b25c0, type: 3}
+    - number: 12
+      Image: {fileID: 21300000, guid: 47803b5e0cd17e048b9b8c02daf0b5de, type: 3}
+    - number: 13
+      Image: {fileID: 21300000, guid: de3ea0c35a7a7354ea4daeedc313d763, type: 3}
+  - name: spade
+    kindsnumber: 2
+    CardDataList:
+    - number: 0
+      Image: {fileID: 0}
+    - number: 1
+      Image: {fileID: 21300000, guid: 51d1fd778364fa54092c14d1be8138aa, type: 3}
+    - number: 2
+      Image: {fileID: 21300000, guid: b3420f1bfe991464a91935e0cf31d0e7, type: 3}
+    - number: 3
+      Image: {fileID: 21300000, guid: 2324faa26a63fb44a986c73bb49c3cf4, type: 3}
+    - number: 4
+      Image: {fileID: 21300000, guid: 450757dd18abf6240a2e51666a16cb5f, type: 3}
+    - number: 5
+      Image: {fileID: 21300000, guid: e685cafbf964f8148bc197ed8c77de05, type: 3}
+    - number: 6
+      Image: {fileID: 21300000, guid: 8b6f2e8a08bdae4478e1340aee1c520b, type: 3}
+    - number: 7
+      Image: {fileID: 21300000, guid: b37c42ea1d2b65b4c897a94d73765caf, type: 3}
+    - number: 8
+      Image: {fileID: 21300000, guid: 026f3a60347b6564baa71e2ea2f942e0, type: 3}
+    - number: 9
+      Image: {fileID: 21300000, guid: c4c3a6b59699e3042b1bd6b47cd08820, type: 3}
+    - number: 10
+      Image: {fileID: 21300000, guid: 54d6d930e055e1843a1d4a8cdbcbaa22, type: 3}
+    - number: 11
+      Image: {fileID: 21300000, guid: a8940822b7b91984cb2802b9e2ac208a, type: 3}
+    - number: 12
+      Image: {fileID: 21300000, guid: 8cef901710a9ddf4b99e6b2f310af328, type: 3}
+    - number: 13
+      Image: {fileID: 21300000, guid: 75cf5d5b31896c3499f280171fdf234d, type: 3}

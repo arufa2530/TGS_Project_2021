@@ -15,7 +15,9 @@ TagManager:
   - OnHitDespawn
   - PlayerBullet
   - PopUp
-  - DesktopIcon
+  - Card
+  - Area
+  - Complete
   layers:
   - Default
   - TransparentFX
@@ -25,7 +27,7 @@ TagManager:
   - UI
   - Bullet
   - PopUp
-  - Paint
+  - 
   - 
   - 
   - 
@@ -52,4 +54,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Solitia
+    uniqueID: 3203828287
     locked: 0

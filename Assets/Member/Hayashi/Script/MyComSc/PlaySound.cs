@@ -6,11 +6,6 @@ public class PlaySound : MonoBehaviour
 {
     MycomSETable SEList;
 
-    private void Start()
-    {
-        SetSESource();
-    }
-
     public void SetSESource()
     {
         SEList = Resources.Load<MycomSETable>("Scriotable/MycomSETable");
@@ -19,7 +14,7 @@ public class PlaySound : MonoBehaviour
             SEData SEData = SEList.SEDataList[i];
             if (SEData.Name == this.name)
             {
-                this.GetComponent<AudioSource>().clip = SEData.SESource;
+                GameObject.Find("SoundManager").GetComponent<SoundManagerSc>().PlaySeByName(SEData.SESource.name);
             }
         }
     }

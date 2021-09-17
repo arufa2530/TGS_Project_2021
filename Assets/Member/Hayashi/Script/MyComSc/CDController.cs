@@ -8,11 +8,15 @@ public class CDController : MonoBehaviour
     [SerializeField] GameObject Drive,RockFile;
     [SerializeField] GameObject CDPopup;
     [SerializeField] GameObject Operator;
+    [SerializeField] GameObject talk;
+    Conversatio_UI Conversatio;
+
+    public CameraShake Shake;
 
     bool IsDrop;
     bool EndDrop;
     int ClickVal;
-    float GravDef = 0.15f;
+    //float GravDef = 0.15f;
 
     Rigidbody2D rig;
 
@@ -26,6 +30,7 @@ public class CDController : MonoBehaviour
         EndDrop = false;
         ClickVal = 0;
         rig = this.GetComponent<Rigidbody2D>();
+        Conversatio = talk.GetComponent<Conversatio_UI>();
     }
 
     // Update is called once per frame
@@ -39,7 +44,7 @@ public class CDController : MonoBehaviour
  
         if (IsDrop)
         {
-            if (Mathf.Abs(this.GetComponent<Rigidbody2D>().velocity.y) < 0.1f && HitCollision.gameObject.name == "MyComputer")
+            if (Mathf.Abs(this.GetComponent<Rigidbody2D>().velocity.y) == 0f && HitCollision != null)
             {
                 EndDrop = true;
             }
@@ -48,21 +53,47 @@ public class CDController : MonoBehaviour
 
     private void Follow()
     {
-        this.GetComponent<RectTransform>().anchoredPosition = new Vector2(Drive.GetComponent<RectTransform>().anchoredPosition.x + 11f, Drive.GetComponent<RectTransform>().anchoredPosition.y + 24f);
+        this.GetComponent<RectTransform>().anchoredPosition = new Vector2(Drive.GetComponent<RectTransform>().anchoredPosition.x + 4f, Drive.GetComponent<RectTransform>().anchoredPosition.y + 8f);
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
         HitCollider = collision;
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        HitCollider = null;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         HitCollision = collision;
+        if (HitCollision.gameObject.name == "MyComputer_2")
+        {
+            if (talk != null)
+            {
+                Conversatio.TalkVo(7);
+            }
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        HitCollision = null;
     }
 
     private void OnMouseDown()
     {
         ClickVal++;
+        if (ClickVal == 1)
+        {
+            Shake.ShakeY(0.5f, 1f);
+        }
+        else if (ClickVal == 2)
+        {
+            Shake.Shake(0.5f, 1.5f);
+        }
     }
 
     private void OnMouseDrag()
@@ -99,17 +130,33 @@ public class CDController : MonoBehaviour
 
     public void CDDeload()
     {
-        CDPopup.SetActive(false);
-        EndDrop = false;
         rig.constraints = RigidbodyConstraints2D.None;
+        rig.velocity = new Vector2(0,-0.1f);
+        CDPopup.SetActive(false);
     }
 
     public void CDLoad()
     {
         CDPopup.SetActive(false);
-        Operator.SetActive(true);
+        //Operator.SetActive(true);
+        if (talk != null)
+        {
+            Conversatio.TalkVo(8);
+            Conversatio.TalkVo(9);
+            Conversatio.d = true;
+        }
         Drive.GetComponent<DriveController>().IsLoadCD = true;
-        RockFile.GetComponent<AudioSource>().Play();
+        MycomSETable SEList;
+        SEList = Resources.Load<MycomSETable>("Scriotable/MycomSETable");
+        this.gameObject.SetActive(false);
+        for (int i = 0; i < SEList.SEDataList.Count; i++)
+        {
+            SEData SEData = SEList.SEDataList[i];
+            if (SEData.Name == this.name)
+            {
+                GameObject.Find("SoundManager").GetComponent<SoundManagerSc>().PlaySeByName(SEData.SESource.name);
+            }
+        }
         Destroy(this.gameObject);
     }
 }

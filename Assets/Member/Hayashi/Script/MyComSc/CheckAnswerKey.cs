@@ -8,11 +8,14 @@ public class CheckAnswerKey : MonoBehaviour
 
     Collider2D HitCollsion;
     AudioSource MyAudio;
+    [SerializeField] GameObject talk;
+    Conversatio_UI Conversatio;
 
     private void Start()
     {
         DCon = GameObject.Find("D:").GetComponent<DriveController>();
         MyAudio = this.GetComponent<AudioSource>();
+        Conversatio = talk.GetComponent<Conversatio_UI>();
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -30,9 +33,21 @@ public class CheckAnswerKey : MonoBehaviour
         Debug.Log(HitCollsion?.gameObject.name);
         if (HitCollsion?.gameObject.name == "RockFile")
         {
-            if (MyAudio.clip.name == GetAnswerSEName() && DCon.IsLoadCD)
+            MycomSETable SEList;
+            SEList = Resources.Load<MycomSETable>("Scriotable/MycomSETable");
+            string sename = "";
+            for (int i = 0; i < SEList.SEDataList.Count; i++)
+            {
+                SEData SEData = SEList.SEDataList[i];
+                if (SEData.Name == this.name)
+                {
+                    sename = SEData.SESource.name;
+                }
+            }
+            if (sename == GetAnswerSEName() && DCon.IsLoadCD)
             {
                 GameObject.Find("RockFile").GetComponent<RockFileController>().PlaySound1();
+                if (talk != null) Conversatio.TalkVo(10);
                 Debug.Log("ファイルが開いたよ");
             }
             else
@@ -43,6 +58,6 @@ public class CheckAnswerKey : MonoBehaviour
     private string GetAnswerSEName()
     {
         MycomSETable SEList = Resources.Load<MycomSETable>("Scriotable/MycomSETable");
-        return SEList.GetSEDatas().Find(data => data.GetSEName() == "CD").SESource.name;
+        return SEList.GetSEDatas().Find(data => data.GetSEName() == "D:").SESource.name;
     }
 }
