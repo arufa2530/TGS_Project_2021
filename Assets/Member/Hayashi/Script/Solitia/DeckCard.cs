@@ -28,5 +28,7 @@ public class DeckCard : MonoBehaviour
         {
             DrawZone.transform.GetChild(i).gameObject.GetComponent<SpriteRenderer>().sortingOrder = i;
         }
+
+        GameObject.Find("SoundManager").GetComponent<SoundManagerSc>().PlaySeByName("Turn_over_card");
     }
 }

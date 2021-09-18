@@ -22,7 +22,7 @@ MonoBehaviour:
       \u5927\u5207\u306B\u3057\u3066\u306D"
   - Name: Vaccine
     Image: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
-    explanation: NoData
+    explanation: "\u30EF\u30AF\u30C1\u30F3"
   - Name: Brush
-    Image: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
-    explanation: NoData
+    Image: {fileID: 21300000, guid: fab8e2535a9e6224aa80a867330bb852, type: 3}
+    explanation: "\u30D6\u30E9\u30B7"
