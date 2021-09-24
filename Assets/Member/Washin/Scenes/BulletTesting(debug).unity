@@ -1311,6 +1311,11 @@ PrefabInstance:
       propertyPath: canDrag
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9136859087645172695, guid: 0335b38900d3fbd4b83eb82478049205,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0335b38900d3fbd4b83eb82478049205, type: 3}
 --- !u!1 &347797154

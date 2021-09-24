@@ -47,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float iFrameRemainingTime = 0;
     bool doneResettingIFrames = false;
 
+    [SerializeField] PlayerShootingSE shootSE;
     PlayerSFXs playerSFXs;
 
     private void Awake()
@@ -227,6 +228,7 @@ public class PlayerMovement : MonoBehaviour
         else if (Mathf.Abs(this.transform.position.x - targetPos.x) > offsetMouseDetect)
         {
             PlayerShootingScript.instance.StopShooting();
+            shootSE.StopShootingSE();
             rb.velocity = new Vector2(targetPosOnTheRight * moveSpeed * 1000 * Time.fixedDeltaTime, rb.velocity.y);
             _animator.Play("DashB");
 
@@ -246,7 +248,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 PlayerShootingScript.instance.AllowShooting();
                 PlayAttack();
-
 
                 if (EnemyCenterPositionScript.instance.GetCenterOfSpawnPosition().x > this.transform.position.x && !isFacingRight)
                 {
@@ -272,6 +273,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void PlayAttack()
     {
+        playerSFXs.StopPlayingSound();
         Vector3 tempVec = rb.velocity;
         rb.velocity = new Vector2(0, rb.velocity.y);
         _animator.Play("FireB");
@@ -309,6 +311,11 @@ public class PlayerMovement : MonoBehaviour
     public void SetMoveSpeed(float desiredMoveSpeedInPercentage)
     {
         moveSpeed *= desiredMoveSpeedInPercentage;
+    }
+
+    public Vector3 GetCurrentPosition()
+    {
+        return this.transform.position;
     }
 
 }

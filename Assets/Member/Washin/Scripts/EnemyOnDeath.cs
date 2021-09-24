@@ -31,7 +31,9 @@ public class EnemyOnDeath : MonoBehaviour
                 currentTime = 0;
                 fadeStarted = false;
                 //SceneManager.LoadScene("PaintTestScene");
-                SceneManager.LoadScene("DesktopScene");
+                if(PlayerReferences.battleStageCount != 2)
+                    SceneManager.LoadScene("DesktopScene");
+                else SceneManager.LoadScene("EndingScene");
                 //changeScene.ReturnToDesktop();
             }
             enemyHealth.shouldSlideOut = true;
