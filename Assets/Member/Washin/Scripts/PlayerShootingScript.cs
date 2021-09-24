@@ -7,6 +7,7 @@ public class PlayerShootingScript : MonoBehaviour
     public static PlayerShootingScript instance;
     [SerializeField] public Transform shootFromHere;
     [SerializeField] Transform playerBulletHolder;
+    [SerializeField] PlayerShootingSE shootSE;
     public static bool CanShoot;
     public float currentTime;
     public float fireRate;
@@ -32,6 +33,7 @@ public class PlayerShootingScript : MonoBehaviour
             if (currentTime >= fireRate)
             {
                 ShootAtEnemy();
+                shootSE.PlayPlayerShootingSE();
                 currentTime = 0;
             }
         }
@@ -68,5 +70,4 @@ public class PlayerShootingScript : MonoBehaviour
     {
         return shootFromHere.position;
     }
-
 }

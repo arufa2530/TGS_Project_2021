@@ -21,6 +21,8 @@ public class DragWindow : MonoBehaviour
     {
         if (!canDrag) return;
 
+
+
         if (isDragging)
         {
             mousePos = CalcMousePositionWithOffset();
@@ -35,6 +37,10 @@ public class DragWindow : MonoBehaviour
 
     public void OnMouseDown()
     {
+        if (PlayerReferences.playerMovement.GetCurrentPosition().y > -120 && PlayerReferences.playerMovement.GetCurrentPosition().y > transform.position.y)
+        {
+            return;
+        }
         if (PlayerReferences.playerMovement.GetCurrentPlayerMode() == PlayerMovement.PlayerModes.InspectMode)
         {
             if (Input.GetMouseButtonDown(0))
