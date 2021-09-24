@@ -38,3 +38,5 @@ sysinfo.txt
 *.apk
 *.unitypackage
 *.json
+*.prefab
+*.meta

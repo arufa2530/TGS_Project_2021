@@ -7,13 +7,16 @@ public enum PlayerSounds
 {
     currentSound,
     walk,
-    jump
+    jump,
+    fire
+
 }
 public class PlayerSFXs : MonoBehaviour
 {
     AudioSource audioSource;
     [SerializeField] AudioClip walk;
     [SerializeField] AudioClip jump;
+    [SerializeField] AudioClip fire;
 
     private void Start()
     {
@@ -24,6 +27,7 @@ public class PlayerSFXs : MonoBehaviour
     {
         if (soundToPlay == PlayerSounds.walk) PlaySound(walk);
         if(soundToPlay == PlayerSounds.jump) PlaySound(jump);
+        if(soundToPlay == PlayerSounds.fire) PlaySound(fire);
     }
 
     void PlaySound(AudioClip pickedSound)

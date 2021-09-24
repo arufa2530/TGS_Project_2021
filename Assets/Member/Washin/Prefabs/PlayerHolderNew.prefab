@@ -714,16 +714,18 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   isFacingRight: 0
   isJumping: 0
-  moveSpeed: 10
+  moveSpeed: 15
   idle: {fileID: 21300000, guid: e2f6068e7f97b624ba591b14aa0a2921, type: 3}
   run: {fileID: 21300000, guid: 535576d16e05ea949930ab68f5d4479b, type: 3}
   jump: {fileID: 21300000, guid: 2dbb8ac46fb1e174c98afe77ea4680be, type: 3}
-  jumpAmount: 3.5
+  jumpAmount: 5
   _currentMode: 0
   _animator: {fileID: 0}
   currentModeUI: {fileID: 7549336432406252409}
   jumpCooldown: 0.8
   jumpCurrentTime: 0
+  iFrameMaxTime: 1.5
+  iFrameRemainingTime: 0
 --- !u!114 &4391101174285681438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -739,8 +741,8 @@ MonoBehaviour:
   shootFromHere: {fileID: 8601153006345267532}
   playerBulletHolder: {fileID: 1295370015322634938}
   currentTime: 0
-  fireRate: 0.1
-  bulletSpeed: 1
+  fireRate: 0.2
+  bulletSpeed: 3
 --- !u!114 &3012455189985253827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -833,6 +835,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walk: {fileID: 8300000, guid: e36e9531b3564c14eb3d78d8dc475183, type: 3}
   jump: {fileID: 8300000, guid: f01de7fd3afa57141a4c4a6bc60c9e4b, type: 3}
+  fire: {fileID: 8300000, guid: 04ae5b01f4b08fb4faf90950ba8e8002, type: 3}
 --- !u!82 &3916698567811008271
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1649,7 +1652,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7886689210408504012}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.46, y: 6.2, z: 0}
+  m_LocalPosition: {x: -5, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3012455189985253831}

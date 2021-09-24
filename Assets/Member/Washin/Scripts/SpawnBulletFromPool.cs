@@ -67,14 +67,14 @@ public class SpawnBulletFromPool : MonoBehaviour
 
         if (shootBulletsSpiralPattern)
         {
-            if (currentTime > 0.1f)
+            if (currentTime > 0.3f)
             {
                 if (isFirstPass)
                 {
                     SpawnBulletsInACircleAroundEnemy(nonClickableBulletYellow, -2, 10, false);
                     isFirstPass = false;
                 }
-                SpawnBulletsInASpiralAroundEnemy(nonClickableBulletYellow, 2f, -2, tempStep, 10);
+                SpawnBulletsInASpiralAroundEnemy(nonClickableBulletYellow, 2.75f, -2, tempStep, 7);
                 tempStep += 5;
                 currentTime = 0;
             }
@@ -92,6 +92,8 @@ public class SpawnBulletFromPool : MonoBehaviour
 
     public void ShootAtPlayer(string typeOfBulletToSpawn, float bulletSpeed)
     {
+        if (EnemyCenterPositionScript.instance == null) return;
+
         Vector3 tempPlayerPos = PlayerShootingScript.instance.shootFromHere.position;
 
         GameObject tempEnemyBullet = ObjectPoolScript.Instance.SpawnFromPool(

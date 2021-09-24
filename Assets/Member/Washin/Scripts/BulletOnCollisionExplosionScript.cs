@@ -16,6 +16,9 @@ public class BulletOnCollisionExplosionScript : MonoBehaviour
 
     public void SpawnExplosionAtLocation(Vector3 locationToSpawnExplosion)
     {
-        GameObject tempExplosion = Instantiate(explosionPrefab, locationToSpawnExplosion, Quaternion.identity, this.transform);
+        if (explosionPrefab != null)
+        {
+            GameObject tempExplosion = Instantiate(explosionPrefab, locationToSpawnExplosion, Quaternion.identity, this.transform);
+        }
     }
 }

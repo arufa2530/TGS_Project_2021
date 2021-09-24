@@ -8,11 +8,16 @@ public class EnemyCenterPositionScript : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        //instance = this;
     }
 
     public Vector3 GetCenterOfSpawnPosition()
     {
         return this.transform.position;
+    }
+
+    public void SetInstance()
+    {
+        instance = this;
     }
 }

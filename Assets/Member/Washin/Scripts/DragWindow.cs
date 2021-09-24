@@ -10,6 +10,7 @@ public class DragWindow : MonoBehaviour
     private bool isDragging;
     Vector3 mousePos;
     Rigidbody2D rb;
+    [SerializeField] bool canDrag;
 
     private void Start()
     {
@@ -18,7 +19,8 @@ public class DragWindow : MonoBehaviour
 
     void Update()
     {
-        //rb.velocity = Vector2.zero;
+        if (!canDrag) return;
+
         if (isDragging)
         {
             mousePos = CalcMousePositionWithOffset();
@@ -68,6 +70,9 @@ public class DragWindow : MonoBehaviour
         return _mousePos;
     }
 
-
+    public void SetCanDrag(bool _canDrag)
+    {
+        canDrag = _canDrag;
+    }
 
 }

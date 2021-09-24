@@ -43,6 +43,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float jumpCooldown;
     [SerializeField] float jumpCurrentTime;
 
+    [SerializeField] float iFrameMaxTime;
+    [SerializeField] float iFrameRemainingTime = 0;
+    bool doneResettingIFrames = false;
+
     PlayerSFXs playerSFXs;
 
     private void Awake()
@@ -66,6 +70,21 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if(PlayerReferences.AreIFramesActive())
+        {
+            if(!doneResettingIFrames)
+            {
+                iFrameRemainingTime = iFrameMaxTime;
+                doneResettingIFrames = true;
+            }
+            iFrameRemainingTime -= Time.deltaTime;
+            if(iFrameRemainingTime <= 0)
+            {
+                doneResettingIFrames = false;
+                PlayerReferences.SetIFrames(false);
+            }
+        }
+
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             SetModeToIdle(true);
@@ -227,6 +246,18 @@ public class PlayerMovement : MonoBehaviour
             {
                 PlayerShootingScript.instance.AllowShooting();
                 PlayAttack();
+
+
+                if (EnemyCenterPositionScript.instance.GetCenterOfSpawnPosition().x > this.transform.position.x && !isFacingRight)
+                {
+                    FlipSprite();
+                    Debug.Log("SpriteFlipped");
+                }
+                //Is on Left
+                //else if (EnemyCenterPositionScript.instance.GetCenterOfSpawnPosition().x < this.transform.position.x && isFacingRight)
+                //{
+                //    FlipSprite();
+                //}
             }
         }
     }
@@ -244,7 +275,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 tempVec = rb.velocity;
         rb.velocity = new Vector2(0, rb.velocity.y);
         _animator.Play("FireB");
-        playerSFXs.StopPlayingSound();
+        //playerSFXs.PickSoundToPlay(PlayerSounds.fire);
     }
 
     #endregion

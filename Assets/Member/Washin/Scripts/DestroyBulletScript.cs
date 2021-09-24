@@ -75,7 +75,12 @@ public class DestroyBulletScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Bullet")) return;
         if (collision.gameObject.CompareTag("Walls")) return;
         if (collision.gameObject.CompareTag("OnHitDespawn")) { ReturnClickableToPool(); return; }
-        if (collision.gameObject.CompareTag("Player")) { PlayerReferences.LostHealth(1); ReturnClickableToPool(); return; }
+        if (collision.gameObject.CompareTag("Player")) 
+        { 
+            PlayerReferences.LostHealth(1); 
+            ReturnClickableToPool(); 
+            return; 
+        }
 
 
 
@@ -86,7 +91,8 @@ public class DestroyBulletScript : MonoBehaviour
             //tempRotation.z = tempRotation.x;
             //tempRotation.x = 0;
             //tempRotation.y = 0;
-            BulletOnCollisionExplosionScript.instance.SpawnExplosionAtLocation(
+            if(BulletOnCollisionExplosionScript.instance != null)
+                BulletOnCollisionExplosionScript.instance.SpawnExplosionAtLocation(
             this.transform.position + new Vector3(0, 0, 0.03f));
         }
         ReturnClickableToPool();
