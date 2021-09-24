@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Conversatio_Button : MonoBehaviour
 {
-    [SerializeField]GameObject content;
+    [SerializeField] GameObject content;
     [SerializeField] Conversatio_UI Conv_Ui;
+    [SerializeField] EndConversatio_UI EndConv_Ui;
     [SerializeField] CHARNAME _CHARNAME;
     private void Awake()
     {
@@ -13,12 +14,17 @@ public class Conversatio_Button : MonoBehaviour
         {
             case CHARNAME.Search:
                 content = GameObject.Find("Content");
+                Conv_Ui = content.GetComponent<Conversatio_UI>();
                 break;
             case CHARNAME.Operation:
                 content = GameObject.Find("Content2");
+                Conv_Ui = content.GetComponent<Conversatio_UI>();
+                break;
+            case CHARNAME.End:
+                content = GameObject.Find("Content");
+                EndConv_Ui = content.GetComponent<EndConversatio_UI>();
                 break;
         }
-        Conv_Ui = content.GetComponent<Conversatio_UI>();
     }
     
     public void Positive()
@@ -30,6 +36,18 @@ public class Conversatio_Button : MonoBehaviour
     public void Negation()
     {
         Conv_Ui.StageThree();
+        this.transform.parent.gameObject.SetActive(false);
+    }
+
+    public void Pos()
+    {
+        EndConv_Ui.StageTwo();
+        this.transform.parent.gameObject.SetActive(false);
+    }
+
+    public void Neg()
+    {
+        EndConv_Ui.StageThree();
         this.transform.parent.gameObject.SetActive(false);
     }
 }

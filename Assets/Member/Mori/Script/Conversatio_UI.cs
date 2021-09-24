@@ -9,6 +9,7 @@ public enum CHARNAME
     Search,
     Operation,
     Start,
+    End,
 }
 
 public class Conversatio_UI : MonoBehaviour
@@ -67,7 +68,6 @@ public class Conversatio_UI : MonoBehaviour
                 image = oPerator.GetComponent<Image>();
                 TalkConversatio();
                 image.sprite = m_Facia[4];
-                //sund.gameObject.SetActive(true);
                 break;
             case CHARNAME.Operation:
                 image = oPerator.GetComponent<Image>();
@@ -79,7 +79,20 @@ public class Conversatio_UI : MonoBehaviour
                 TalkConversatio();
                 break;
         }
-        //_sund = GetComponent<AudioSource>();
+    }
+    //  IDÇéwíËÇµÇƒÅAÇªÇÃIDÇÃâÔòbÇÇ∑ÇÈ
+    public void TalkConversatio()
+    {
+        GameObject obj = (GameObject)Instantiate(pRefab);
+        obj.transform.Find("Text").gameObject.GetComponent<Text>().text = charName[0];
+        obj.transform.SetParent(existence.transform, false);
+        obj.transform.localScale = new Vector3(1, 1, 1);
+        //
+        GameObject obj2 = (GameObject)Instantiate(pRefab);
+        obj2.transform.Find("Text").gameObject.GetComponent<Text>().text = opeTalk[_id];
+        obj2.transform.SetParent(existence.transform, false);
+        obj2.transform.localScale = new Vector3(1, 1, 1);
+        _id++;
     }
 
     private void OnMouseOver()
@@ -253,19 +266,7 @@ public class Conversatio_UI : MonoBehaviour
         a = false;
     }
 
-    public void TalkConversatio()
-    {
-        GameObject obj = (GameObject)Instantiate(pRefab);
-        obj.transform.Find("Text").gameObject.GetComponent<Text>().text = charName[0];
-        obj.transform.SetParent(existence.transform, false);
-        obj.transform.localScale = new Vector3(1, 1, 1);
-        //
-        GameObject obj2 = (GameObject)Instantiate(pRefab);
-        obj2.transform.Find("Text").gameObject.GetComponent<Text>().text = opeTalk[_id];
-        obj2.transform.SetParent(existence.transform, false);
-        obj2.transform.localScale = new Vector3(1, 1, 1);
-        _id++;
-    }
+   
 
     public void TalkVo(int i)
     {
