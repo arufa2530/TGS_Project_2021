@@ -45,6 +45,4 @@ public class EnemyOnDeath : MonoBehaviour
             fadeStarted = true;
         }
     }
-
-
 }
