@@ -7,6 +7,7 @@ public class PopUpHPBar : MonoBehaviour
 {
     [SerializeField] float maxHealth;
     [SerializeField] float currentHealth;
+    [SerializeField] GameObject popUpCanvas;
     [SerializeField] GameObject popUpHealthBar;
     [SerializeField] GameObject trackingPoint;
 
@@ -15,6 +16,11 @@ public class PopUpHPBar : MonoBehaviour
 
     private void Start()
     {
+        if (PopUpCanvasRef.canvas == null)
+        {
+            GameObject tempCanvas = Instantiate(popUpCanvas);
+            tempCanvas.GetComponent<Canvas>().worldCamera = Camera.main;
+        }
         tempHealthBar = Instantiate(popUpHealthBar, PopUpCanvasRef.canvas.transform);
         hpDisplay = tempHealthBar.GetComponent<PopUpHPDisplay>();
         currentHealth = maxHealth;

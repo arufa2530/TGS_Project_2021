@@ -41,6 +41,7 @@ public class EnemyActions : MonoBehaviour
     [SerializeField] CurrentAttackPattern currentAttack;
 
     [SerializeField] bool singleShot;
+    [SerializeField] bool arcShotOnly;
     float idleTime = 3f;
     float movingTime = 3f;
     float shootingTime = 3f;
@@ -147,9 +148,9 @@ public class EnemyActions : MonoBehaviour
             return;
         }
 
-        int i = UnityEngine.Random.Range(0, 2);
+        int i = UnityEngine.Random.Range(0, 3);
 
-        if (i == 0) //shoot in an arc pattern
+        if (i == 0 || arcShotOnly) //shoot in an arc pattern
         {
             shootFromEnemy.shootBulletsArcPattern = true;
             currentAttack = CurrentAttackPattern.Arc;
@@ -207,4 +208,13 @@ public class EnemyActions : MonoBehaviour
         shootFromEnemy.ShootAtPlayer("EnemyBulletNonClickableYellow", 1f);
     }
 
+    public void SetSingleShot(bool _bool)
+    {
+        singleShot = _bool;
+    }
+
+    public void SetOnlyArc(bool _bool)
+    {
+        arcShotOnly = _bool;
+    }
 }

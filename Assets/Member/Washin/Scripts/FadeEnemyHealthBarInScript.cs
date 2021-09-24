@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class FadeEnemyHealthBarInScript : MonoBehaviour
 {
+    [SerializeField] EnemyCenterPositionScript enemyCenter;
     [SerializeField] CanvasGroup canvasGroup;
     private float timeToFadeInHealthBar = 1;
     private float timeToFadeOutHealthBar = 1;
@@ -26,17 +27,16 @@ public class FadeEnemyHealthBarInScript : MonoBehaviour
 
     private void Awake()
     {
-        //canvasGroup.alpha = 0;
         healthBarUI.localPosition = new Vector3(0, 275, -91);
         higherPos = healthBarUI.localPosition;
         lowerPos = new Vector3(0, 200, -91);
-        //StartCoroutine(HealthBarSlideIn());
         redBar.value = 1;
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.KeypadPlus)) { shouldSlideOut = true; currentTime = 0; }
+
         if (!slideInDone)
             StartCoroutine(HealthBarSlideIn());
         else if(!barIsFilled)
@@ -53,9 +53,10 @@ public class FadeEnemyHealthBarInScript : MonoBehaviour
         {
             return;
         }
-        redBar.value = redBar.maxValue;
+        //redBar.value = redBar.maxValue;
         barIsFilled = true;
         currentTime = 0;
+        enemyCenter.SetInstance();
     }
 
     private IEnumerator HealthBarSlideIn()
@@ -70,6 +71,7 @@ public class FadeEnemyHealthBarInScript : MonoBehaviour
                 step1Done = true;
                 slideInDone = true;
                 currentTime = 0;
+                //enemyCenter.SetInstance();
                 yield return null;
             }
             yield return null;

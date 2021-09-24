@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 9136859087111123680}
   - component: {fileID: -7734688065306968024}
   - component: {fileID: -50870714507012532}
+  - component: {fileID: 8376239887981376272}
   m_Layer: 0
   m_Name: PopUp FinalQuestionMark
   m_TagString: PopUp
@@ -132,6 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDragging: 0
+  canDrag: 0
 --- !u!61 &9136859087111123680
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -193,9 +195,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   currentHealth: 0
+  popUpCanvas: {fileID: 1337422898741735217, guid: 221f66daab1f42b4ab16e1e951fed8ab,
+    type: 3}
   popUpHealthBar: {fileID: 7529212993826747980, guid: 3d25edc7a1b857d4584bcb819ada8c77,
     type: 3}
   trackingPoint: {fileID: 2863687558210365691}
+--- !u!114 &8376239887981376272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9136859087111123682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44137b31fd28ebf42a1d708a6bb43388, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dragWindow: {fileID: 9136859087111123686}
 --- !u!1 &9136859087645172689
 GameObject:
   m_ObjectHideFlags: 0

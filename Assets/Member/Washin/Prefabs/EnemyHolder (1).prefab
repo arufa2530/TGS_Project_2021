@@ -169,6 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c40fb6d6a8e534c4983b926879a1083f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyCenter: {fileID: 6165183021067619654}
   canvasGroup: {fileID: 6165183021563490834}
   currentTime: 0
   healthBarUI: {fileID: 6165183021668351532}
@@ -302,7 +303,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 200
   m_WholeNumbers: 1
-  m_Value: 200
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -559,12 +560,12 @@ MonoBehaviour:
   shootBulletsArcPattern: 0
   startingArc: 90
   endingArc: 270
-  bulletsPerArc: 10
+  bulletsPerArc: 6
   fireRateArc: 1
   timeBetweenSingleShots: 1
   shootBulletsSpiralPattern: 0
   spawnBulletsAroundEnemy: 0
-  shootSingleBullet: 1
+  shootSingleBullet: 0
   isFirstPass: 0
 --- !u!114 &6165183022067834754
 MonoBehaviour:
@@ -752,6 +753,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpBar: {fileID: 6165183021668351528}
+  onStartCenterPosition: {fileID: 6165183021067619654}
 --- !u!114 &6165183022909208643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -768,11 +770,12 @@ MonoBehaviour:
   shootFromEnemy: {fileID: 6165183022067834755}
   lastState: 2
   lastMove: 2
-  currentActionState: 4
+  currentActionState: 0
   currentMoveState: 2
   currentTime: 0
   currentAttack: 0
-  singleShot: 1
+  singleShot: 0
+  arcShotOnly: 0
 --- !u!114 &6165183022909208642
 MonoBehaviour:
   m_ObjectHideFlags: 0

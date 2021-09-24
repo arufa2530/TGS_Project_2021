@@ -8,6 +8,7 @@ public class EnemyOnDeath : MonoBehaviour
     [SerializeField] EnemyFadeSpriteOut fadeEnemy;
     [SerializeField] EnemyActions enemyActions;
     [SerializeField] FadeEnemyHealthBarInScript enemyHealth;
+    //[SerializeField] EnemyCenterPositionScript enemyCenter;
     //[SerializeField] GameOverScreen changeScene;
     [SerializeField] private float currentTime = 0;
     private float waitTime = 2f;
@@ -35,6 +36,7 @@ public class EnemyOnDeath : MonoBehaviour
             }
             enemyHealth.shouldSlideOut = true;
             PlayerShootingScript.instance.StopShooting();
+            EnemyCenterPositionScript.instance = null;
             enemyActions.currentActionState = CurrentEnemyAction.Dying;
             fadeEnemy.shouldFadeOutEnemy = true;
             AudioManager.instance.StartFadeOut();

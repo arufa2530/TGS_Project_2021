@@ -7,6 +7,7 @@ public class EnemyHPScript : MonoBehaviour
 {
     [SerializeField] Slider hpBar;
     public static EnemyHPScript instance;
+    [SerializeField] EnemyCenterPositionScript onStartCenterPosition;
 
     private void Awake()
     {
@@ -28,7 +29,10 @@ public class EnemyHPScript : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         //PlayerShootingScript.instance.ShouldBeShooting = true;
-        PlayerShootingScript.instance.AllowShooting();
+
+        onStartCenterPosition.SetInstance();
+
+        //PlayerShootingScript.instance.AllowShooting();
     }
 
 }

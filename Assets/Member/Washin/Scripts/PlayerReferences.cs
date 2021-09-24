@@ -12,6 +12,8 @@ public class PlayerReferences : MonoBehaviour
     public static GameOverScreen theGameIsOver;
     public static bool finishSlowSpam = false;
     public static PlayerMovement playerMovement;
+    public static int battleStageCount;
+    public static bool iFramesActive = false;
 
     private void Awake()
     {
@@ -32,8 +34,25 @@ public class PlayerReferences : MonoBehaviour
 
     public static void LostHealth(int value)
     {
+        if (AreIFramesActive()) return;
         currentHealth -= value;
         theHealthUI.UpdateHealthUI();
+        SetIFrames(true);
         //Debug.Log("Current Health = " + currentHealth);
+    }
+
+    public static void PlayerEnteredBattleStage()
+    {
+        battleStageCount++;
+    }
+
+    public static bool AreIFramesActive()
+    {
+        return iFramesActive;
+    }
+
+    public static void SetIFrames(bool _bool)
+    {
+        iFramesActive = _bool;
     }
 }
