@@ -9,8 +9,13 @@ public class MyconClick : MonoBehaviour
     {
         mycon,
         opeson,
+        file,
+        soli,
+        peint,
     }
     [SerializeField]GameObject myCon;
+    [SerializeField]GameObject iCon;
+    [SerializeField]FileIcon icon_c;
     bool isClick;
     private int timesClicked = 0;
     private float elaspedTime = 0;
@@ -25,12 +30,26 @@ public class MyconClick : MonoBehaviour
         {
             case TENP.mycon:
                 myCon = GameObject.Find("MyComputer_2");
+                myCon.SetActive(false);
                 break;
             case TENP.opeson:
                 myCon = GameObject.Find("CanvasOve");
+                myCon.SetActive(false);
                 break;
+            case TENP.file:
+                myCon = GameObject.Find("File");
+                myCon.SetActive(false);
+                break;
+            case TENP.soli:
+                iCon = GameObject.Find("FileIcon_a");
+                icon_c = iCon.GetComponent<FileIcon>();
+                break;
+            case TENP.peint:
+                iCon = GameObject.Find("FileIcon_a");
+                icon_c = iCon.GetComponent<FileIcon>();
+                break;
+
         }
-        myCon.SetActive(false);
         isClick = false;
     }
     //public void OnClick()
@@ -59,8 +78,28 @@ public class MyconClick : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 //DoubleClicked();
-                if (!isClick) { myCon.SetActive(true); isClick = true; }
-                else if(isClick){ myCon.SetActive(false); isClick = false; }
+                if(myCon != null)
+                {
+                    if (!isClick) { myCon.SetActive(true); isClick = true;}
+                    else if (isClick) { myCon.SetActive(false); isClick = false;}
+                }
+                if(iCon != null)
+                {
+                    switch(tnpu)
+                    {
+                        case TENP.soli:
+                            if (!isClick) { isClick = true; icon_c.a = true;}
+                            else if (isClick) { isClick = false; icon_c.a = false;}
+                            break;
+                        case TENP.peint:
+                            if (!isClick) { isClick = true; icon_c.b = true; }
+                            else if (isClick) { isClick = false; icon_c.b = false; }
+                            break;
+
+                    }
+                }
+                
+
                 Debug.Log("ダブルクリックしたよ");
                 timesClicked = 2;
                 yield break;

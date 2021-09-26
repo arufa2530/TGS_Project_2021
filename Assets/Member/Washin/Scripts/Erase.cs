@@ -17,7 +17,7 @@ public class Erase : MonoBehaviour
 
     RaycastHit2D hit;
 
-    bool canErase = false;
+    public bool canErase = false;
 
     private void Start()
     {

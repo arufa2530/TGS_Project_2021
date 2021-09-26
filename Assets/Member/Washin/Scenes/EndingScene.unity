@@ -586,6 +586,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -50870714507012532, guid: 0335b38900d3fbd4b83eb82478049205,
+        type: 3}
+      propertyPath: popUpCanvas
+      value: 
+      objectReference: {fileID: 1337422898741735217, guid: 8921c1725f948064bb4c07bc625b86d9,
+        type: 3}
     - target: {fileID: 9136859087111123682, guid: 0335b38900d3fbd4b83eb82478049205,
         type: 3}
       propertyPath: m_Name
@@ -976,10 +982,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1631908141}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e143bcece4a03cb418f74288113c1056, type: 3}
+  m_Script: {fileID: 11500000, guid: da5d49f448aeba74e8792f5d727a2491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floatingFolderPrefab: {fileID: 7664243995736477026, guid: fea5dfb97a2844443a583144e8ee9a69,
+  floatingFolderPrefab: {fileID: 7664243995736477026, guid: 10cc8776156463849924916eb197e1fc,
     type: 3}
   pointA: {fileID: 504474489}
   pointB: {fileID: 208713575}

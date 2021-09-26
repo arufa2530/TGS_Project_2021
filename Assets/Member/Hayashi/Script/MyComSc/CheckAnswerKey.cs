@@ -15,7 +15,7 @@ public class CheckAnswerKey : MonoBehaviour
     {
         DCon = GameObject.Find("D:").GetComponent<DriveController>();
         MyAudio = this.GetComponent<AudioSource>();
-        Conversatio = talk.GetComponent<Conversatio_UI>();
+        if(talk != null)Conversatio = talk.GetComponent<Conversatio_UI>();
     }
 
     private void OnTriggerStay2D(Collider2D collision)

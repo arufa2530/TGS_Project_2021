@@ -23,7 +23,7 @@ public class FadeToNextScene : MonoBehaviour
         {
             if (dontLoadScene) return;
 
-            SceneManager.LoadScene("");
+            SceneManager.LoadScene("Test_End");
         }
     }
 

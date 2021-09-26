@@ -14,7 +14,7 @@ public class RestartTextScript : MonoBehaviour
     private string PreText = "CPU MODE  HIGH" + Environment.NewLine + "MEMORY 640KB + ";
     private string EndText = "KB OK";
     private string underline = "_";
-    private string startingText = "Windows95を起動しています...";
+    private string startingText = "OSを起動しています...";
     [SerializeField]
     public ChangeScene _changeScene;
 

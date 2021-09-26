@@ -36,6 +36,8 @@ public class CDController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(EndDrop);
+        Debug.Log(HitCollider);
         if (!IsDrop)
             Follow();
  
@@ -121,10 +123,13 @@ public class CDController : MonoBehaviour
 
     private void OnMouseUpAsButton()
     {
-        if (HitCollider.gameObject.name == "D:" && EndDrop)
+        if (HitCollider != null)
         {
-            CDPopup.SetActive(true);
-            rig.constraints = RigidbodyConstraints2D.FreezeAll;
+            if (HitCollider.gameObject.name == "D:" && EndDrop)
+            {
+                CDPopup.SetActive(true);
+                rig.constraints = RigidbodyConstraints2D.FreezeAll;
+            }
         }
     }
 

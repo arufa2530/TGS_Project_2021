@@ -452,7 +452,7 @@ SpriteRenderer:
   m_Size: {x: 8.3, y: 16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &125958068
@@ -849,6 +849,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PopUp FinalQuestionMark
+      objectReference: {fileID: 0}
+    - target: {fileID: 9136859087111123682, guid: 0335b38900d3fbd4b83eb82478049205,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9136859087111123683, guid: 0335b38900d3fbd4b83eb82478049205,
         type: 3}
@@ -3172,6 +3177,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerReferences
       objectReference: {fileID: 0}
+    - target: {fileID: 334500093603934738, guid: 2ca13ab7ed138994e832cf958ead839a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 334500093603934739, guid: 2ca13ab7ed138994e832cf958ead839a,
         type: 3}
       propertyPath: mouseWait
@@ -3783,6 +3793,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlayerHolderNew
+      objectReference: {fileID: 0}
+    - target: {fileID: 3012455189299779059, guid: b39fcde320ddddd4ebf73b922a4d2092,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4391101174285681438, guid: b39fcde320ddddd4ebf73b922a4d2092,
         type: 3}

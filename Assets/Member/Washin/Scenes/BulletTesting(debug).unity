@@ -718,6 +718,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas UI
       objectReference: {fileID: 0}
+    - target: {fileID: 1445199734089149360, guid: 39d3146cc6cf1604c89cdc8955aaa9e5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1445199734089149363, guid: 39d3146cc6cf1604c89cdc8955aaa9e5,
         type: 3}
       propertyPath: m_Camera
@@ -1459,6 +1464,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 283591339279571528, guid: b39fcde320ddddd4ebf73b922a4d2092,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 283591339279571531, guid: b39fcde320ddddd4ebf73b922a4d2092,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 519420031}
     - target: {fileID: 3012455189299779058, guid: b39fcde320ddddd4ebf73b922a4d2092,
         type: 3}
       propertyPath: m_RootOrder
@@ -1542,6 +1557,11 @@ PrefabInstance:
     - target: {fileID: 3012455189985253830, guid: b39fcde320ddddd4ebf73b922a4d2092,
         type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3012455190292329445, guid: b39fcde320ddddd4ebf73b922a4d2092,
+        type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

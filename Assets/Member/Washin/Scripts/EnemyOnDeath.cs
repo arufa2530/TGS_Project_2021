@@ -32,7 +32,7 @@ public class EnemyOnDeath : MonoBehaviour
                 fadeStarted = false;
                 //SceneManager.LoadScene("PaintTestScene");
                 if(PlayerReferences.battleStageCount != 2)
-                    SceneManager.LoadScene("DesktopScene");
+                    SceneManager.LoadScene("Test_TGS");
                 else SceneManager.LoadScene("EndingScene");
                 //changeScene.ReturnToDesktop();
             }
