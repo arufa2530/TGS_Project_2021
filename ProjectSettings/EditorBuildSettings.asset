@@ -35,18 +35,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Member/Washin/Scenes/BulletTesting(debug).unity
     guid: 2c4275b57aa4e804c84cdd6d27d7cc9c
-  - enabled: 1
-    path: Assets/Member/Mori/Senes/Test_TGS.unity
-    guid: bfd96fcfcf8f1c549bc18031ceabf899
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Member/Washin/Scenes/PaintTestScene.unity
     guid: 542aacf96f2540a4eb7b799031f426d0
   - enabled: 1
     path: Assets/Member/Hayashi/Scene/Solitia.unity
     guid: 7d578d11414e33c47893a27d539608bd
-  - enabled: 1
-    path: Assets/Member/Washin/Scenes/EndingScene.unity
-    guid: 6ed4493c5a5db2547991353beb27e9d0
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Member/Mori/Senes/Test_End.unity
     guid: cbd567bed6faa91409ed80d483602267

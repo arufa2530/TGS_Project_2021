@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9a65bdf4e1c9cf640a3c8d314f64972b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fa5020f942ba2c74187b3609a96123bc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -94,10 +94,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2611485411197330986}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b615cb8c9658a4142b03a57ac4486132, type: 3}
+  m_Script: {fileID: 11500000, guid: ad49d6058bbf5494ca8fdf935f396d8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speechBubbleMove: {fileID: 1643503244906453534}
+  speechBubbleMove: {fileID: 0}
   startFade: 0
   fadeInTime: 1
   currentTime: 0
@@ -112,7 +112,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2611485411197330986}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e7d1dc180cc79444b1cbb82c86f6275, type: 3}
+  m_Script: {fileID: 11500000, guid: ed974b135b7b41345ba25b6b9ce81848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pointA: {fileID: 8138258684845975154}
@@ -190,7 +190,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 49a82932b9b61d64e9d4adf0c5be6502, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ea713e7662d2c2745adc63ac6fa8cd31, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -358,7 +358,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7664243995736477026}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93db5ebe847a5244e94f557d14e8d70a, type: 3}
+  m_Script: {fileID: 11500000, guid: 0d9e091e8bc662c42b1de952df2f138e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fadeIn: {fileID: 9134888964932805116}
@@ -388,9 +388,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7664243995736477026}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd2410c8e6ebbb24b8ec3e3c7d41e4ec, type: 3}
+  m_Script: {fileID: 11500000, guid: 725060090c11f9b4f9a483dc22c6106a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unknownPrefab: {fileID: 8621301358335908835, guid: 34eee19495f3fc044992a54afc117666,
+  unknownPrefab: {fileID: 8621301358335908835, guid: 968d03b6676b1d84dbcd9dea754e30ec,
     type: 3}
   timeToDoubleClick: 0.5

@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9a65bdf4e1c9cf640a3c8d314f64972b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fa5020f942ba2c74187b3609a96123bc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2025207067635819546}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b615cb8c9658a4142b03a57ac4486132, type: 3}
+  m_Script: {fileID: 11500000, guid: ad49d6058bbf5494ca8fdf935f396d8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speechBubbleMove: {fileID: 0}
@@ -139,10 +139,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2025207067635819546}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d37efd254d1c2bb43960b8ae90b9996d, type: 3}
+  m_Script: {fileID: 11500000, guid: dcf3ba1a2c0d853429410e54edffac8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeonSpawn: {fileID: 8144659296494371961, guid: 89e5142790abf414eac0bbfbbcc3150f,
+  fadeonSpawn: {fileID: 8144659296494371961, guid: 681ca96ea40416646882fe780fd2267d,
     type: 3}
   timeToDoubleClick: 0.5
 --- !u!1 &2025207068553525634
@@ -216,7 +216,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 49a82932b9b61d64e9d4adf0c5be6502, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ea713e7662d2c2745adc63ac6fa8cd31, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -301,12 +301,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: dad7b736ffd24254b8d11666e51bef56, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ebe41363d297d3c4ab80aa2351857eb8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 8.3, y: 16}
+  m_Size: {x: 1.2, y: 1.6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -322,7 +322,7 @@ Animator:
   m_GameObject: {fileID: 8621301358335908835}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0f03b2952c5171048bf16670f6b47b30, type: 2}
+  m_Controller: {fileID: 9100000, guid: 12ae9a5d8ac8c6b4ea82686e342b04e8, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -340,7 +340,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8621301358335908835}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e855de0a09c6ef741bab55ac1154e617, type: 3}
+  m_Script: {fileID: 11500000, guid: a15615344664a5347ad0fd3bc1167a2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fadeIn: {fileID: 3380446585692018734}
