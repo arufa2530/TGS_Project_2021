@@ -315,7 +315,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 70111df2c18261441a1756ea48c34d18, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5c5ef6f0457aef548ac0dc5ba305f22a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -342,7 +342,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 109389848}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1968e6cb5e8a2a4a82714bf894fa486, type: 3}
+  m_Script: {fileID: 11500000, guid: f3b43126c4499ac4eb3789a3cb04aaad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ipfObj: {fileID: 0}
@@ -979,7 +979,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -128.622}
+  m_AnchoredPosition: {x: 0, y: -54.984013}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!61 &696827386
@@ -1057,36 +1057,36 @@ MonoBehaviour:
   m_GameObject: {fileID: 696827384}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc504f775045e7240949d937a7b1a35b, type: 3}
+  m_Script: {fileID: 11500000, guid: a616efca6177bc349a8784be691db374, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   charName:
-  - None
-  - "???\uFF1A"
-  - "\u30AA\u30DA\u30EC\u30FC\u30BF\u30FC\uFF1A"
-  - "\u30D0\u30B9\u30BF\u30FC\uFF1A"
-  - "LOVE\uFF1A"
+  - none
+  - ???
+  - opere
+  - basuter
+  - love
   Talk:
-  - "\u2026\u2026\u52A9\u304B\u3063\u305F\u3001\u306E\u304B\u306A\uFF1F\n"
-  - 
-  - "\u4ECA\u56DE\u3082\u5371\u306A\u3044\u6240\u3067\u3057\u305F\u2026\u2026\n\u305D\u3046\u3044\u3048\u3070\u3001\u4F55\u6545\u30A2\u30CA\u30BF\u306F\u3053\u3053\u306B\uFF1F\n"
-  - "\u3088\u304F\u899A\u3048\u3066\u3044\u306A\u3044\u3093\u3060\n\u6C17\u3065\u3044\u305F\u3089\u3053\u3053\u306B\u3044\u305F\u3063\u3066\u611F\u3058\n"
-  - "\u2026\u2026\u305D\u3046\u3060\u3001\u541B\u306E\u540D\u524D\u3092\u805E\u3044\u3066\u306A\u304B\u3063\u305F\u306D\n"
-  - "\u5F7C\u306F\u30D0\u30B9\u30BF\u30FC\u3063\u3066\u3044\u3046\u3093\u3067\u3059\uFF01\n\u304A\u558B\u308A\u304C\u82E6\u624B\u307F\u305F\u3044\u3060\u3051\u3069\n\u4EF2\u826F\u304F\u3057\u3066\u3042\u3052\u3066\u304F\u3060\u3055\u3044\u306D\uFF01\n"
-  - "\u3078\u3047\u3001\u305D\u3046\u306A\u3093\u3060\n"
-  - "\u3061\u306A\u307F\u306B\u3001\u3042\u306A\u305F\u306E\u304A\u540D\u524D\u306F\uFF1F\n"
-  - "\u50D5\u306B\u3000\u300E\u540D\u524D\u300F\u3000\u306F\u306A\u3044\u3093\u3060\n\u3060\u304B\u3089\u30AD\u30DF\u306B\n\u30D0\u30B9\u30BF\u30FC\u306B\u6C7A\u3081\u3066\u307B\u3057\u3044\n"
-  - "\u3088\u308D\u3057\u304F\u983C\u3080\u3088\n"
-  - 
-  - "\u3044\u3044\u306D\u3001\u7D20\u6575\u306A\u540D\u524D\n\u6700\u9AD8\u306E\u8D08\u308A\u7269\u3092\u3082\u3089\u3063\u305F\u307F\u305F\u3044\n"
-  - 
+  - a
+  - b
+  - c
+  - d
+  - s
+  - f
+  - a
+  - sf
+  - fa
+  - a
+  - sa
+  - d
+  - a
   Choices:
-  - "\u5927\u4E08\u592B\uFF1F\n"
-  - "\u3051\u304C\u306F\u306A\u3044\uFF1F\n"
-  - "???\uFF1A\n\u3046\u3093\u3001\u5927\u4E08\u592B\n\u52A9\u3051\u3066\u304F\u308C\u3066\u3042\u308A\u304C\u3068\u3046\n"
+  - s
+  - f
+  - a
   pRefab: {fileID: 6233858712730522792, guid: d1cbeae6e77f0834a8cbee1b73e30c4d, type: 3}
   existence: {fileID: 696827384}
-  button: {fileID: 942777921370814313, guid: e79de76d5b423f84996962b66e4229a4, type: 3}
+  button: {fileID: 942777921370814313, guid: 9781abfbaf3cd6344b96c465926e1e88, type: 3}
   vPlay: {fileID: 818849794}
   changeTemp: {fileID: 0}
   _karmaValue: 010000000a000000
@@ -1381,7 +1381,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1672408048}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1464,7 +1464,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 818849792}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 5c8a8f1bef1442b4994eace0fbd2a72f, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 8e63ba646bdbfad489d9171169b6880c, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 291551015}
@@ -1500,7 +1500,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 818849792}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f2ca06745066ee48bb31a7d1acda112, type: 3}
+  m_Script: {fileID: 11500000, guid: 7bff11ee26f89864bb61a794d27cd74b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   changeTemp: {fileID: 1866436238}
