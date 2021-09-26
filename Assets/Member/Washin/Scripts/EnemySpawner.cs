@@ -32,13 +32,14 @@ public class EnemySpawner : MonoBehaviour
                 tempEnemyActions.SetSingleShot(true);
                 break;
             case 2:
-                tempEnemyHealth.SetMaxHealth(100);
+                tempEnemyHealth.SetMaxHealth(75);
                 //tempEnemyActions.SetOnlyArc(true);
                 break;
             //case 3:
             //    tempEnemyHealth.SetMaxHealth(150);
             //    break;
             default:
+                Debug.LogError(PlayerReferences.battleStageCount);
                 Debug.LogError("OutSideOfRange");
                 break;
         }

@@ -51,7 +51,7 @@ public class EnemyActions : MonoBehaviour
     void Start()
     {
         //currentActionState = CurrentEnemyAction.Idle;
-        lastState = CurrentEnemyAction.Moving;
+        lastState = CurrentEnemyAction.Shooting;
     }
 
     // Update is called once per frame
@@ -198,6 +198,12 @@ public class EnemyActions : MonoBehaviour
     public void SetActionToIdle()
     {
         currentActionState = CurrentEnemyAction.Idle;
+        Debug.LogFormat("CurrentState set to idle");
+    } 
+    public void SetActionToMove()
+    {
+        currentActionState = CurrentEnemyAction.Moving;
+        Debug.LogFormat("CurrentState set to moving");
     }
 
     public void SetActionWaitForOrder()

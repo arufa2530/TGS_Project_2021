@@ -25,6 +25,7 @@ public class FadeEnemyHealthBarInScript : MonoBehaviour
 
     [SerializeField]public Slider redBar;
 
+    [SerializeField] EnemyActions enemyActions;
     private void Awake()
     {
         healthBarUI.localPosition = new Vector3(0, 275, -91);
@@ -33,14 +34,20 @@ public class FadeEnemyHealthBarInScript : MonoBehaviour
         redBar.value = 1;
     }
 
+    private void Start()
+    {
+        enemyActions = GetComponentInParent<EnemyActions>();
+    }
+
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.KeypadPlus)) { shouldSlideOut = true; currentTime = 0; }
+        //if (Input.GetKeyDown(KeyCode.KeypadPlus)) { shouldSlideOut = true; currentTime = 0; }
 
         if (!slideInDone)
             StartCoroutine(HealthBarSlideIn());
         else if(!barIsFilled)
             FullHealthBarToFull();
+
         if (shouldSlideOut)
             StartCoroutine(HealthBarSlideOut());
     }
@@ -57,6 +64,7 @@ public class FadeEnemyHealthBarInScript : MonoBehaviour
         barIsFilled = true;
         currentTime = 0;
         enemyCenter.SetInstance();
+        enemyActions.SetActionToMove();
     }
 
     private IEnumerator HealthBarSlideIn()

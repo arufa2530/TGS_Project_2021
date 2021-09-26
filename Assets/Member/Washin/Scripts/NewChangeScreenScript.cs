@@ -29,11 +29,11 @@ public class NewChangeScreenScript : MonoBehaviour
             LoadNextScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
-        if (Input.GetKeyDown(KeyCode.KeypadDivide))
-        {
-            //tempTimeToFade = true;
-            LoadNextScene(9);
-        }
+        //if (Input.GetKeyDown(KeyCode.KeypadDivide))
+        //{
+        //    //tempTimeToFade = true;
+        //    LoadNextScene(9);
+        //}
 
         if (tempTimeToFade) 
         {
@@ -76,4 +76,9 @@ public class NewChangeScreenScript : MonoBehaviour
         canvasGroup.alpha = Mathf.MoveTowards(canvasGroup.alpha, 1, timeToFade * Time.deltaTime);
     }
 
+    public void RetryBattle()
+    {
+        PlayerReferences.PlayerDied();
+        SceneManager.LoadScene("BulletTesting(debug)");
+    }
 }

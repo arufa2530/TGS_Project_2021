@@ -32,6 +32,17 @@ public class PlayerReferences : MonoBehaviour
         GameObject.DontDestroyOnLoad(this.gameObject);
     }
 
+#if UNITY_EDITOR
+    //Debug
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.KeypadPlus))
+        {
+            PlayerEnteredBattleStage();
+        }
+    }
+#endif
+
     public static void LostHealth(int value)
     {
         if (AreIFramesActive()) return;
@@ -43,7 +54,14 @@ public class PlayerReferences : MonoBehaviour
 
     public static void PlayerEnteredBattleStage()
     {
+        if (battleStageCount == 2) return;
         battleStageCount++;
+    }
+
+    public static void PlayerDied()
+    {
+        if (battleStageCount == 0) return;
+        battleStageCount--;
     }
 
     public static bool AreIFramesActive()

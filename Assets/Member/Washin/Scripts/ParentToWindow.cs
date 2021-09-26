@@ -5,6 +5,11 @@ using UnityEngine;
 public class ParentToWindow : MonoBehaviour
 {
     [SerializeField] DragWindow dragWindow;
+
+    private void Start()
+    {
+        dragWindow = GetComponent<DragWindow>();
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (!collision.gameObject.CompareTag("Player")) return;

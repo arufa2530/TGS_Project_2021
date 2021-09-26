@@ -10,7 +10,7 @@ public class ChangePlayerLocationOnEnter : MonoBehaviour
 
     private void Start()
     {
-        if (useDefaultPosition || targetStartPosition == Vector3.zero)
+        if (useDefaultPosition)
             PlayerReferences.playerMovement.SetPlayerPosition(playerDefaultPosition);
         else
             PlayerReferences.playerMovement.SetPlayerPosition(targetStartPosition);

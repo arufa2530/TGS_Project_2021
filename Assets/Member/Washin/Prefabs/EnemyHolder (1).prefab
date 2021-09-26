@@ -177,6 +177,7 @@ MonoBehaviour:
   shouldSlideOut: 0
   barIsFilled: 0
   redBar: {fileID: 6165183021668351528}
+  enemyActions: {fileID: 0}
 --- !u!1 &6165183021668351531
 GameObject:
   m_ObjectHideFlags: 0
@@ -788,12 +789,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveEnemy: {fileID: 6165183022067834752}
   shootFromEnemy: {fileID: 6165183022067834755}
-  lastState: 2
+  lastState: 4
   lastMove: 2
-  currentActionState: 0
+  currentActionState: 4
   currentMoveState: 2
-  currentTime: 0
-  currentAttack: 0
+  currentTime: 3
+  currentAttack: 3
   singleShot: 0
   arcShotOnly: 0
   animator: {fileID: 832971289707478580}

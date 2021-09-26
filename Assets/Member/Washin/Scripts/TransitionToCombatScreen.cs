@@ -36,6 +36,8 @@ public class TransitionToCombatScreen : MonoBehaviour
             }
             yield return new WaitForSeconds(delayBetweenSpawn);
         }
+        yield return new WaitForSeconds(10f);
+        Destroy(this.gameObject);
         yield return null;
     }
 
