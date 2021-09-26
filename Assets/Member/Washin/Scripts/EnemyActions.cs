@@ -45,7 +45,7 @@ public class EnemyActions : MonoBehaviour
     float idleTime = 3f;
     float movingTime = 3f;
     float shootingTime = 3f;
-
+    [SerializeField] Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -81,6 +81,7 @@ public class EnemyActions : MonoBehaviour
 
         if (currentActionState == CurrentEnemyAction.Moving)
         {
+            PlayIdleAnimation();
             currentTime += Time.deltaTime;
             if (currentMoveState == CurrentMovementPattern.None) ChooseRandomMovement();
             if (currentTime < movingTime + 0.1f)
@@ -98,6 +99,7 @@ public class EnemyActions : MonoBehaviour
 
         if (currentActionState == CurrentEnemyAction.Shooting)
         {
+            PlayAttackAnimation();
             if (currentAttack == CurrentAttackPattern.None) ChooseRandomAttack();
             currentTime += Time.deltaTime;
             if (currentTime < shootingTime)
@@ -216,5 +218,17 @@ public class EnemyActions : MonoBehaviour
     public void SetOnlyArc(bool _bool)
     {
         arcShotOnly = _bool;
+    }
+
+    //TempAnimation
+
+    void PlayIdleAnimation()
+    {
+        animator.Play("EnemyIdle");
+    }
+
+    void PlayAttackAnimation()
+    {
+        animator.Play("EnemyAttack");
     }
 }
