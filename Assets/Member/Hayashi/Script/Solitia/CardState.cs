@@ -93,6 +93,7 @@ public class CardState : MonoBehaviour
                 this.transform.parent = HitObject.transform;
                 MyRT.anchoredPosition = new Vector3(0f, -1.5f, 0f);
                 childlayer(HitObject.GetComponent<SpriteRenderer>().sortingOrder);
+                this.tag = "Card";
             }
             else
             {
@@ -105,6 +106,7 @@ public class CardState : MonoBehaviour
             MySR.sortingOrder = mylayer;
             this.transform.parent = HitObject.transform;
             MyRT.anchoredPosition = new Vector3(0f, 0f, 0f);
+            this.tag = "Card";
         }
         else if (HitObject.tag == "Complete")
         {
@@ -114,6 +116,7 @@ public class CardState : MonoBehaviour
                 this.transform.parent = HitObject.transform;
                 MyRT.anchoredPosition = new Vector3(0f, 0f, 0f);
                 this.GetComponent<BoxCollider2D>().enabled = false;
+                this.tag = "Card";
             }
             else
             {

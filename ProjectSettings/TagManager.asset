@@ -18,6 +18,7 @@ TagManager:
   - Card
   - Area
   - Complete
+  - Draw
   layers:
   - Default
   - TransparentFX

@@ -60,6 +60,7 @@ public class SolitiaController : MonoBehaviour
         Createobj.transform.parent = DrawZone.transform;
         Createobj.GetComponent<RectTransform>().anchoredPosition = objVec;
         Createobj.transform.localScale = new Vector3(1f, 1f, 1f);
+        Createobj.tag = "Draw";
         System.Random rnd = new System.Random();
         while (true)
         {
