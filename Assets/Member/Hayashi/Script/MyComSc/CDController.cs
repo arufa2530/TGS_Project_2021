@@ -9,6 +9,7 @@ public class CDController : MonoBehaviour
     [SerializeField] GameObject CDPopup;
     [SerializeField] GameObject Operator;
     [SerializeField] GameObject talk;
+    [SerializeField] NewChangeScreenScript changeTemp;
     Conversatio_UI Conversatio;
 
     public CameraShake Shake;
@@ -150,6 +151,7 @@ public class CDController : MonoBehaviour
             Conversatio.TalkVo(9);
             Conversatio.d = true;
         }
+        if(changeTemp != null) { changeTemp.LoadNextScene(9); }
         Drive.GetComponent<DriveController>().IsLoadCD = true;
         MycomSETable SEList;
         SEList = Resources.Load<MycomSETable>("Scriotable/MycomSETable");

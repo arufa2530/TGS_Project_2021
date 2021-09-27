@@ -6,7 +6,7 @@ public class AutoDespawnWindowScript : MonoBehaviour
 {
     [SerializeField]
     private float timeLeft;
-    private float timeUntilDespawn = 2f;
+    private float timeUntilDespawn = 1.5f;
     private void Start()
     {
         timeLeft = timeUntilDespawn;

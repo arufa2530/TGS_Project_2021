@@ -2640,6 +2640,7 @@ GameObject:
   m_Component:
   - component: {fileID: 849458765}
   - component: {fileID: 849458764}
+  - component: {fileID: 849458766}
   m_Layer: 0
   m_Name: Sund
   m_TagString: Untagged
@@ -2757,6 +2758,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &849458766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 849458763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1578c1dd299a342429adf1b6024b29f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 849458764}
+  maxVolume: 1
+  fadeInTime: 0
+  fadeOutTime: 0
 --- !u!1 &872890456
 GameObject:
   m_ObjectHideFlags: 0
@@ -3426,7 +3443,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -128.62198}
+  m_AnchoredPosition: {x: 0, y: -128.62201}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!61 &1041641042
@@ -4987,6 +5004,11 @@ PrefabInstance:
       propertyPath: Operator
       value: 
       objectReference: {fileID: 2137993884}
+    - target: {fileID: 2899220771130492781, guid: b765856fee928cc4695dc3f03100ed8b,
+        type: 3}
+      propertyPath: changeTemp
+      value: 
+      objectReference: {fileID: 2113118946}
     - target: {fileID: 2899220771271815942, guid: b765856fee928cc4695dc3f03100ed8b,
         type: 3}
       propertyPath: m_Text

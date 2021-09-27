@@ -1664,6 +1664,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e7019556d42b3643abedd2adb9f4ac6, type: 3}
+--- !u!1 &638734405 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4174765313465656023, guid: 4e7019556d42b3643abedd2adb9f4ac6,
+    type: 3}
+  m_PrefabInstance: {fileID: 638734404}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &641133902
 GameObject:
   m_ObjectHideFlags: 0
@@ -2346,6 +2352,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8903629128275748570, guid: 3cea56ad418e1a849ac1c3aeb93d2bb8,
+        type: 3}
+      propertyPath: _newchangeScene
+      value: 
+      objectReference: {fileID: 2113118946}
     - target: {fileID: 8903629129038188668, guid: 3cea56ad418e1a849ac1c3aeb93d2bb8,
         type: 3}
       propertyPath: m_Name
@@ -2408,6 +2419,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3cea56ad418e1a849ac1c3aeb93d2bb8, type: 3}
+--- !u!1 &801838393 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8903629129038188668, guid: 3cea56ad418e1a849ac1c3aeb93d2bb8,
+    type: 3}
+  m_PrefabInstance: {fileID: 801838392}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &801838394 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8903629128089040221, guid: 3cea56ad418e1a849ac1c3aeb93d2bb8,
+    type: 3}
+  m_PrefabInstance: {fileID: 801838392}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &806476548
 GameObject:
   m_ObjectHideFlags: 0
@@ -3913,12 +3936,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1097582204}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48b36463ceb6c0c488c331d7a97db3e2, type: 3}
+  m_Script: {fileID: 11500000, guid: d8a46b71615aa434c8625a9984f749e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soli: {fileID: 0}
-  peint: {fileID: 0}
-  era: {fileID: 0}
+  soli: {fileID: 638734405}
+  peint: {fileID: 801838393}
+  era: {fileID: 801838394}
   a: 0
   b: 0
   c: 0
@@ -5309,7 +5332,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 072a71770aac14440a406b2914b9519e,
+      objectReference: {fileID: 21300000, guid: f01821cf3b17a574890126f793ba9d68,
         type: 3}
     - target: {fileID: 2899220771635335655, guid: b765856fee928cc4695dc3f03100ed8b,
         type: 3}
@@ -5355,7 +5378,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 9f36f6916ac41b242b0672d571ba866b,
+      objectReference: {fileID: 21300000, guid: d58ef6030e96ad74aa9e6a530453b455,
         type: 3}
     - target: {fileID: 2899220772061515455, guid: b765856fee928cc4695dc3f03100ed8b,
         type: 3}
@@ -5376,7 +5399,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: ed0e24b37a8f10541afbd7c96fd2f38c,
+      objectReference: {fileID: 21300000, guid: 1f8ce0cea2011bc43acee199d0ae78b9,
         type: 3}
     - target: {fileID: 2899220772174555257, guid: b765856fee928cc4695dc3f03100ed8b,
         type: 3}
