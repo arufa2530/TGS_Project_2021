@@ -13,14 +13,18 @@ public class Erase : MonoBehaviour
     [SerializeField] int brushSize;
     [SerializeField] bool isDrawing;
 
+    int checkColorCount;
+
     Vector2Int lastBrushPos;
 
     RaycastHit2D hit;
 
-    public bool canErase = false;
+    DoubleClickedChecker doubleClickedChecker;
+    bool canErase = false;
 
     private void Start()
     {
+        doubleClickedChecker = GetComponentInChildren<DoubleClickedChecker>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         var tempTexture = spriteRenderer.sprite.texture;
 
@@ -96,6 +100,16 @@ public class Erase : MonoBehaviour
         }
         else
             isDrawing = false;
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            StartCoroutine(CheckColors());
+
+            if(checkColorCount > pixelColors.Length/4f)
+            {
+                doubleClickedChecker.CanBeClicked();
+            }
+        }
     }
 
     public void CanErase(bool _canErase)
@@ -112,5 +126,13 @@ public class Erase : MonoBehaviour
         }
     }
 
+    IEnumerator CheckColors()
+    {
+        foreach (Color color in pixelColors)
+        {
+            if (color == Color.clear) checkColorCount++;
+        }
+        yield return null;
+    }
 }
 

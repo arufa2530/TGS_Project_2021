@@ -23,6 +23,7 @@ public class DoubleClickedChecker : MonoBehaviour
 
     string scriptToUse;
     [SerializeField] bool useNew;
+    bool canBeClicked = false;
 
     private void Start()
     {
@@ -31,6 +32,7 @@ public class DoubleClickedChecker : MonoBehaviour
 
     void Click()
     {
+        if (!canBeClicked) return;
         StartCoroutine(Clicked());
     }
 
@@ -105,7 +107,10 @@ public class DoubleClickedChecker : MonoBehaviour
         yield return null;
     }
 
-
+    public void CanBeClicked()
+    {
+        canBeClicked = true;
+    }
 
 
 }
