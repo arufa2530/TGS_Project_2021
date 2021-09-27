@@ -20,11 +20,12 @@ public class Erase : MonoBehaviour
     RaycastHit2D hit;
 
     DoubleClickedChecker doubleClickedChecker;
-    bool canErase = false;
+    public bool canErase = false;
 
     private void Start()
     {
         doubleClickedChecker = GetComponentInChildren<DoubleClickedChecker>();
+        doubleClickedChecker.CanBeClicked(false);
         spriteRenderer = GetComponent<SpriteRenderer>();
         var tempTexture = spriteRenderer.sprite.texture;
 
@@ -107,7 +108,7 @@ public class Erase : MonoBehaviour
 
             if(checkColorCount > pixelColors.Length/4f)
             {
-                doubleClickedChecker.CanBeClicked();
+                doubleClickedChecker.CanBeClicked(true);
             }
         }
     }
