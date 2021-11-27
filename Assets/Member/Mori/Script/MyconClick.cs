@@ -94,6 +94,7 @@ public class MyconClick : MonoBehaviour
                         case TENP.peint:
                             if (!isClick) { isClick = true; icon_c.b = true; }
                             else if (isClick) { isClick = false; icon_c.b = false; }
+                            if(!icon_c.c) { icon_c.ErrorBanner(); }
                             break;
 
                     }

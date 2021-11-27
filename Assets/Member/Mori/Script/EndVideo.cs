@@ -26,7 +26,9 @@ public class EndVideo : MonoBehaviour
         life = GameObject.Find("PlayerHolderNew");
         if(life != null)
         {
-            life.gameObject.SetActive(false);
+            //life.gameObject.SetActive(false);
+            Destroy(PlayerReferences.theHealthUI.transform.parent.gameObject);
+            Destroy(PlayerReferences.thePlayer.gameObject);
         }
     }
 }

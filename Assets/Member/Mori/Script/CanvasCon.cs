@@ -20,7 +20,7 @@ public class CanvasCon : MonoBehaviour
         talk_UI.gameObject.SetActive(false);
         //talk_UI[1].gameObject.SetActive(false);
         ope.gameObject.SetActive(false);
-        sund.gameObject.SetActive(false);
+        if (sund != null) { sund.gameObject.SetActive(false); }
         //ope[1].gameObject.SetActive(false);
     }
 
@@ -33,7 +33,7 @@ public class CanvasCon : MonoBehaviour
         }
         if(conversatio2.d)
         {
-            sund.gameObject.SetActive(true);
+            if (sund != null) { sund.gameObject.SetActive(true); }
             Debug.Log("—¬‚ê‚Ä‚é‚æ");
         }
         Debug.Log("—¬‚ê");
